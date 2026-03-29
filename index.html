@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8"/>
@@ -57,21 +58,21 @@ body{
 
 /* ══ ORBS ══ */
 .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;will-change:transform;}
-.orb1{width:380px;height:380px;background:radial-gradient(circle,var(--orb1) 0%,transparent 70%);top:-100px;right:-80px;animation:ob1 10s ease-in-out infinite alternate;}
-.orb2{width:300px;height:300px;background:radial-gradient(circle,var(--orb2) 0%,transparent 70%);bottom:60px;left:-60px;animation:ob2 13s ease-in-out infinite alternate;}
-.orb3{width:220px;height:220px;background:radial-gradient(circle,var(--orb3) 0%,transparent 70%);top:40%;left:50%;animation:ob3 8s ease-in-out infinite alternate;}
+.orb1{width:380px;height:380px;background:radial-gradient(circle,var(–orb1) 0%,transparent 70%);top:-100px;right:-80px;animation:ob1 10s ease-in-out infinite alternate;}
+.orb2{width:300px;height:300px;background:radial-gradient(circle,var(–orb2) 0%,transparent 70%);bottom:60px;left:-60px;animation:ob2 13s ease-in-out infinite alternate;}
+.orb3{width:220px;height:220px;background:radial-gradient(circle,var(–orb3) 0%,transparent 70%);top:40%;left:50%;animation:ob3 8s ease-in-out infinite alternate;}
 @keyframes ob1{to{transform:translate(-50px,60px) scale(1.18)}}
 @keyframes ob2{to{transform:translate(40px,-50px) scale(0.82)}}
 @keyframes ob3{to{transform:translate(-25px,35px) scale(1.12)}}
 
 /* ══ LIQUID GLASS ══ */
 .glass{
-  background:var(--lg-bg);
-  border:1px solid var(--lg-border);
-  box-shadow:var(--lg-shadow);
-  -webkit-backdrop-filter:var(--lg-blur);
-  backdrop-filter:var(--lg-blur);
-  position:relative;z-index:1;
+background:var(–lg-bg);
+border:1px solid var(–lg-border);
+box-shadow:var(–lg-shadow);
+-webkit-backdrop-filter:var(–lg-blur);
+backdrop-filter:var(–lg-blur);
+position:relative;z-index:1;
 }
 
 /* ══ CARDS ══ */
@@ -80,46 +81,46 @@ body{
 .hdr-blue{background:linear-gradient(145deg,rgba(26,111,255,.88),rgba(88,86,214,.88));border:1px solid rgba(255,255,255,.28);box-shadow:0 14px 50px rgba(0,80,200,.32);}
 .hdr-orange{background:linear-gradient(145deg,rgba(255,149,0,.88),rgba(255,59,48,.88));border:1px solid rgba(255,255,255,.22);box-shadow:0 14px 50px rgba(200,60,0,.30);}
 .hdr-green{background:linear-gradient(145deg,rgba(52,199,89,.88),rgba(10,132,255,.80));border:1px solid rgba(255,255,255,.22);box-shadow:0 14px 50px rgba(20,150,50,.28);}
-.hdr-card::before{content:'';position:absolute;top:-50%;left:-20%;width:70%;height:200%;background:radial-gradient(ellipse,rgba(255,255,255,.16) 0%,transparent 65%);pointer-events:none;}
+.hdr-card::before{content:’’;position:absolute;top:-50%;left:-20%;width:70%;height:200%;background:radial-gradient(ellipse,rgba(255,255,255,.16) 0%,transparent 65%);pointer-events:none;}
 .hdr-top{display:flex;align-items:center;justify-content:space-between;position:relative;}
 .hdr-title{font-size:21px;font-weight:900;color:#fff;letter-spacing:-.4px;}
 .hdr-sub{font-size:13px;color:rgba(255,255,255,.78);margin-top:3px;}
 .hdr-pill{background:rgba(255,255,255,.22);color:#fff;font-size:10px;font-weight:800;padding:3px 10px;border-radius:99px;border:1px solid rgba(255,255,255,.3);}
 
 /* ══ ROWS ══ */
-.row{display:flex;align-items:center;padding:13px 18px;border-bottom:1px solid var(--chip-border);}
+.row{display:flex;align-items:center;padding:13px 18px;border-bottom:1px solid var(–chip-border);}
 .row:last-child{border-bottom:none;}
 .row-ic{font-size:18px;width:28px;flex-shrink:0;}
-.row-label{font-size:15px;font-weight:600;color:var(--c1);flex:1;}
-.row-sub{font-size:12px;color:var(--c3);margin-top:2px;}
+.row-label{font-size:15px;font-weight:600;color:var(–c1);flex:1;}
+.row-sub{font-size:12px;color:var(–c3);margin-top:2px;}
 
 /* ══ INPUTS ══ */
-.inp{width:100%;background:var(--input-bg);border:1px solid var(--input-border);border-radius:14px;padding:12px 15px;font-family:'Heebo',sans-serif;font-size:15px;font-weight:500;color:var(--c1);outline:none;transition:border-color .18s,box-shadow .18s,transform .12s;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);}
-.inp:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,122,255,.14);transform:scale(1.005);}
-.inp::placeholder{color:var(--c4);}
-.inpr{display:flex;align-items:center;padding:0 16px;border-bottom:1px solid var(--chip-border);gap:10px;}
+.inp{width:100%;background:var(–input-bg);border:1px solid var(–input-border);border-radius:14px;padding:12px 15px;font-family:‘Heebo’,sans-serif;font-size:15px;font-weight:500;color:var(–c1);outline:none;transition:border-color .18s,box-shadow .18s,transform .12s;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);}
+.inp:focus{border-color:var(–blue);box-shadow:0 0 0 3px rgba(0,122,255,.14);transform:scale(1.005);}
+.inp::placeholder{color:var(–c4);}
+.inpr{display:flex;align-items:center;padding:0 16px;border-bottom:1px solid var(–chip-border);gap:10px;}
 .inpr:last-child{border-bottom:none;}
 .inpr-ic{font-size:17px;flex-shrink:0;opacity:.7;}
-.inpr-f{flex:1;background:transparent;border:none;outline:none;font-family:'Heebo',sans-serif;font-size:16px;font-weight:500;color:var(--c1);text-align:right;padding:14px 0;}
-.inpr-f::placeholder{color:var(--c4);}
+.inpr-f{flex:1;background:transparent;border:none;outline:none;font-family:‘Heebo’,sans-serif;font-size:16px;font-weight:500;color:var(–c1);text-align:right;padding:14px 0;}
+.inpr-f::placeholder{color:var(–c4);}
 .inpr-f[dir=ltr]{text-align:left;}
 
 /* ══ BUTTONS — ALIVE ══ */
-.btn{width:100%;border-radius:17px;padding:14px 20px;font-family:'Heebo',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:transform .18s cubic-bezier(.34,1.6,.64,1),filter .15s,box-shadow .18s;border:none;position:relative;overflow:hidden;}
-.btn::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.18) 0%,transparent 55%);pointer-events:none;border-radius:inherit;}
+.btn{width:100%;border-radius:17px;padding:14px 20px;font-family:‘Heebo’,sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:transform .18s cubic-bezier(.34,1.6,.64,1),filter .15s,box-shadow .18s;border:none;position:relative;overflow:hidden;}
+.btn::after{content:’’;position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.18) 0%,transparent 55%);pointer-events:none;border-radius:inherit;}
 .btn:hover{transform:translateY(-3px) scale(1.018);filter:brightness(1.07);}
 .btn:active{transform:scale(.94);filter:brightness(.93);}
 .btn:disabled{opacity:.42;pointer-events:none;}
 .btn-blue{background:linear-gradient(180deg,#0A84FF,#007AFF);color:#fff;box-shadow:0 6px 22px rgba(0,122,255,.40);}
 .btn-blue:hover{box-shadow:0 10px 30px rgba(0,122,255,.52);}
-.btn-outline{background:var(--chip);border:1px solid var(--chip-border);color:var(--blue);}
+.btn-outline{background:var(–chip);border:1px solid var(–chip-border);color:var(–blue);}
 .btn-red{background:linear-gradient(135deg,#FF453A,#FF3B30);color:#fff;box-shadow:0 5px 18px rgba(255,59,48,.35);}
 .btn-green{background:linear-gradient(135deg,#30D158,#34C759);color:#fff;box-shadow:0 5px 18px rgba(52,199,89,.35);}
 .btn-sm{padding:8px 14px;font-size:13px;border-radius:12px;width:auto;}
-.btn-ghost{background:none;border:none;font-family:'Heebo',sans-serif;font-size:13px;font-weight:600;color:var(--red);cursor:pointer;padding:5px 9px;border-radius:9px;transition:background .14s,transform .15s;}
+.btn-ghost{background:none;border:none;font-family:‘Heebo’,sans-serif;font-size:13px;font-weight:600;color:var(–red);cursor:pointer;padding:5px 9px;border-radius:9px;transition:background .14s,transform .15s;}
 .btn-ghost:hover{background:rgba(255,59,48,.1);transform:scale(1.06);}
 .btn-ghost:active{transform:scale(.92);}
-.back-btn{display:inline-flex;align-items:center;gap:5px;background:none;border:none;font-family:'Heebo',sans-serif;font-size:14px;font-weight:600;color:var(--blue);cursor:pointer;padding:6px 0;margin-bottom:12px;transition:opacity .15s,transform .15s;}
+.back-btn{display:inline-flex;align-items:center;gap:5px;background:none;border:none;font-family:‘Heebo’,sans-serif;font-size:14px;font-weight:600;color:var(–blue);cursor:pointer;padding:6px 0;margin-bottom:12px;transition:opacity .15s,transform .15s;}
 .back-btn:hover{opacity:.75;transform:translateX(-2px);}
 
 /* ══ TOAST ══ */
@@ -130,26 +131,26 @@ body{
 
 /* ══ BOTTOM DOCK (client nav) ══ */
 .dock{
-  position:fixed;bottom:44px;left:50%;transform:translateX(-50%);
-  z-index:1000;
-  display:flex;gap:6px;align-items:center;
-  padding:8px 12px;border-radius:99px;
-  -webkit-backdrop-filter:blur(28px) saturate(2);
-  backdrop-filter:blur(28px) saturate(2);
-  background:rgba(255,255,255,0.58);
-  border:1px solid rgba(255,255,255,0.85);
-  box-shadow:0 8px 32px rgba(0,0,0,0.16),0 2px 0 rgba(255,255,255,0.8) inset;
+position:fixed;bottom:44px;left:50%;transform:translateX(-50%);
+z-index:1000;
+display:flex;gap:6px;align-items:center;
+padding:8px 12px;border-radius:99px;
+-webkit-backdrop-filter:blur(28px) saturate(2);
+backdrop-filter:blur(28px) saturate(2);
+background:rgba(255,255,255,0.58);
+border:1px solid rgba(255,255,255,0.85);
+box-shadow:0 8px 32px rgba(0,0,0,0.16),0 2px 0 rgba(255,255,255,0.8) inset;
 }
 [data-theme=dark] .dock{background:rgba(30,30,44,0.72);border-color:rgba(255,255,255,.14);box-shadow:0 8px 32px rgba(0,0,0,.5);}
 .dock-btn{
-  display:flex;flex-direction:column;align-items:center;gap:3px;
-  padding:8px 14px;border-radius:18px;font-family:'Heebo',sans-serif;font-size:10px;font-weight:700;
-  cursor:pointer;border:none;background:transparent;color:var(--c4);
-  transition:all .22s cubic-bezier(.34,1.5,.64,1);min-width:56px;
+display:flex;flex-direction:column;align-items:center;gap:3px;
+padding:8px 14px;border-radius:18px;font-family:‘Heebo’,sans-serif;font-size:10px;font-weight:700;
+cursor:pointer;border:none;background:transparent;color:var(–c4);
+transition:all .22s cubic-bezier(.34,1.5,.64,1);min-width:56px;
 }
 .dock-btn .dock-ic{font-size:22px;transition:transform .22s cubic-bezier(.34,1.5,.64,1);}
 .dock-btn:hover .dock-ic{transform:translateY(-4px) scale(1.18);}
-.dock-btn.active{color:var(--blue);background:rgba(0,122,255,.12);border:1px solid rgba(0,122,255,.22);}
+.dock-btn.active{color:var(–blue);}
 .dock-btn.active .dock-ic{transform:scale(1.12);}
 
 /* ══ SIDEBAR (admin/curator nav) ══ */
@@ -163,36 +164,36 @@ body{
 .ios-track{position:absolute;inset:0;border-radius:99px;background:#d0d0d0;cursor:pointer;transition:background .26s ease;}
 [data-theme=dark] .ios-track{background:#444;}
 .ios-toggle input:checked + .ios-track{background:#34C759;}
-.ios-track::after{content:'';position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.28);transition:transform .26s cubic-bezier(.34,1.5,.64,1);}
+.ios-track::after{content:’’;position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.28);transition:transform .26s cubic-bezier(.34,1.5,.64,1);}
 .ios-toggle input:checked + .ios-track::after{transform:translateX(22px);}
 
 /* ══ LANG BTNS ══ */
 .lang-row{display:flex;gap:6px;flex-wrap:wrap;}
-.lang-btn{flex:1;min-width:56px;padding:8px 4px;border-radius:11px;font-size:13px;font-weight:700;cursor:pointer;border:1px solid var(--chip-border);font-family:'Heebo',sans-serif;background:var(--chip);color:var(--c3);transition:all .2s cubic-bezier(.34,1.5,.64,1);text-align:center;}
+.lang-btn{flex:1;min-width:56px;padding:8px 4px;border-radius:11px;font-size:13px;font-weight:700;cursor:pointer;border:1px solid var(–chip-border);font-family:‘Heebo’,sans-serif;background:var(–chip);color:var(–c3);transition:all .2s cubic-bezier(.34,1.5,.64,1);text-align:center;}
 .lang-btn:hover{transform:translateY(-2px);}
 .lang-btn.active{background:linear-gradient(135deg,#0A84FF,#007AFF);color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(0,122,255,.35);}
 
 /* ══ CALENDAR ══ */
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;padding:6px 12px 12px;}
-.cal-dn{text-align:center;font-size:10px;font-weight:700;color:var(--c4);padding:3px 0;}
-.cal-day{aspect-ratio:1;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-direction:column;font-size:13px;font-weight:700;color:var(--c4);transition:all .18s cubic-bezier(.34,1.5,.64,1);}
-.cal-day.avail{color:var(--c1);background:var(--chip);border:1px solid var(--chip-border);cursor:pointer;}
+.cal-dn{text-align:center;font-size:10px;font-weight:700;color:var(–c4);padding:3px 0;}
+.cal-day{aspect-ratio:1;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-direction:column;font-size:13px;font-weight:700;color:var(–c4);transition:all .18s cubic-bezier(.34,1.5,.64,1);}
+.cal-day.avail{color:var(–c1);background:var(–chip);border:1px solid var(–chip-border);cursor:pointer;}
 .cal-day.avail:hover{background:rgba(0,122,255,.12);border-color:rgba(0,122,255,.35);transform:scale(1.1);}
-.cal-day.sel{background:rgba(0,122,255,.2);border:2px solid rgba(0,122,255,.55);color:var(--blue);transform:scale(1.05);}
+.cal-day.sel{background:rgba(0,122,255,.2);border:2px solid rgba(0,122,255,.55);color:var(–blue);transform:scale(1.05);}
 .cal-day.today.avail{border-color:rgba(0,122,255,.45);}
-.cal-dot{width:4px;height:4px;border-radius:50%;background:var(--green);margin-top:2px;}
+.cal-dot{width:4px;height:4px;border-radius:50%;background:var(–green);margin-top:2px;}
 .cal-hdr{display:flex;align-items:center;justify-content:space-between;padding:12px 14px 6px;}
-.cal-month{font-size:15px;font-weight:800;color:var(--c1);}
-.cal-nav{background:var(--chip);border:1px solid var(--chip-border);border-radius:9px;padding:5px 12px;font-size:14px;font-weight:700;color:var(--c1);cursor:pointer;font-family:'Heebo',sans-serif;transition:all .18s cubic-bezier(.34,1.5,.64,1);}
+.cal-month{font-size:15px;font-weight:800;color:var(–c1);}
+.cal-nav{background:var(–chip);border:1px solid var(–chip-border);border-radius:9px;padding:5px 12px;font-size:14px;font-weight:700;color:var(–c1);cursor:pointer;font-family:‘Heebo’,sans-serif;transition:all .18s cubic-bezier(.34,1.5,.64,1);}
 .cal-nav:hover{transform:scale(1.08);background:rgba(0,122,255,.1);}
 
 /* ══ SLOTS ══ */
 .slots-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:10px;}
-.slot-btn{background:var(--chip);border:1px solid var(--chip-border);border-radius:17px;padding:13px 6px;cursor:pointer;text-align:center;transition:all .22s cubic-bezier(.34,1.6,.64,1);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);}
+.slot-btn{background:var(–chip);border:1px solid var(–chip-border);border-radius:17px;padding:13px 6px;cursor:pointer;text-align:center;transition:all .22s cubic-bezier(.34,1.6,.64,1);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);}
 .slot-btn:hover{background:rgba(0,122,255,.16);border-color:rgba(0,122,255,.45);transform:translateY(-3px) scale(1.05);box-shadow:0 8px 20px rgba(0,122,255,.22);}
 .slot-btn:active{transform:scale(.92);}
-.slot-time{font-size:18px;font-weight:800;color:var(--c1);}
-.slot-sub{font-size:10px;color:var(--c4);margin-top:2px;}
+.slot-time{font-size:18px;font-weight:800;color:var(–c1);}
+.slot-sub{font-size:10px;color:var(–c4);margin-top:2px;}
 
 /* ══ BANNERS ══ */
 .banner{border-radius:18px;padding:13px 15px;margin-bottom:12px;display:flex;align-items:center;gap:12px;}
@@ -205,45 +206,45 @@ body{
 .cd-time{font-size:26px;font-weight:900;background:linear-gradient(135deg,#FF9500,#FF3B30);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-variant-numeric:tabular-nums;}
 
 /* ══ CHIPS ══ */
-.chip{display:inline-flex;align-items:center;gap:6px;background:rgba(0,122,255,.09);border:1px solid rgba(0,122,255,.18);border-radius:9px;padding:5px 11px;font-size:13px;font-weight:700;color:var(--blue);}
-.chip-g{background:rgba(52,199,89,.09);border-color:rgba(52,199,89,.2);color:var(--green);}
-.chip button{background:none;border:none;cursor:pointer;color:var(--c4);font-size:15px;line-height:1;transition:color .1s,transform .15s;}
-.chip button:hover{color:var(--red);transform:scale(1.2);}
+.chip{display:inline-flex;align-items:center;gap:6px;background:rgba(0,122,255,.09);border:1px solid rgba(0,122,255,.18);border-radius:9px;padding:5px 11px;font-size:13px;font-weight:700;color:var(–blue);}
+.chip-g{background:rgba(52,199,89,.09);border-color:rgba(52,199,89,.2);color:var(–green);}
+.chip button{background:none;border:none;cursor:pointer;color:var(–c4);font-size:15px;line-height:1;transition:color .1s,transform .15s;}
+.chip button:hover{color:var(–red);transform:scale(1.2);}
 .chips-wrap{display:flex;flex-wrap:wrap;gap:6px;padding:8px 16px 12px;}
 
 /* ══ BOOKING CARDS ══ */
-.bk-card{border-radius:16px;overflow:hidden;border:1px solid var(--chip-border);background:var(--lg-bg);-webkit-backdrop-filter:var(--lg-blur);backdrop-filter:var(--lg-blur);margin-bottom:10px;transition:box-shadow .2s;}
+.bk-card{border-radius:16px;overflow:hidden;border:1px solid var(–chip-border);background:var(–lg-bg);-webkit-backdrop-filter:var(–lg-blur);backdrop-filter:var(–lg-blur);margin-bottom:10px;transition:box-shadow .2s;}
 .bk-card.urgent{border-color:rgba(255,149,0,.4);background:rgba(255,149,0,.05);}
-.bk-hdr{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-bottom:1px solid var(--chip-border);}
-.bk-name{font-size:15px;font-weight:700;color:var(--c1);}
-.bk-time{font-size:12px;color:var(--blue);font-weight:600;margin-top:2px;}
-.bk-row{display:flex;align-items:center;gap:10px;padding:8px 14px;border-bottom:1px solid var(--chip-border);font-size:13px;color:var(--c2);}
+.bk-hdr{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-bottom:1px solid var(–chip-border);}
+.bk-name{font-size:15px;font-weight:700;color:var(–c1);}
+.bk-time{font-size:12px;color:var(–blue);font-weight:600;margin-top:2px;}
+.bk-row{display:flex;align-items:center;gap:10px;padding:8px 14px;border-bottom:1px solid var(–chip-border);font-size:13px;color:var(–c2);}
 .bk-row:last-child{border-bottom:none;}
 .bk-ic{font-size:14px;width:20px;text-align:center;flex-shrink:0;}
-.bk-num{width:32px;height:32px;border-radius:9px;background:rgba(0,122,255,.1);border:1px solid rgba(0,122,255,.18);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--blue);flex-shrink:0;}
-.bk-cd{font-size:12px;font-weight:800;color:var(--orange);font-variant-numeric:tabular-nums;}
-.bk-cd.exp{color:var(--red);}
-.status-sel{font-size:12px;font-weight:700;color:var(--c1);background:var(--input-bg);border:1px solid var(--input-border);border-radius:9px;padding:4px 8px;font-family:'Heebo',sans-serif;outline:none;cursor:pointer;}
+.bk-num{width:32px;height:32px;border-radius:9px;background:rgba(0,122,255,.1);border:1px solid rgba(0,122,255,.18);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(–blue);flex-shrink:0;}
+.bk-cd{font-size:12px;font-weight:800;color:var(–orange);font-variant-numeric:tabular-nums;}
+.bk-cd.exp{color:var(–red);}
+.status-sel{font-size:12px;font-weight:700;color:var(–c1);background:var(–input-bg);border:1px solid var(–input-border);border-radius:9px;padding:4px 8px;font-family:‘Heebo’,sans-serif;outline:none;cursor:pointer;}
 .sb{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:99px;font-size:11px;font-weight:800;}
-.s-p{background:rgba(255,149,0,.12);color:var(--orange);border:1px solid rgba(255,149,0,.25);}
-.s-c{background:rgba(0,122,255,.12);color:var(--blue);border:1px solid rgba(0,122,255,.25);}
-.s-a{background:rgba(52,199,89,.12);color:var(--green);border:1px solid rgba(52,199,89,.25);}
-.s-n{background:rgba(255,59,48,.12);color:var(--red);border:1px solid rgba(255,59,48,.25);}
-.s-x{background:rgba(142,142,147,.12);color:var(--c4);border:1px solid rgba(142,142,147,.25);}
+.s-p{background:rgba(255,149,0,.12);color:var(–orange);border:1px solid rgba(255,149,0,.25);}
+.s-c{background:rgba(0,122,255,.12);color:var(–blue);border:1px solid rgba(0,122,255,.25);}
+.s-a{background:rgba(52,199,89,.12);color:var(–green);border:1px solid rgba(52,199,89,.25);}
+.s-n{background:rgba(255,59,48,.12);color:var(–red);border:1px solid rgba(255,59,48,.25);}
+.s-x{background:rgba(142,142,147,.12);color:var(–c4);border:1px solid rgba(142,142,147,.25);}
 
 /* ══ QUEUE VIEW ══ */
 .q-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
-.q-card{border-radius:18px;padding:18px 14px;text-align:center;-webkit-backdrop-filter:var(--lg-blur);backdrop-filter:var(--lg-blur);}
+.q-card{border-radius:18px;padding:18px 14px;text-align:center;-webkit-backdrop-filter:var(–lg-blur);backdrop-filter:var(–lg-blur);}
 .q-card.now{border-color:rgba(52,199,89,.45);background:rgba(52,199,89,.07);}
 .q-card.nxt{border-color:rgba(255,149,0,.45);background:rgba(255,149,0,.07);}
 .q-av{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,#0A84FF,#5856d6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;font-weight:900;margin:0 auto 10px;overflow:hidden;}
 .q-av img{width:100%;height:100%;object-fit:cover;}
-.q-name{font-size:15px;font-weight:800;color:var(--c1);margin-bottom:4px;}
-.q-time{font-size:24px;font-weight:900;color:var(--blue);font-variant-numeric:tabular-nums;margin-bottom:6px;}
+.q-name{font-size:15px;font-weight:800;color:var(–c1);margin-bottom:4px;}
+.q-time{font-size:24px;font-weight:900;color:var(–blue);font-variant-numeric:tabular-nums;margin-bottom:6px;}
 
 /* ══ GALLERY ══ */
 .gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:10px 14px 14px;}
-.gal-item{border-radius:12px;overflow:hidden;aspect-ratio:1;background:var(--chip);display:flex;align-items:center;justify-content:center;font-size:24px;border:1px solid var(--chip-border);position:relative;transition:transform .2s cubic-bezier(.34,1.5,.64,1);}
+.gal-item{border-radius:12px;overflow:hidden;aspect-ratio:1;background:var(–chip);display:flex;align-items:center;justify-content:center;font-size:24px;border:1px solid var(–chip-border);position:relative;transition:transform .2s cubic-bezier(.34,1.5,.64,1);}
 .gal-item:hover{transform:scale(1.04);}
 .gal-item img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
 .gal-del{position:absolute;top:4px;left:4px;background:rgba(255,59,48,.85);border:none;border-radius:50%;width:22px;height:22px;color:#fff;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:700;transition:transform .15s;}
@@ -255,7 +256,7 @@ body{
 .av img{width:100%;height:100%;object-fit:cover;}
 
 /* ══ HERO SPLASH PHOTO ══ */
-.splash-photo{width:100%;border-radius:20px;overflow:hidden;margin-bottom:14px;aspect-ratio:16/9;background:var(--chip);display:flex;align-items:center;justify-content:center;font-size:48px;position:relative;}
+.splash-photo{width:100%;border-radius:20px;overflow:hidden;margin-bottom:14px;aspect-ratio:16/9;background:var(–chip);display:flex;align-items:center;justify-content:center;font-size:48px;position:relative;}
 .splash-photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:0;animation:photoFadeIn .8s ease .2s both;}
 @keyframes photoFadeIn{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
 .splash-photo-icon{font-size:48px;}
@@ -263,10 +264,10 @@ body{
 /* ══ LOGO ANIMATE ══ */
 .logo-wave{animation:logoWave 3.5s ease-in-out infinite;}
 @keyframes logoWave{
-  0%,100%{transform:translateY(0) rotate(0deg);}
-  25%{transform:translateY(-6px) rotate(-3deg);}
-  50%{transform:translateY(-10px) rotate(0deg);}
-  75%{transform:translateY(-6px) rotate(3deg);}
+0%,100%{transform:translateY(0) rotate(0deg);}
+25%{transform:translateY(-6px) rotate(-3deg);}
+50%{transform:translateY(-10px) rotate(0deg);}
+75%{transform:translateY(-6px) rotate(3deg);}
 }
 
 /* ══ BAN ══ */
@@ -279,12 +280,12 @@ body{
 .ban-timer{font-size:44px;font-weight:900;background:linear-gradient(135deg,#FF453A,#FF9F0A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-2px;font-variant-numeric:tabular-nums;}
 .ban-lbl{font-size:11px;color:rgba(255,255,255,.35);font-weight:600;letter-spacing:.08em;margin:4px 0 22px;}
 .ban-row{display:flex;gap:8px;width:100%;max-width:280px;}
-.ban-inp{flex:1;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.12);border-radius:12px;padding:11px 14px;font-family:'Heebo',sans-serif;font-size:15px;color:#fff;outline:none;text-align:center;letter-spacing:3px;transition:border-color .2s;}
+.ban-inp{flex:1;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.12);border-radius:12px;padding:11px 14px;font-family:‘Heebo’,sans-serif;font-size:15px;color:#fff;outline:none;text-align:center;letter-spacing:3px;transition:border-color .2s;}
 .ban-inp::placeholder{letter-spacing:0;color:rgba(255,255,255,.22);}
 .ban-inp:focus{border-color:rgba(255,149,0,.5);}
 .ban-inp.err{border-color:rgba(255,69,58,.7);animation:shake .3s ease;}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
-.ban-btn{background:linear-gradient(135deg,#FF9500,#FF5000);border:none;border-radius:12px;padding:11px 16px;font-family:'Heebo',sans-serif;font-size:14px;font-weight:800;color:#fff;cursor:pointer;transition:transform .15s;}
+.ban-btn{background:linear-gradient(135deg,#FF9500,#FF5000);border:none;border-radius:12px;padding:11px 16px;font-family:‘Heebo’,sans-serif;font-size:14px;font-weight:800;color:#fff;cursor:pointer;transition:transform .15s;}
 .ban-btn:hover{transform:scale(1.06);}
 .ban-err{margin-top:6px;font-size:12px;color:rgba(255,69,58,.85);min-height:16px;}
 
@@ -293,28 +294,28 @@ body{
 #modal.show{display:flex;}
 .modal-box{max-width:310px;width:90%;border-radius:24px;padding:22px;text-align:center;}
 .modal-box .modal-icon{font-size:34px;margin-bottom:10px;}
-.modal-box .modal-title{font-size:17px;font-weight:800;color:var(--c1);margin-bottom:6px;}
-.modal-box .modal-msg{font-size:13px;color:var(--c3);margin-bottom:18px;line-height:1.5;}
+.modal-box .modal-title{font-size:17px;font-weight:800;color:var(–c1);margin-bottom:6px;}
+.modal-box .modal-msg{font-size:13px;color:var(–c3);margin-bottom:18px;line-height:1.5;}
 .modal-btns{display:flex;gap:8px;}
 
 /* ══ USER ITEM ══ */
-.user-item{display:flex;align-items:center;gap:12px;padding:11px 16px;border-bottom:1px solid var(--chip-border);}
+.user-item{display:flex;align-items:center;gap:12px;padding:11px 16px;border-bottom:1px solid var(–chip-border);}
 .user-item:last-child{border-bottom:none;}
-.role-admin{background:rgba(255,59,48,.1);color:var(--red);border:1px solid rgba(255,59,48,.2);font-size:10px;font-weight:800;padding:2px 8px;border-radius:99px;}
-.role-curator{background:rgba(255,149,0,.1);color:var(--orange);border:1px solid rgba(255,149,0,.2);font-size:10px;font-weight:800;padding:2px 8px;border-radius:99px;}
-.role-client{background:rgba(0,122,255,.08);color:var(--blue);border:1px solid rgba(0,122,255,.18);font-size:10px;font-weight:800;padding:2px 8px;border-radius:99px;}
+.role-admin{background:rgba(255,59,48,.1);color:var(–red);border:1px solid rgba(255,59,48,.2);font-size:10px;font-weight:800;padding:2px 8px;border-radius:99px;}
+.role-curator{background:rgba(255,149,0,.1);color:var(–orange);border:1px solid rgba(255,149,0,.2);font-size:10px;font-weight:800;padding:2px 8px;border-radius:99px;}
+.role-client{background:rgba(0,122,255,.08);color:var(–blue);border:1px solid rgba(0,122,255,.18);font-size:10px;font-weight:800;padding:2px 8px;border-radius:99px;}
 
 /* ══ FOOTER (fixed) ══ */
 .app-footer{
-  position:fixed;bottom:0;left:0;right:0;
-  z-index:800;
-  text-align:center;padding:4px 0 6px;
-  font-size:11px;color:var(--c4);
-  background:var(--bg);
-  transition:background .5s;
-  z-index:500;
+position:fixed;bottom:0;left:0;right:0;
+z-index:800;
+text-align:center;padding:4px 0 6px;
+font-size:11px;color:var(–c4);
+background:var(–bg);
+transition:background .5s;
+z-index:500;
 }
-.app-footer a{color:var(--blue);text-decoration:none;font-weight:600;}
+.app-footer a{color:var(–blue);text-decoration:none;font-weight:600;}
 
 /* ══ WATERMARK ══ */
 .watermark{position:fixed;bottom:26px;right:10px;font-size:9px;font-weight:800;color:rgba(128,128,128,.22);letter-spacing:.1em;pointer-events:none;z-index:499;transform:rotate(-90deg);transform-origin:right center;}
@@ -324,27 +325,30 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
 
 /* ══ SLIDING DOCK INDICATOR ══ */
 .dock-indicator{
-  position:absolute;border-radius:94px;
-  background:rgba(0,122,255,.14);border:1px solid rgba(0,122,255,.22);
-  transition:left .3s cubic-bezier(.34,1.4,.64,1),width .3s cubic-bezier(.34,1.4,.64,1),top .1s;
-  pointer-events:none;z-index:0;
+position:absolute;border-radius:94px;
+background:rgba(0,122,255,.14);border:1px solid rgba(0,122,255,.22);
+transition:left .3s cubic-bezier(.34,1.4,.64,1),width .3s cubic-bezier(.34,1.4,.64,1),top .1s;
+pointer-events:none;z-index:0;
 }
 .dock-btn{position:relative;z-index:1;}
 
 /* ══ PHONE PREFIX INPUT ══ */
 .phone-wrap{display:flex;align-items:center;flex:1;padding:14px 0;gap:0;direction:ltr;unicode-bidi:plaintext;}
-.phone-prefix{font-size:16px;font-weight:600;color:var(--c1);white-space:nowrap;flex-shrink:0;opacity:.85;}
-.phone-suffix{flex:1;background:transparent;border:none;outline:none;font-family:'Heebo',sans-serif;font-size:16px;font-weight:500;color:var(--c1);text-align:left;direction:ltr;min-width:0;padding:0;}
-.phone-suffix::placeholder{color:var(--c4);}
+.phone-prefix{font-size:16px;font-weight:600;color:var(–c1);white-space:nowrap;flex-shrink:0;opacity:.85;}
+.phone-suffix{flex:1;background:transparent;border:none;outline:none;font-family:‘Heebo’,sans-serif;font-size:16px;font-weight:500;color:var(–c1);text-align:left;direction:ltr;min-width:0;padding:0;}
+.phone-suffix::placeholder{color:var(–c4);}
 </style>
+
 </head>
 <body>
 <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
 
 <!-- TOAST -->
+
 <div id="toast"><div class="toast-in"><span id="tIcon">✅</span><span id="tMsg"></span></div></div>
 
 <!-- MODAL -->
+
 <div id="modal">
   <div class="modal-box glass">
     <div class="modal-icon" id="mIcon">⚠️</div>
@@ -358,6 +362,7 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
 </div>
 
 <!-- BAN -->
+
 <div id="banOverlay">
   <div class="ban-ic">🚫</div>
   <div class="ban-title">הגישה חסומה</div>
@@ -375,6 +380,7 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
 <div class="screen-area" id="screenArea">
 
 <!-- ════ SPLASH ════ -->
+
 <div id="sSplash" class="screen active" style="position:relative;z-index:1;">
   <!-- Hero card -->
   <div class="hdr-card hdr-blue glass" style="margin-bottom:12px;">
@@ -387,16 +393,21 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
           <div>🕐 <span id="heroHours">א׳-ה׳ 9:00-20:00 | ו׳ עד 15:00</span></div>
         </div>
       </div>
-      <div style="font-size:52px;" class="logo-wave" id="heroLogo">💈</div>
+      <div class="logo-wave" id="heroLogoWrap" style="width:64px;height:64px;border-radius:18px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.18);">
+        <span id="heroLogo" style="font-size:40px;">💈</span>
+        <img id="heroLogoImg" style="display:none;width:100%;height:100%;object-fit:cover;" alt="logo"/>
+      </div>
     </div>
   </div>
 
   <!-- Random gallery photo -->
+
   <div class="splash-photo glass" id="splashPhoto">
     <span class="splash-photo-icon">🖼️</span>
   </div>
 
   <!-- Tabs -->
+
   <div style="display:flex;gap:6px;overflow-x:auto;padding:0 0 10px;scrollbar-width:none;margin-bottom:2px;" id="splashTabs">
     <button class="lang-btn active" style="min-width:80px;" onclick="showPub('home',this)" data-i18n="nav_home">ראשי</button>
     <button class="lang-btn" style="min-width:80px;" onclick="showPub('services',this)" data-i18n="nav_services">שירותים</button>
@@ -406,7 +417,7 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
 
   <div id="pub-home" class="panel active">
     <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:4px;">
-      <button class="btn btn-blue" onclick="goTo('sLogin')" data-i18n="btn_book">קבע תור עכשיו ←</button>
+      <button class="btn btn-blue" onclick="goTo('sLogin')" data-i18n="btn_book">כניסה</button>
       <button class="btn btn-outline" onclick="quickLogin()" data-i18n="btn_quick">כבר נרשמתי — כניסה מהירה</button>
     </div>
   </div>
@@ -432,6 +443,7 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
 </div>
 
 <!-- ════ LOGIN ════ -->
+
 <div id="sLogin" class="screen">
   <button class="back-btn" onclick="goTo('sSplash')">← <span data-i18n="back">חזרה</span></button>
   <div style="text-align:center;margin-bottom:22px;">
@@ -449,6 +461,7 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
 </div>
 
 <!-- ════ REGISTER ════ -->
+
 <div id="sRegister" class="screen">
   <button class="back-btn" onclick="goTo('sLogin')">← <span data-i18n="back">חזרה</span></button>
   <div style="text-align:center;margin-bottom:22px;">
@@ -470,6 +483,7 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
 </div>
 
 <!-- ════ BOOKING ════ -->
+
 <div id="sBooking" class="screen">
   <!-- User topbar -->
   <div class="card glass" style="margin-bottom:12px;border-radius:18px;">
@@ -484,6 +498,7 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
   </div>
 
   <!-- My appointment -->
+
   <div id="myApptCard" style="display:none;margin-bottom:12px;">
     <div class="hdr-card hdr-blue glass">
       <div style="font-size:12px;color:rgba(255,255,255,.75);margin-bottom:4px;" data-i18n="your_appt">התור שלך</div>
@@ -494,6 +509,7 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
   </div>
 
   <!-- Countdown -->
+
   <div id="cntBanner" class="banner banner-orange">
     <div class="bn-ic bn-ic-o">⏳</div>
     <div style="flex:1;"><div style="font-size:13px;font-weight:700;color:var(--c1);" data-i18n="appt_soon">התור שלך עוד מעט!</div><div style="font-size:11px;color:var(--c3);" data-i18n="noshow_warn">אם לא תגיע — תיחסם ל-5 שעות</div></div>
@@ -501,6 +517,7 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
   </div>
 
   <!-- Panels -->
+
   <div id="bp-main" class="panel active">
     <div class="card glass">
       <div class="cal-hdr"><button class="cal-nav" onclick="cpNav(-1)">→</button><div class="cal-month" id="cpMonth">—</div><button class="cal-nav" onclick="cpNav(1)">←</button></div>
@@ -537,11 +554,13 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
 </div>
 
 <!-- ════ SETTINGS ════ -->
+
 <div id="sSettings" class="screen">
   <button class="back-btn" onclick="settingsBack()">← <span data-i18n="back">חזרה</span></button>
   <div style="font-size:22px;font-weight:900;color:var(--c1);margin-bottom:16px;">⚙️ <span data-i18n="settings">הגדרות</span></div>
 
   <!-- Account -->
+
   <div class="card glass" id="settingsAccCard">
     <div style="padding:14px 16px;border-bottom:1px solid var(--chip-border);display:flex;align-items:center;gap:12px;">
       <div class="av" id="settAv" style="width:56px;height:56px;background:linear-gradient(135deg,#007AFF,#0A84FF);font-size:22px;cursor:pointer;" onclick="document.getElementById('avFile').click()"></div>
@@ -569,6 +588,7 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
   </div>
 
   <!-- Language -->
+
   <div class="card glass">
     <div class="row"><span style="font-size:15px;font-weight:700;color:var(--c1);">🌍 <span data-i18n="language">שפה</span></span></div>
     <div style="padding:0 16px 14px;"><div class="lang-row" id="langBtns">
@@ -580,6 +600,7 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
   </div>
 
   <!-- Theme -->
+
   <div class="card glass">
     <div class="row">
       <span style="font-size:15px;font-weight:700;color:var(--c1);flex:1;" data-i18n="dark_mode">🌙 מצב כהה</span>
@@ -588,6 +609,7 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
   </div>
 
   <!-- Admin access -->
+
   <div class="card glass" id="adminAccessCard">
     <div class="row"><span style="font-size:15px;font-weight:700;color:var(--c1);flex:1;">🔐 <span data-i18n="admin_access">גישת מנהל</span></span></div>
     <div id="adminTogRow" style="display:none;">
@@ -610,6 +632,7 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
 </div>
 
 <!-- ════ ADMIN ════ -->
+
 <div id="sAdmin" class="screen" style="padding-bottom:90px;">
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
     <button class="back-btn" style="margin-bottom:0;" onclick="logoutAdmin()">← <span data-i18n="exit">יציאה</span></button>
@@ -620,211 +643,208 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
   </div>
   <div class="admin-content" style="width:100%;padding-bottom:80px;">
 
-      <!-- BOOKINGS -->
-      <div id="aBook" class="panel active">
-        <div id="adminCdBanner" class="banner banner-orange" style="margin-bottom:12px;">
-          <div class="bn-ic bn-ic-o">🔔</div>
-          <div style="flex:1;"><div style="font-size:13px;font-weight:700;color:var(--c1);" id="adminCdInfo">תור פעיל</div><div style="font-size:11px;color:var(--c3);" data-i18n="confirm_arrival">בטל תור לאישור הגעה</div></div>
-          <div style="text-align:center;"><div class="cd-time" id="cdAdmin">15:00</div></div>
-        </div>
-        <div class="card glass">
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px 8px;">
-            <span style="font-size:14px;font-weight:700;color:var(--c1);" data-i18n="bookings">תורים קיימים</span>
-            <span style="font-size:12px;color:var(--c3);" id="bookCnt"></span>
-          </div>
-          <div id="bookList"></div>
-          <div id="noBook" style="text-align:center;padding:20px;color:var(--c4);font-size:13px;display:none;"><div style="font-size:26px;margin-bottom:6px;">📭</div><span data-i18n="no_bookings">אין תורים</span></div>
-        </div>
+```
+  <!-- BOOKINGS -->
+  <div id="aBook" class="panel active">
+    <div id="adminCdBanner" class="banner banner-orange" style="margin-bottom:12px;">
+      <div class="bn-ic bn-ic-o">🔔</div>
+      <div style="flex:1;"><div style="font-size:13px;font-weight:700;color:var(--c1);" id="adminCdInfo">תור פעיל</div><div style="font-size:11px;color:var(--c3);" data-i18n="confirm_arrival">בטל תור לאישור הגעה</div></div>
+      <div style="text-align:center;"><div class="cd-time" id="cdAdmin">15:00</div></div>
+    </div>
+    <div class="card glass">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px 8px;">
+        <span style="font-size:14px;font-weight:700;color:var(--c1);" data-i18n="bookings">תורים קיימים</span>
+        <span style="font-size:12px;color:var(--c3);" id="bookCnt"></span>
       </div>
+      <div id="bookList"></div>
+      <div id="noBook" style="text-align:center;padding:20px;color:var(--c4);font-size:13px;display:none;"><div style="font-size:26px;margin-bottom:6px;">📭</div><span data-i18n="no_bookings">אין תורים</span></div>
+    </div>
+  </div>
 
-      <!-- CAL + SLOTS -->
-      <div id="aCalSlots" class="panel">
-        <div class="card glass">
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px 6px;">
-            <span style="font-size:14px;font-weight:700;color:var(--c1);" data-i18n="cal_slots">📅 לוח שנה</span>
-            <div style="display:flex;gap:4px;align-items:center;">
-              <button class="cal-nav" onclick="acNav(-1)">→</button>
-              <span class="cal-month" id="acMonth" style="font-size:13px;">—</span>
-              <button class="cal-nav" onclick="acNav(1)">←</button>
-            </div>
-          </div>
-          <div class="cal-grid" id="acGrid"></div>
-        </div>
-        <!-- Bulk -->
-        <div class="card glass">
-          <div class="row" style="font-size:14px;font-weight:700;color:var(--c1);" data-i18n="bulk_title">⚡ יצירת סלוטים מהירה</div>
-          <div style="padding:0 14px 14px;display:flex;flex-direction:column;gap:7px;">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;">
-              <div><div style="font-size:10px;color:var(--c4);font-weight:700;margin-bottom:3px;" data-i18n="from_date">מתאריך</div><input id="bFrom" type="date" class="inp" style="text-align:center;font-size:13px;padding:9px 8px;"/></div>
-              <div><div style="font-size:10px;color:var(--c4);font-weight:700;margin-bottom:3px;" data-i18n="to_date">עד תאריך</div><input id="bTo" type="date" class="inp" style="text-align:center;font-size:13px;padding:9px 8px;"/></div>
-            </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;">
-              <div><div style="font-size:10px;color:var(--c4);font-weight:700;margin-bottom:3px;" data-i18n="start_time">שעת התחלה</div><input id="bStart" type="time" class="inp" value="09:00" style="text-align:center;font-size:13px;padding:9px 8px;"/></div>
-              <div><div style="font-size:10px;color:var(--c4);font-weight:700;margin-bottom:3px;" data-i18n="end_time">שעת סיום</div><input id="bEnd" type="time" class="inp" value="18:00" style="text-align:center;font-size:13px;padding:9px 8px;"/></div>
-            </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;">
-              <div><div style="font-size:10px;color:var(--c4);font-weight:700;margin-bottom:3px;" data-i18n="slot_len">אורך תור</div>
-                <select id="bInterval" class="inp" style="text-align:center;font-size:13px;padding:9px 8px;">
-                  <option value="30">30 דקות</option><option value="45" selected>45 דקות</option><option value="55">55 דקות</option><option value="60">60 דקות</option><option value="90">90 דקות</option>
-                </select></div>
-              <div><div style="font-size:10px;color:var(--c4);font-weight:700;margin-bottom:3px;" data-i18n="buffer">הפסקה</div>
-                <select id="bBuffer" class="inp" style="text-align:center;font-size:13px;padding:9px 8px;">
-                  <option value="0">ללא</option><option value="5">5 דקות</option><option value="10" selected>10 דקות</option><option value="15">15 דקות</option>
-                </select></div>
-            </div>
-            <!-- Friday cap setting -->
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;">
-              <div><div style="font-size:10px;color:var(--c4);font-weight:700;margin-bottom:3px;" data-i18n="fri_cap">שישי עד שעה</div><input id="bFriCap" type="time" class="inp" value="15:00" style="text-align:center;font-size:13px;padding:9px 8px;"/></div>
-              <div><div style="font-size:10px;color:var(--c4);font-weight:700;margin-bottom:3px;" data-i18n="max_time">מקסימום שעה</div><input id="bMaxTime" type="time" class="inp" value="20:00" style="text-align:center;font-size:13px;padding:9px 8px;"/></div>
-            </div>
-            <div><div style="font-size:10px;color:var(--c4);font-weight:700;margin-bottom:5px;" data-i18n="work_days">ימי עבודה</div>
-              <div style="display:flex;gap:4px;flex-wrap:wrap;" id="dayPicker">
-                <button class="lang-btn active" style="min-width:32px;padding:6px 4px;font-size:12px;" data-d="0">א׳</button>
-                <button class="lang-btn active" style="min-width:32px;padding:6px 4px;font-size:12px;" data-d="1">ב׳</button>
-                <button class="lang-btn active" style="min-width:32px;padding:6px 4px;font-size:12px;" data-d="2">ג׳</button>
-                <button class="lang-btn active" style="min-width:32px;padding:6px 4px;font-size:12px;" data-d="3">ד׳</button>
-                <button class="lang-btn active" style="min-width:32px;padding:6px 4px;font-size:12px;" data-d="4">ה׳</button>
-                <button class="lang-btn active" style="min-width:32px;padding:6px 4px;font-size:12px;" data-d="5">ו׳</button>
-                <button class="lang-btn" style="min-width:32px;padding:6px 4px;font-size:12px;" data-d="6">ש׳</button>
-              </div>
-            </div>
-            <button class="btn btn-green" onclick="genBulk()" data-i18n="gen_slots">⚡ צור סלוטים</button>
-            <div id="bulkPreview" style="font-size:12px;color:var(--c3);text-align:center;min-height:16px;"></div>
-          </div>
-        </div>
-        <!-- Manual date -->
-        <div class="card glass">
-          <div class="row" style="font-size:14px;font-weight:700;color:var(--c1);" data-i18n="manual_date">📅 הוספה ידנית</div>
-          <div style="padding:0 14px;display:flex;gap:7px;margin-bottom:8px;">
-            <input id="newDate" type="date" class="inp" style="flex:1;text-align:center;font-size:13px;padding:9px 8px;"/>
-            <button class="btn btn-green btn-sm" onclick="addDate()" data-i18n="add">+ הוסף</button>
-          </div>
-          <div id="aDatesWrap" class="chips-wrap"></div>
-          <div id="aNoDates" style="text-align:center;padding:10px;color:var(--c4);font-size:12px;display:none;" data-i18n="no_dates">אין תאריכים</div>
-        </div>
-        <!-- Manual slot -->
-        <div class="card glass">
-          <div class="row" style="font-size:14px;font-weight:700;color:var(--c1);" data-i18n="add_slot">⏰ הוסף שעה</div>
-          <div style="padding:0 14px;display:flex;gap:7px;flex-wrap:wrap;margin-bottom:8px;">
-            <select id="slotDateSel" class="inp" style="flex:1;min-width:120px;text-align:center;font-size:13px;padding:9px 8px;"><option value="" data-i18n="pick_date">בחר תאריך</option></select>
-            <input id="newSlotT" type="time" class="inp" style="flex:1;min-width:100px;text-align:center;font-size:13px;padding:9px 8px;"/>
-            <button class="btn btn-blue btn-sm" onclick="addSlot()" data-i18n="add">+ הוסף</button>
-          </div>
-          <div id="aSlotsWrap" class="chips-wrap"></div>
-          <div id="aNoSlots" style="text-align:center;padding:10px;color:var(--c4);font-size:12px;display:none;" data-i18n="pick_date">בחר תאריך</div>
-        </div>
-        <!-- Copy week -->
-        <div class="card glass">
-          <div class="row" style="font-size:14px;font-weight:700;color:var(--c1);" data-i18n="copy_week">📋 העתק שבוע</div>
-          <div style="padding:0 14px;display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px;">
-            <div><div style="font-size:10px;color:var(--c4);font-weight:700;margin-bottom:3px;" data-i18n="from_week">משבוע</div><input id="cpFrom" type="date" class="inp" style="text-align:center;font-size:13px;padding:9px 8px;"/></div>
-            <div><div style="font-size:10px;color:var(--c4);font-weight:700;margin-bottom:3px;" data-i18n="to_week">לשבוע</div><input id="cpTo" type="date" class="inp" style="text-align:center;font-size:13px;padding:9px 8px;"/></div>
-          </div>
-          <div style="padding:0 14px 14px;"><button class="btn btn-outline" onclick="copyWeek()" data-i18n="copy_week">📋 העתק</button></div>
-        </div>
-        <!-- Delete all -->
-        <div class="card glass">
-          <div class="row" style="font-size:14px;font-weight:700;color:var(--red);" data-i18n="delete_all">🗑️ מחיקה מהירה</div>
-          <div style="padding:0 14px 14px;display:grid;grid-template-columns:1fr 1fr;gap:7px;">
-            <button class="btn btn-red" style="font-size:13px;padding:10px 8px;" onclick="confirmDel('dates')" data-i18n="del_dates">מחק כל<br/>התאריכים</button>
-            <button class="btn btn-red" style="font-size:13px;padding:10px 8px;" onclick="confirmDel('slots')" data-i18n="del_slots">מחק כל<br/>השעות</button>
-          </div>
+  <!-- CAL + SLOTS -->
+  <div id="aCalSlots" class="panel">
+    <div class="card glass">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px 6px;">
+        <span style="font-size:14px;font-weight:700;color:var(--c1);" data-i18n="cal_slots">📅 לוח שנה</span>
+        <div style="display:flex;gap:4px;align-items:center;">
+          <button class="cal-nav" onclick="acNav(-1)">→</button>
+          <span class="cal-month" id="acMonth" style="font-size:13px;">—</span>
+          <button class="cal-nav" onclick="acNav(1)">←</button>
         </div>
       </div>
+      <div class="cal-grid" id="acGrid"></div>
+    </div>
+    <!-- Bulk -->
+    <div class="card glass">
+      <div class="row" style="font-size:14px;font-weight:700;color:var(--c1);" data-i18n="bulk_title">⚡ יצירת סלוטים מהירה</div>
+      <div style="padding:0 14px 14px;display:flex;flex-direction:column;gap:7px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;">
+          <div><div style="font-size:10px;color:var(--c4);font-weight:700;margin-bottom:3px;" data-i18n="from_date">מתאריך</div><input id="bFrom" type="date" class="inp" style="text-align:center;font-size:13px;padding:9px 8px;"/></div>
+          <div><div style="font-size:10px;color:var(--c4);font-weight:700;margin-bottom:3px;" data-i18n="to_date">עד תאריך</div><input id="bTo" type="date" class="inp" style="text-align:center;font-size:13px;padding:9px 8px;"/></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;">
+          <div><div style="font-size:10px;color:var(--c4);font-weight:700;margin-bottom:3px;" data-i18n="start_time">שעת התחלה</div><input id="bStart" type="time" class="inp" value="09:00" style="text-align:center;font-size:13px;padding:9px 8px;"/></div>
+          <div><div style="font-size:10px;color:var(--c4);font-weight:700;margin-bottom:3px;" data-i18n="end_time">שעת סיום</div><input id="bEnd" type="time" class="inp" value="18:00" style="text-align:center;font-size:13px;padding:9px 8px;"/></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;">
+          <div><div style="font-size:10px;color:var(--c4);font-weight:700;margin-bottom:3px;" data-i18n="slot_len">אורך תור</div>
+            <select id="bInterval" class="inp" style="text-align:center;font-size:13px;padding:9px 8px;">
+              <option value="30">30 דקות</option><option value="45" selected>45 דקות</option><option value="55">55 דקות</option><option value="60">60 דקות</option><option value="90">90 דקות</option>
+            </select></div>
+          <div><div style="font-size:10px;color:var(--c4);font-weight:700;margin-bottom:3px;" data-i18n="buffer">הפסקה</div>
+            <select id="bBuffer" class="inp" style="text-align:center;font-size:13px;padding:9px 8px;">
+              <option value="0">ללא</option><option value="5">5 דקות</option><option value="10" selected>10 דקות</option><option value="15">15 דקות</option>
+            </select></div>
+        </div>
+        <!-- Friday cap setting -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;">
+          <div><div style="font-size:10px;color:var(--c4);font-weight:700;margin-bottom:3px;" data-i18n="fri_cap">שישי עד שעה</div><input id="bFriCap" type="time" class="inp" value="15:00" style="text-align:center;font-size:13px;padding:9px 8px;"/></div>
+          <div><div style="font-size:10px;color:var(--c4);font-weight:700;margin-bottom:3px;" data-i18n="max_time">מקסימום שעה</div><input id="bMaxTime" type="time" class="inp" value="20:00" style="text-align:center;font-size:13px;padding:9px 8px;"/></div>
+        </div>
+        <div><div style="font-size:10px;color:var(--c4);font-weight:700;margin-bottom:5px;" data-i18n="work_days">ימי עבודה</div>
+          <div style="display:flex;gap:4px;flex-wrap:wrap;" id="dayPicker">
+            <button class="lang-btn active" style="min-width:32px;padding:6px 4px;font-size:12px;" data-d="0">א׳</button>
+            <button class="lang-btn active" style="min-width:32px;padding:6px 4px;font-size:12px;" data-d="1">ב׳</button>
+            <button class="lang-btn active" style="min-width:32px;padding:6px 4px;font-size:12px;" data-d="2">ג׳</button>
+            <button class="lang-btn active" style="min-width:32px;padding:6px 4px;font-size:12px;" data-d="3">ד׳</button>
+            <button class="lang-btn active" style="min-width:32px;padding:6px 4px;font-size:12px;" data-d="4">ה׳</button>
+            <button class="lang-btn active" style="min-width:32px;padding:6px 4px;font-size:12px;" data-d="5">ו׳</button>
+            <button class="lang-btn" style="min-width:32px;padding:6px 4px;font-size:12px;" data-d="6">ש׳</button>
+          </div>
+        </div>
+        <button class="btn btn-green" onclick="genBulk()" data-i18n="gen_slots">⚡ צור סלוטים</button>
+        <div id="bulkPreview" style="font-size:12px;color:var(--c3);text-align:center;min-height:16px;"></div>
+      </div>
+    </div>
+    <!-- Manual date -->
+    <div class="card glass">
+      <div class="row" style="font-size:14px;font-weight:700;color:var(--c1);" data-i18n="manual_date">📅 הוספה ידנית</div>
+      <div style="padding:0 14px;display:flex;gap:7px;margin-bottom:8px;">
+        <input id="newDate" type="date" class="inp" style="flex:1;text-align:center;font-size:13px;padding:9px 8px;"/>
+        <button class="btn btn-green btn-sm" onclick="addDate()" data-i18n="add">+ הוסף</button>
+      </div>
+      <div id="aDatesWrap" class="chips-wrap"></div>
+      <div id="aNoDates" style="text-align:center;padding:10px;color:var(--c4);font-size:12px;display:none;" data-i18n="no_dates">אין תאריכים</div>
+    </div>
+    <!-- Manual slot -->
+    <div class="card glass">
+      <div class="row" style="font-size:14px;font-weight:700;color:var(--c1);" data-i18n="add_slot">⏰ הוסף שעה</div>
+      <div style="padding:0 14px;display:flex;gap:7px;flex-wrap:wrap;margin-bottom:8px;">
+        <select id="slotDateSel" class="inp" style="flex:1;min-width:120px;text-align:center;font-size:13px;padding:9px 8px;"><option value="" data-i18n="pick_date">בחר תאריך</option></select>
+        <input id="newSlotT" type="time" class="inp" style="flex:1;min-width:100px;text-align:center;font-size:13px;padding:9px 8px;"/>
+        <button class="btn btn-blue btn-sm" onclick="addSlot()" data-i18n="add">+ הוסף</button>
+      </div>
+      <div id="aSlotsWrap" class="chips-wrap"></div>
+      <div id="aNoSlots" style="text-align:center;padding:10px;color:var(--c4);font-size:12px;display:none;" data-i18n="pick_date">בחר תאריך</div>
+    </div>
+    <!-- Copy week -->
+    <div class="card glass">
+      <div class="row" style="font-size:14px;font-weight:700;color:var(--c1);" data-i18n="copy_week">📋 העתק שבוע</div>
+      <div style="padding:0 14px;display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px;">
+        <div><div style="font-size:10px;color:var(--c4);font-weight:700;margin-bottom:3px;" data-i18n="from_week">משבוע</div><input id="cpFrom" type="date" class="inp" style="text-align:center;font-size:13px;padding:9px 8px;"/></div>
+        <div><div style="font-size:10px;color:var(--c4);font-weight:700;margin-bottom:3px;" data-i18n="to_week">לשבוע</div><input id="cpTo" type="date" class="inp" style="text-align:center;font-size:13px;padding:9px 8px;"/></div>
+      </div>
+      <div style="padding:0 14px 14px;"><button class="btn btn-outline" onclick="copyWeek()" data-i18n="copy_week">📋 העתק</button></div>
+    </div>
+    <!-- Delete all -->
+    <div class="card glass">
+      <div class="row" style="font-size:14px;font-weight:700;color:var(--red);" data-i18n="delete_all">🗑️ מחיקה מהירה</div>
+      <div style="padding:0 14px 14px;display:grid;grid-template-columns:1fr 1fr;gap:7px;">
+        <button class="btn btn-red" style="font-size:13px;padding:10px 8px;" onclick="confirmDel('dates')" data-i18n="del_dates">מחק כל<br/>התאריכים</button>
+        <button class="btn btn-red" style="font-size:13px;padding:10px 8px;" onclick="confirmDel('slots')" data-i18n="del_slots">מחק כל<br/>השעות</button>
+      </div>
+    </div>
+  </div>
 
-      <!-- REVIEWS -->
-      <div id="aReviews" class="panel">
-        <div class="card glass">
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px 8px;">
-            <span style="font-size:14px;font-weight:700;color:var(--c1);" data-i18n="reviews">ביקורות לאישור ⭐</span>
-            <span style="font-size:12px;color:var(--c3);" id="rvPendCnt"></span>
-          </div>
-          <div id="aRvList"></div>
-          <div id="aNoRv" style="text-align:center;padding:18px;color:var(--c4);font-size:13px;display:none;"><div style="font-size:24px;margin-bottom:5px;">✅</div><span data-i18n="no_pending_reviews">אין ביקורות ממתינות</span></div>
-        </div>
+  <!-- REVIEWS -->
+  <div id="aReviews" class="panel">
+    <div class="card glass">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px 8px;">
+        <span style="font-size:14px;font-weight:700;color:var(--c1);" data-i18n="reviews">ביקורות לאישור ⭐</span>
+        <span style="font-size:12px;color:var(--c3);" id="rvPendCnt"></span>
       </div>
+      <div id="aRvList"></div>
+      <div id="aNoRv" style="text-align:center;padding:18px;color:var(--c4);font-size:13px;display:none;"><div style="font-size:24px;margin-bottom:5px;">✅</div><span data-i18n="no_pending_reviews">אין ביקורות ממתינות</span></div>
+    </div>
+  </div>
 
-      <!-- USERS -->
-      <div id="aUsers" class="panel">
-        <div class="card glass">
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px 8px;">
-            <span style="font-size:14px;font-weight:700;color:var(--c1);" data-i18n="users">👥 כל המשתמשים</span>
-            <span style="font-size:12px;color:var(--c3);" id="usersCnt"></span>
-          </div>
-          <div id="usersList"></div>
-        </div>
+  <!-- USERS -->
+  <div id="aUsers" class="panel">
+    <div class="card glass">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px 8px;">
+        <span style="font-size:14px;font-weight:700;color:var(--c1);" data-i18n="users">👥 כל המשתמשים</span>
+        <span style="font-size:12px;color:var(--c3);" id="usersCnt"></span>
       </div>
+      <div id="usersList"></div>
+    </div>
+  </div>
 
-      <!-- ADMIN SETTINGS -->
-      <div id="aAdminSett" class="panel">
-        <!-- Branding -->
-        <div class="card glass">
-          <div class="row" style="font-size:14px;font-weight:700;color:var(--c1);" data-i18n="branding">🎨 מיתוג</div>
-          <div style="padding:0 14px 14px;display:flex;flex-direction:column;gap:7px;">
-            <input type="text" id="shopName" class="inp" placeholder="שם הברברשופ" data-i18n-placeholder="shop_name"/>
-            <input type="text" id="shopAddress" class="inp" placeholder="כתובת" data-i18n-placeholder="address"/>
-            <input type="text" id="shopHours" class="inp" placeholder="שעות פעילות" data-i18n-placeholder="hours"/>
-          </div>
-          <div style="margin:0 14px 10px;border:2px dashed var(--chip-border);border-radius:14px;padding:14px;text-align:center;cursor:pointer;transition:border-color .18s;" onmouseover="this.style.borderColor='var(--blue)'" onmouseout="this.style.borderColor=''" onclick="document.getElementById('logoFile').click()">
-            <div style="width:60px;height:60px;border-radius:16px;margin:0 auto 8px;overflow:hidden;background:linear-gradient(135deg,#1a6fff,#5856d6);display:flex;align-items:center;justify-content:center;font-size:26px;">
-              <span id="logoDefSpan">💈</span><img id="logoImg" style="display:none;width:100%;height:100%;object-fit:cover;" alt="logo"/>
-            </div>
-            <div style="font-size:13px;font-weight:600;color:var(--c3);" data-i18n="upload_logo">לחץ להעלאת לוגו</div>
-          </div>
-          <input type="file" id="logoFile" accept="image/*" style="display:none;" onchange="uploadLogo(event)"/>
-          <div style="padding:0 14px 14px;"><button class="btn btn-green" onclick="saveSettings()" data-i18n="save_settings">שמור ✓</button></div>
-        </div>
-        <!-- Curator password -->
-        <div class="card glass">
-          <div class="row" style="font-size:14px;font-weight:700;color:var(--c1);" data-i18n="curator_pw">🔑 סיסמת קוּרָטוֹר</div>
-          <div style="padding:0 14px 12px;font-size:13px;color:var(--c3);" data-i18n="pw_reset_note">שינוי יאפס את כל סשני הקוּרָטוֹר</div>
-          <div style="padding:0 14px 14px;display:flex;gap:8px;">
-            <input type="password" id="newCurPw" class="inp" placeholder="סיסמת קוּרָטוֹר חדשה" dir="ltr"/>
-            <button class="btn btn-outline btn-sm" style="white-space:nowrap;" onclick="changeCuratorPw()" data-i18n="update">עדכן</button>
-          </div>
-        </div>
-        <!-- Gallery -->
-        <div class="card glass">
-          <div class="row" style="font-size:14px;font-weight:700;color:var(--c1);" data-i18n="gallery_manage">🖼️ ניהול גלריה</div>
-          <div class="gal-grid" id="aGal"></div>
-          <div style="padding:0 14px 14px;"><button class="btn btn-outline" onclick="document.getElementById('galFile').click()" data-i18n="add_photo">+ הוסף תמונה</button><input type="file" id="galFile" accept="image/*" style="display:none;" onchange="addGalImg(event)"/></div>
-        </div>
-        <!-- Services -->
-        <div class="card glass">
-          <div class="row" style="font-size:14px;font-weight:700;color:var(--c1);" data-i18n="services_manage">✂️ ניהול שירותים</div>
-          <div id="aSvcList"></div>
-          <div style="padding:0 14px 14px;display:flex;gap:7px;flex-wrap:wrap;">
-            <input type="text" id="newSvcN" class="inp" placeholder="שם שירות" style="flex:2;font-size:13px;padding:9px;"/>
-            <input type="text" id="newSvcP" class="inp" placeholder="₪" style="flex:1;min-width:70px;font-size:13px;padding:9px;"/>
-            <button class="btn btn-green btn-sm" onclick="addSvc()">+</button>
-          </div>
-        </div>
+  <!-- ADMIN SETTINGS -->
+  <div id="aAdminSett" class="panel">
+    <!-- Branding -->
+    <div class="card glass">
+      <div class="row" style="font-size:14px;font-weight:700;color:var(--c1);" data-i18n="branding">🎨 מיתוג</div>
+      <div style="padding:0 14px 14px;display:flex;flex-direction:column;gap:7px;">
+        <input type="text" id="shopName" class="inp" placeholder="שם הברברשופ" data-i18n-placeholder="shop_name"/>
+        <input type="text" id="shopAddress" class="inp" placeholder="כתובת" data-i18n-placeholder="address"/>
+        <input type="text" id="shopHours" class="inp" placeholder="שעות פעילות" data-i18n-placeholder="hours"/>
       </div>
+      <div style="margin:0 14px 10px;border:2px dashed var(--chip-border);border-radius:14px;padding:14px;text-align:center;cursor:pointer;transition:border-color .18s;" onmouseover="this.style.borderColor='var(--blue)'" onmouseout="this.style.borderColor=''" onclick="document.getElementById('logoFile').click()">
+        <div style="width:60px;height:60px;border-radius:16px;margin:0 auto 8px;overflow:hidden;background:linear-gradient(135deg,#1a6fff,#5856d6);display:flex;align-items:center;justify-content:center;font-size:26px;">
+          <span id="logoDefSpan">💈</span><img id="logoImg" style="display:none;width:100%;height:100%;object-fit:cover;" alt="logo"/>
+        </div>
+        <div style="font-size:13px;font-weight:600;color:var(--c3);" data-i18n="upload_logo">לחץ להעלאת לוגו</div>
+      </div>
+      <input type="file" id="logoFile" accept="image/*" style="display:none;" onchange="uploadLogo(event)"/>
+      <div style="padding:0 14px 14px;"><button class="btn btn-green" onclick="saveSettings()" data-i18n="save_settings">שמור ✓</button></div>
+    </div>
+    <!-- Curator password -->
+    <div class="card glass">
+      <div class="row" style="font-size:14px;font-weight:700;color:var(--c1);" data-i18n="curator_pw">🔑 סיסמת קוּרָטוֹר</div>
+      <div style="padding:0 14px 12px;font-size:13px;color:var(--c3);" data-i18n="pw_reset_note">שינוי יאפס את כל סשני הקוּרָטוֹר</div>
+      <div style="padding:0 14px 14px;display:flex;gap:8px;">
+        <input type="password" id="newCurPw" class="inp" placeholder="סיסמת קוּרָטוֹר חדשה" dir="ltr"/>
+        <button class="btn btn-outline btn-sm" style="white-space:nowrap;" onclick="changeCuratorPw()" data-i18n="update">עדכן</button>
+      </div>
+    </div>
+    <!-- Gallery -->
+    <div class="card glass">
+      <div class="row" style="font-size:14px;font-weight:700;color:var(--c1);" data-i18n="gallery_manage">🖼️ ניהול גלריה</div>
+      <div class="gal-grid" id="aGal"></div>
+      <div style="padding:0 14px 14px;"><button class="btn btn-outline" onclick="document.getElementById('galFile').click()" data-i18n="add_photo">+ הוסף תמונה</button><input type="file" id="galFile" accept="image/*" style="display:none;" onchange="addGalImg(event)"/></div>
+    </div>
+    <!-- Services -->
+    <div class="card glass">
+      <div class="row" style="font-size:14px;font-weight:700;color:var(--c1);" data-i18n="services_manage">✂️ ניהול שירותים</div>
+      <div id="aSvcList"></div>
+      <div style="padding:0 14px 14px;display:flex;gap:7px;flex-wrap:wrap;">
+        <input type="text" id="newSvcN" class="inp" placeholder="שם שירות" style="flex:2;font-size:13px;padding:9px;"/>
+        <input type="text" id="newSvcP" class="inp" placeholder="₪" style="flex:1;min-width:70px;font-size:13px;padding:9px;"/>
+        <button class="btn btn-green btn-sm" onclick="addSvc()">+</button>
+      </div>
+    </div>
+  </div>
+```
 
   </div><!-- /admin-content -->
 </div>
 
 <!-- ════ QUEUE VIEW ════ -->
-<div id="sAdmin2" class="screen">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+
+<div id="sAdmin2" class="screen" style="padding-bottom:90px;">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
     <button class="back-btn" style="margin-bottom:0;" onclick="goTo('sAdmin')">← <span data-i18n="back">חזרה</span></button>
-    <div style="font-size:13px;font-weight:700;color:var(--c1);" id="qDT"></div>
+    <div style="font-size:14px;font-weight:700;color:var(--c1);" id="qDT"></div>
   </div>
-  <div class="hdr-card hdr-green glass" style="margin-bottom:14px;">
-    <div class="hdr-top"><div><div class="hdr-title">📺 <span data-i18n="queue_view">תצוגת תור</span></div></div><span class="hdr-pill">LIVE</span></div>
-  </div>
-  <div class="q-grid" id="qGrid"></div>
-  <div class="card glass">
-    <div style="padding:12px 16px 8px;font-size:14px;font-weight:700;color:var(--c1);" data-i18n="today_bookings">📋 תורים היום</div>
-    <div id="todayList"></div>
-    <div id="noToday" style="text-align:center;padding:18px;color:var(--c4);font-size:13px;display:none;"><div style="font-size:24px;margin-bottom:5px;">📭</div><span data-i18n="no_bookings">אין תורים</span></div>
-  </div>
+  <!-- Only the queue cards — horizontal scroll -->
+  <div id="qGrid" style="display:flex;gap:14px;overflow-x:auto;padding:4px 2px 16px;scrollbar-width:none;-webkit-overflow-scrolling:touch;"></div>
 </div>
 
 </div><!-- /screen-area -->
 </div><!-- /app-wrap -->
 
 <!-- ADMIN DOCK -->
+
 <div class="dock" id="adminDock" style="display:none;">
   <button class="dock-btn active" id="adk0" onclick="swADock(0,'aBook')"><span class="dock-ic">📋</span><span data-i18n="bookings">תורים</span></button>
   <button class="dock-btn" id="adk1" onclick="swADock(1,'aCalSlots')"><span class="dock-ic">📅</span><span data-i18n="cal_slots">לוח</span></button>
@@ -834,6 +854,7 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
 </div>
 
 <!-- DOCK (client) -->
+
 <div class="dock" id="dock" style="display:none;">
   <button class="dock-btn active" id="dk0" onclick="dockNav(0)"><span class="dock-ic"></span><span data-i18n="nav_home">ראשי</span></button>
   <button class="dock-btn" id="dk1" onclick="dockNav(1)"><span class="dock-ic"></span><span data-i18n="nav_services">שירותים</span></button>
@@ -842,6 +863,7 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
 </div>
 
 <!-- FOOTER (fixed) -->
+
 <div class="app-footer">
   <span dir="ltr">📞 <a href="tel:+972054457098">+972 054-457-0982</a></span>
   &nbsp;·&nbsp;
@@ -862,10 +884,10 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
 
 // ══ I18N ══
 const T={
-  he:{close:'סגור',pick_avatar:'בחר אווטר',nav_home:'🏠 ראשי',nav_services:'✂️ שירותים',nav_gallery:'🖼️ גלריה',nav_reviews:'⭐ ביקורות',btn_book:'קבע תור עכשיו ←',btn_quick:'כבר נרשמתי — כניסה מהירה',back:'חזרה',exit:'יציאה',login_title:'ברוך הבא',login_sub:'התחבר לחשבון שלך',login_btn:'כניסה',register_link:'אין חשבון? הירשם',settings:'הגדרות',reg_title:'הרשמה מהירה',reg_sub:'שם, טלפון וסיסמה — זה הכל',terms_text:'אני מאשר/ת — אגיע בזמן לתור',create_account:'צור חשבון ←',your_appt:'התור שלך',appt_soon:'התור שלך עוד מעט!',noshow_warn:'אם לא תגיע — תיחסם ל-5 שעות',remaining:'נותרו',avail_times:'שעות פנויות',no_slots:'אין שעות פנויות',dark_mode:'🌙 מצב כהה',language:'שפה',admin_access:'גישת מנהל',admin_mode:'מצב מנהל',admin_secret_hint:'הזן קוד סוד לפתיחת גישת מנהל לצמיתות',write_review:'כתוב ביקורת',send_review:'שלח ביקורת',footer_site:'רוצה אתר? פנה אלינו',bookings:'תורים',cal_slots:'לוח+שעות',reviews:'ביקורות',users:'משתמשים',queue_view:'תצוגת תור',today_bookings:'תורים היום',no_bookings:'אין תורים',confirm_arrival:'בטל תור לאישור הגעה',branding:'מיתוג',curator_pw:'סיסמת קוּרָטוֹר',pw_reset_note:'שינוי יאפס את כל סשני הקוּרָטוֹר',gallery_manage:'ניהול גלריה',services_manage:'ניהול שירותים',add_photo:'+ הוסף תמונה',save_settings:'שמור ✓',update:'עדכן',add:'+ הוסף',bulk_title:'יצירת סלוטים מהירה',from_date:'מתאריך',to_date:'עד תאריך',start_time:'שעת התחלה',end_time:'שעת סיום',slot_len:'אורך תור',buffer:'הפסקה',fri_cap:'שישי עד שעה',max_time:'מקסימום שעה',work_days:'ימי עבודה',gen_slots:'⚡ צור סלוטים',manual_date:'הוספה ידנית',add_slot:'הוסף שעה',copy_week:'העתק שבוע',from_week:'משבוע',to_week:'לשבוע',delete_all:'מחיקה מהירה',del_dates:'מחק כל התאריכים',del_slots:'מחק כל השעות',no_dates:'אין תאריכים',pick_date:'בחר תאריך',no_pending_reviews:'אין ביקורות ממתינות',tap_avatar:'לחץ על האווטר לשינוי',change_pw:'שינוי סיסמה',update_pw:'עדכן סיסמה',delete_account:'מחק חשבון',logout:'יציאה',upload_logo:'לחץ להעלאת לוגו',shop_name:'שם הברברשופ',address:'כתובת',hours:'שעות פעילות',my_appt:'📅 התור שלי'},
-  ru:{close:'Закрыть',pick_avatar:'Выбрать аватар',nav_home:'🏠 Главная',nav_services:'✂️ Услуги',nav_gallery:'🖼️ Галерея',nav_reviews:'⭐ Отзывы',btn_book:'Записаться →',btn_quick:'Уже зарегистрирован',back:'Назад',exit:'Выход',login_title:'Добро пожаловать',login_sub:'Войдите в аккаунт',login_btn:'Войти',register_link:'Нет аккаунта? Зарегистрируйся',settings:'Настройки',reg_title:'Регистрация',reg_sub:'Имя, телефон и пароль',terms_text:'Соглашаюсь — приду вовремя',create_account:'Создать →',your_appt:'Твоя запись',appt_soon:'Твоя запись скоро!',noshow_warn:'Не придёшь — блок 5 часов',remaining:'осталось',avail_times:'Свободное время',no_slots:'Нет свободного времени',dark_mode:'🌙 Тёмная тема',language:'Язык',admin_access:'Доступ администратора',admin_mode:'Режим администратора',admin_secret_hint:'Введи секретный код один раз',write_review:'Написать отзыв',send_review:'Отправить',footer_site:'Хочешь сайт? Обращайся',bookings:'Записи',cal_slots:'Календарь',reviews:'Отзывы',users:'Пользователи',queue_view:'Очередь',today_bookings:'Сегодня',no_bookings:'Нет записей',confirm_arrival:'Отмени запись для подтверждения прихода',branding:'Брендинг',curator_pw:'Пароль куратора',pw_reset_note:'Изменение сбросит все сессии куратора',gallery_manage:'Галерея',services_manage:'Услуги',add_photo:'+ Добавить фото',save_settings:'Сохранить ✓',update:'Обновить',add:'+ Добавить',bulk_title:'Быстрое расписание',from_date:'С даты',to_date:'По дату',start_time:'Начало',end_time:'Конец',slot_len:'Длина слота',buffer:'Перерыв',fri_cap:'Пятница до',max_time:'Макс. время',work_days:'Рабочие дни',gen_slots:'⚡ Создать слоты',manual_date:'Ручное добавление',add_slot:'Добавить время',copy_week:'Копировать неделю',from_week:'С недели',to_week:'На неделю',delete_all:'Быстрое удаление',del_dates:'Удалить все даты',del_slots:'Удалить все слоты',no_dates:'Нет дат',pick_date:'Выбрать дату',no_pending_reviews:'Нет ожидающих отзывов',tap_avatar:'Нажми на аватар чтобы изменить',change_pw:'Изменить пароль',update_pw:'Обновить пароль',delete_account:'Удалить аккаунт',logout:'Выйти',upload_logo:'Загрузить логотип',shop_name:'Название',address:'Адрес',hours:'Часы работы',my_appt:'📅 Моя запись'},
-  en:{close:'Close',pick_avatar:'Pick avatar',nav_home:'🏠 Home',nav_services:'✂️ Services',nav_gallery:'🖼️ Gallery',nav_reviews:'⭐ Reviews',btn_book:'Book Now →',btn_quick:'Already registered',back:'Back',exit:'Exit',login_title:'Welcome back',login_sub:'Sign in to your account',login_btn:'Sign In',register_link:'No account? Register',settings:'Settings',reg_title:'Sign Up',reg_sub:'Name, phone & password',terms_text:'I agree — I will arrive on time',create_account:'Create Account →',your_appt:'Your Appointment',appt_soon:'Your appointment is soon!',noshow_warn:'No-show = 5 hour block',remaining:'left',avail_times:'Available Times',no_slots:'No available slots',dark_mode:'🌙 Dark Mode',language:'Language',admin_access:'Admin Access',admin_mode:'Admin Mode',admin_secret_hint:'Enter secret code once for permanent admin access',write_review:'Write a Review',send_review:'Submit',footer_site:'Want a site? Contact us',bookings:'Bookings',cal_slots:'Calendar',reviews:'Reviews',users:'Users',queue_view:'Queue View',today_bookings:"Today's Bookings",no_bookings:'No bookings',confirm_arrival:'Cancel booking to confirm arrival',branding:'Branding',curator_pw:'Curator Password',pw_reset_note:'Change will reset all curator sessions',gallery_manage:'Manage Gallery',services_manage:'Manage Services',add_photo:'+ Add Photo',save_settings:'Save ✓',update:'Update',add:'+ Add',bulk_title:'Quick Schedule',from_date:'From',to_date:'To',start_time:'Start Time',end_time:'End Time',slot_len:'Slot Length',buffer:'Buffer',fri_cap:'Friday Until',max_time:'Max Time',work_days:'Work Days',gen_slots:'⚡ Generate Slots',manual_date:'Manual Add',add_slot:'Add Time',copy_week:'Copy Week',from_week:'From Week',to_week:'To Week',delete_all:'Quick Delete',del_dates:'Delete All Dates',del_slots:'Delete All Slots',no_dates:'No dates',pick_date:'Pick date',no_pending_reviews:'No pending reviews',tap_avatar:'Tap avatar to change',change_pw:'Change Password',update_pw:'Update Password',delete_account:'Delete Account',logout:'Sign Out',upload_logo:'Click to upload logo',shop_name:'Shop Name',address:'Address',hours:'Working Hours',my_appt:'📅 My Appointment'},
-  ar:{close:'إغلاق',pick_avatar:'اختر صورة',nav_home:'🏠 الرئيسية',nav_services:'✂️ الخدمات',nav_gallery:'🖼️ المعرض',nav_reviews:'⭐ التقييمات',btn_book:'احجز الآن ←',btn_quick:'لديك حساب؟ ادخل',back:'رجوع',exit:'خروج',login_title:'أهلاً بك',login_sub:'سجّل الدخول',login_btn:'دخول',register_link:'ليس لديك حساب؟ سجّل',settings:'الإعدادات',reg_title:'التسجيل',reg_sub:'الاسم والهاتف وكلمة المرور',terms_text:'أوافق — سأحضر في الوقت',create_account:'إنشاء حساب ←',your_appt:'موعدك',appt_soon:'موعدك قريب!',noshow_warn:'عدم الحضور = حظر 5 ساعات',remaining:'متبقي',avail_times:'الأوقات المتاحة',no_slots:'لا توجد أوقات',dark_mode:'🌙 الوضع الداكن',language:'اللغة',admin_access:'صلاحية المدير',admin_mode:'وضع المدير',admin_secret_hint:'أدخل الكود السري مرة واحدة',write_review:'اكتب تقييماً',send_review:'إرسال',footer_site:'تريد موقعاً؟ تواصل معنا',bookings:'المواعيد',cal_slots:'التقويم',reviews:'التقييمات',users:'المستخدمون',queue_view:'عرض الطابور',today_bookings:'مواعيد اليوم',no_bookings:'لا مواعيد',confirm_arrival:'ألغِ لتأكيد الحضور',branding:'العلامة',curator_pw:'كلمة مرور المشرف',pw_reset_note:'التغيير سيُعيد ضبط جميع الجلسات',gallery_manage:'إدارة المعرض',services_manage:'إدارة الخدمات',add_photo:'+ إضافة صورة',save_settings:'حفظ ✓',update:'تحديث',add:'+ إضافة',bulk_title:'جدول سريع',from_date:'من تاريخ',to_date:'حتى تاريخ',start_time:'وقت البداية',end_time:'وقت النهاية',slot_len:'مدة الموعد',buffer:'استراحة',fri_cap:'الجمعة حتى',max_time:'الوقت الأقصى',work_days:'أيام العمل',gen_slots:'⚡ إنشاء المواعيد',manual_date:'إضافة يدوية',add_slot:'أضف وقتاً',copy_week:'نسخ الأسبوع',from_week:'من أسبوع',to_week:'إلى أسبوع',delete_all:'حذف سريع',del_dates:'حذف كل التواريخ',del_slots:'حذف كل الأوقات',no_dates:'لا تواريخ',pick_date:'اختر تاريخاً',no_pending_reviews:'لا توجد تقييمات معلقة',tap_avatar:'اضغط على الصورة للتغيير',change_pw:'تغيير كلمة المرور',update_pw:'تحديث كلمة المرور',delete_account:'حذف الحساب',logout:'تسجيل الخروج',upload_logo:'اضغط لرفع الشعار',shop_name:'اسم المحل',address:'العنوان',hours:'ساعات العمل',my_appt:'📅 موعدي'},
+  he:{close:'סגור',pick_avatar:'בחר אווטר',nav_home:'🏠 ראשי',nav_services:'✂️ שירותים',nav_gallery:'🖼️ גלריה',nav_reviews:'⭐ ביקורות',btn_book:'כניסה',btn_quick:'כבר נרשמתי — כניסה מהירה',back:'חזרה',exit:'יציאה',login_title:'ברוך הבא',login_sub:'התחבר לחשבון שלך',login_btn:'כניסה',register_link:'אין חשבון? הירשם',settings:'הגדרות',reg_title:'הרשמה מהירה',reg_sub:'שם, טלפון וסיסמה — זה הכל',terms_text:'אני מאשר/ת — אגיע בזמן לתור',create_account:'צור חשבון ←',your_appt:'התור שלך',appt_soon:'התור שלך עוד מעט!',noshow_warn:'אם לא תגיע — תיחסם ל-5 שעות',remaining:'נותרו',avail_times:'שעות פנויות',no_slots:'אין שעות פנויות',dark_mode:'🌙 מצב כהה',language:'שפה',admin_access:'גישת מנהל',admin_mode:'מצב מנהל',admin_secret_hint:'הזן קוד סוד לפתיחת גישת מנהל לצמיתות',write_review:'כתוב ביקורת',send_review:'שלח ביקורת',footer_site:'רוצה אתר? פנה אלינו',bookings:'תורים',cal_slots:'לוח+שעות',reviews:'ביקורות',users:'משתמשים',queue_view:'תצוגת תור',today_bookings:'תורים היום',no_bookings:'אין תורים',confirm_arrival:'בטל תור לאישור הגעה',branding:'מיתוג',curator_pw:'סיסמת קוּרָטוֹר',pw_reset_note:'שינוי יאפס את כל סשני הקוּרָטוֹר',gallery_manage:'ניהול גלריה',services_manage:'ניהול שירותים',add_photo:'+ הוסף תמונה',save_settings:'שמור ✓',update:'עדכן',add:'+ הוסף',bulk_title:'יצירת סלוטים מהירה',from_date:'מתאריך',to_date:'עד תאריך',start_time:'שעת התחלה',end_time:'שעת סיום',slot_len:'אורך תור',buffer:'הפסקה',fri_cap:'שישי עד שעה',max_time:'מקסימום שעה',work_days:'ימי עבודה',gen_slots:'⚡ צור סלוטים',manual_date:'הוספה ידנית',add_slot:'הוסף שעה',copy_week:'העתק שבוע',from_week:'משבוע',to_week:'לשבוע',delete_all:'מחיקה מהירה',del_dates:'מחק כל התאריכים',del_slots:'מחק כל השעות',no_dates:'אין תאריכים',pick_date:'בחר תאריך',no_pending_reviews:'אין ביקורות ממתינות',tap_avatar:'לחץ על האווטר לשינוי',change_pw:'שינוי סיסמה',update_pw:'עדכן סיסמה',delete_account:'מחק חשבון',logout:'יציאה',upload_logo:'לחץ להעלאת לוגו',shop_name:'שם הברברשופ',address:'כתובת',hours:'שעות פעילות',my_appt:'📅 התור שלי'},
+  ru:{close:'Закрыть',pick_avatar:'Выбрать аватар',nav_home:'🏠 Главная',nav_services:'✂️ Услуги',nav_gallery:'🖼️ Галерея',nav_reviews:'⭐ Отзывы',btn_book:'Войти',btn_quick:'Уже зарегистрирован',back:'Назад',exit:'Выход',login_title:'Добро пожаловать',login_sub:'Войдите в аккаунт',login_btn:'Войти',register_link:'Нет аккаунта? Зарегистрируйся',settings:'Настройки',reg_title:'Регистрация',reg_sub:'Имя, телефон и пароль',terms_text:'Соглашаюсь — приду вовремя',create_account:'Создать →',your_appt:'Твоя запись',appt_soon:'Твоя запись скоро!',noshow_warn:'Не придёшь — блок 5 часов',remaining:'осталось',avail_times:'Свободное время',no_slots:'Нет свободного времени',dark_mode:'🌙 Тёмная тема',language:'Язык',admin_access:'Доступ администратора',admin_mode:'Режим администратора',admin_secret_hint:'Введи секретный код один раз',write_review:'Написать отзыв',send_review:'Отправить',footer_site:'Хочешь сайт? Обращайся',bookings:'Записи',cal_slots:'Календарь',reviews:'Отзывы',users:'Пользователи',queue_view:'Очередь',today_bookings:'Сегодня',no_bookings:'Нет записей',confirm_arrival:'Отмени запись для подтверждения прихода',branding:'Брендинг',curator_pw:'Пароль куратора',pw_reset_note:'Изменение сбросит все сессии куратора',gallery_manage:'Галерея',services_manage:'Услуги',add_photo:'+ Добавить фото',save_settings:'Сохранить ✓',update:'Обновить',add:'+ Добавить',bulk_title:'Быстрое расписание',from_date:'С даты',to_date:'По дату',start_time:'Начало',end_time:'Конец',slot_len:'Длина слота',buffer:'Перерыв',fri_cap:'Пятница до',max_time:'Макс. время',work_days:'Рабочие дни',gen_slots:'⚡ Создать слоты',manual_date:'Ручное добавление',add_slot:'Добавить время',copy_week:'Копировать неделю',from_week:'С недели',to_week:'На неделю',delete_all:'Быстрое удаление',del_dates:'Удалить все даты',del_slots:'Удалить все слоты',no_dates:'Нет дат',pick_date:'Выбрать дату',no_pending_reviews:'Нет ожидающих отзывов',tap_avatar:'Нажми на аватар чтобы изменить',change_pw:'Изменить пароль',update_pw:'Обновить пароль',delete_account:'Удалить аккаунт',logout:'Выйти',upload_logo:'Загрузить логотип',shop_name:'Название',address:'Адрес',hours:'Часы работы',my_appt:'📅 Моя запись'},
+  en:{close:'Close',pick_avatar:'Pick avatar',nav_home:'🏠 Home',nav_services:'✂️ Services',nav_gallery:'🖼️ Gallery',nav_reviews:'⭐ Reviews',btn_book:'Sign In',btn_quick:'Already registered',back:'Back',exit:'Exit',login_title:'Welcome back',login_sub:'Sign in to your account',login_btn:'Sign In',register_link:'No account? Register',settings:'Settings',reg_title:'Sign Up',reg_sub:'Name, phone & password',terms_text:'I agree — I will arrive on time',create_account:'Create Account →',your_appt:'Your Appointment',appt_soon:'Your appointment is soon!',noshow_warn:'No-show = 5 hour block',remaining:'left',avail_times:'Available Times',no_slots:'No available slots',dark_mode:'🌙 Dark Mode',language:'Language',admin_access:'Admin Access',admin_mode:'Admin Mode',admin_secret_hint:'Enter secret code once for permanent admin access',write_review:'Write a Review',send_review:'Submit',footer_site:'Want a site? Contact us',bookings:'Bookings',cal_slots:'Calendar',reviews:'Reviews',users:'Users',queue_view:'Queue View',today_bookings:"Today's Bookings",no_bookings:'No bookings',confirm_arrival:'Cancel booking to confirm arrival',branding:'Branding',curator_pw:'Curator Password',pw_reset_note:'Change will reset all curator sessions',gallery_manage:'Manage Gallery',services_manage:'Manage Services',add_photo:'+ Add Photo',save_settings:'Save ✓',update:'Update',add:'+ Add',bulk_title:'Quick Schedule',from_date:'From',to_date:'To',start_time:'Start Time',end_time:'End Time',slot_len:'Slot Length',buffer:'Buffer',fri_cap:'Friday Until',max_time:'Max Time',work_days:'Work Days',gen_slots:'⚡ Generate Slots',manual_date:'Manual Add',add_slot:'Add Time',copy_week:'Copy Week',from_week:'From Week',to_week:'To Week',delete_all:'Quick Delete',del_dates:'Delete All Dates',del_slots:'Delete All Slots',no_dates:'No dates',pick_date:'Pick date',no_pending_reviews:'No pending reviews',tap_avatar:'Tap avatar to change',change_pw:'Change Password',update_pw:'Update Password',delete_account:'Delete Account',logout:'Sign Out',upload_logo:'Click to upload logo',shop_name:'Shop Name',address:'Address',hours:'Working Hours',my_appt:'📅 My Appointment'},
+  ar:{close:'إغلاق',pick_avatar:'اختر صورة',nav_home:'🏠 الرئيسية',nav_services:'✂️ الخدمات',nav_gallery:'🖼️ المعرض',nav_reviews:'⭐ التقييمات',btn_book:'دخول',btn_quick:'لديك حساب؟ ادخل',back:'رجوع',exit:'خروج',login_title:'أهلاً بك',login_sub:'سجّل الدخول',login_btn:'دخول',register_link:'ليس لديك حساب؟ سجّل',settings:'الإعدادات',reg_title:'التسجيل',reg_sub:'الاسم والهاتف وكلمة المرور',terms_text:'أوافق — سأحضر في الوقت',create_account:'إنشاء حساب ←',your_appt:'موعدك',appt_soon:'موعدك قريب!',noshow_warn:'عدم الحضور = حظر 5 ساعات',remaining:'متبقي',avail_times:'الأوقات المتاحة',no_slots:'لا توجد أوقات',dark_mode:'🌙 الوضع الداكن',language:'اللغة',admin_access:'صلاحية المدير',admin_mode:'وضع المدير',admin_secret_hint:'أدخل الكود السري مرة واحدة',write_review:'اكتب تقييماً',send_review:'إرسال',footer_site:'تريد موقعاً؟ تواصل معنا',bookings:'المواعيد',cal_slots:'التقويم',reviews:'التقييمات',users:'المستخدمون',queue_view:'عرض الطابور',today_bookings:'مواعيد اليوم',no_bookings:'لا مواعيد',confirm_arrival:'ألغِ لتأكيد الحضور',branding:'العلامة',curator_pw:'كلمة مرور المشرف',pw_reset_note:'التغيير سيُعيد ضبط جميع الجلسات',gallery_manage:'إدارة المعرض',services_manage:'إدارة الخدمات',add_photo:'+ إضافة صورة',save_settings:'حفظ ✓',update:'تحديث',add:'+ إضافة',bulk_title:'جدول سريع',from_date:'من تاريخ',to_date:'حتى تاريخ',start_time:'وقت البداية',end_time:'وقت النهاية',slot_len:'مدة الموعد',buffer:'استراحة',fri_cap:'الجمعة حتى',max_time:'الوقت الأقصى',work_days:'أيام العمل',gen_slots:'⚡ إنشاء المواعيد',manual_date:'إضافة يدوية',add_slot:'أضف وقتاً',copy_week:'نسخ الأسبوع',from_week:'من أسبوع',to_week:'إلى أسبوع',delete_all:'حذف سريع',del_dates:'حذف كل التواريخ',del_slots:'حذف كل الأوقات',no_dates:'لا تواريخ',pick_date:'اختر تاريخاً',no_pending_reviews:'لا توجد تقييمات معلقة',tap_avatar:'اضغط على الصورة للتغيير',change_pw:'تغيير كلمة المرور',update_pw:'تحديث كلمة المرور',delete_account:'حذف الحساب',logout:'تسجيل الخروج',upload_logo:'اضغط لرفع الشعار',shop_name:'اسم المحل',address:'العنوان',hours:'ساعات العمل',my_appt:'📅 موعدي'},
 };
 let LANG='he';
 function t(k){return(T[LANG]&&T[LANG][k])||T.he[k]||k;}
@@ -1352,8 +1374,13 @@ function applySettings(){
   const fi=document.getElementById('bFriCap');if(fi)fi.value=state.fridayCap||'15:00';
   const mi=document.getElementById('bMaxTime');if(mi)mi.value=state.maxTime||'20:00';
   const logo=s.logo||'';
-  const li=document.getElementById('logoImg');const ld=document.getElementById('logoDefSpan');
-  if(li&&ld){if(logo){li.src=logo;li.style.display='block';ld.style.display='none';}else{li.style.display='none';ld.style.display='';}}
+  [['logoImg','logoDefSpan'],['heroLogoImg','heroLogo']].forEach(([imgId,defId])=>{
+    const img=document.getElementById(imgId);
+    const def=document.getElementById(defId);
+    if(!img||!def)return;
+    if(logo){img.src=logo;img.style.display='block';def.style.display='none';}
+    else{img.style.display='none';def.style.display='';}
+  });
 }
 function uploadLogo(e){
   const f=e.target.files[0];if(!f)return;
@@ -1686,45 +1713,53 @@ function renderUsers(){
       <div style="flex:1;"><div style="font-size:14px;font-weight:700;color:var(--c1);">${u.name}</div><div style="font-size:11px;color:var(--c3);margin-top:1px;">${phoneDisplay(u.phone||'')}</div>
         <div style="margin-top:3px;"><span class="${u.role==='admin'?'role-admin':u.role==='curator'?'role-curator':'role-client'}">${{admin:'👑 מנהל',curator:'🛠️ קוּרָטוֹר',client:'👤 לקוח'}[u.role]||'👤 לקוח'}</span>${u.canReview?' ✍️':''}</div>
       </div>
-      <div style="font-size:11px;color:var(--c4);">${fmtDate(new Date(u.registeredAt||0).toISOString().slice(0,10))}</div>
+      <button class="btn-ghost" onclick="adminDeleteUser('${u.uid||u.phone}')">🗑️</button>
     </div>`).join('');
+}
+
+async function adminDeleteUser(uidOrPhone){
+  const uid=uidOrPhone;
+  const u=state.users[uid]||Object.values(state.users).find(x=>x.phone===uid||x.uid===uid);
+  if(!u){toast('משתמש לא נמצא','⚠️');return;}
+  showModal('🗑️',`מחק את ${u.name}?`,'הפעולה אינה הפיכה. ההזמנות שלו יישארו.','מחק',async()=>{
+    const k=u.uid||Object.keys(state.users).find(k=>state.users[k].phone===u.phone);
+    if(k)delete state.users[k];
+    await save();renderUsers();toast(`${u.name} נמחק`,'🗑️');
+  });
 }
 
 // ══ QUEUE ══
 function renderQueue(){
   const now=ilNow();const td=now.date;
-  const qdt=document.getElementById('qDT');if(qdt)qdt.textContent=`${fmtDate(td)} | ${now.time}`;
-  const bks=state.bookings.filter(b=>b.date===td&&b.status!=='cancelled').sort((a,b)=>a.time.localeCompare(b.time));
-  const nm=parseInt(now.time.split(':')[0])*60+parseInt(now.time.split(':')[1]);
-  let active=null,next=null;
-  for(const b of bks){const[h,m]=b.time.split(':').map(Number);const bm=h*60+m;if(bm<=nm&&nm<bm+60&&!active)active=b;else if(bm>nm&&!next)next=b;}
-  const qg=document.getElementById('qGrid');qg.innerHTML='';
-  function mkCard(b,lbl,cls){
-    const ud=Object.values(state.users).find(x=>x.phone===b.userPhone||x.uid===b.userUid);
-    const av=ud?.avatar||'';
-    const d=document.createElement('div');d.className=`q-card glass ${cls}`;
-    d.innerHTML=`<div class="q-av">${av?`<img src="${av}" alt=""/>`:b.name[0]||'?'}</div>
-      <div class="q-name">${b.name}</div><div class="q-time">${b.time}</div>
-      <div class="sb ${SC[b.status||'pending']}" style="margin-bottom:6px;">${lbl}</div>
-      ${b.haircut?`<div style="font-size:11px;color:var(--c3);">✂️ ${b.haircut}</div>`:''}
-      <div style="font-size:11px;color:var(--c4);margin-top:4px;">📱 ${b.phone||'—'}</div>`;
-    qg.appendChild(d);
+  const qdt=document.getElementById('qDT');
+  if(qdt)qdt.textContent=`${fmtDate(td)} | ${now.time}`;
+  const bks=state.bookings
+    .filter(b=>b.date===td&&b.status!=='cancelled')
+    .sort((a,b)=>a.time.localeCompare(b.time));
+  const qg=document.getElementById('qGrid');
+  if(!qg)return;
+  if(!bks.length){
+    qg.innerHTML=`<div class="card glass" style="min-width:180px;padding:30px 20px;text-align:center;color:var(--c4);font-size:14px;">😴 אין תורים היום</div>`;
+    return;
   }
-  if(active)mkCard(active,'🟢 עכשיו','now');
-  if(next)mkCard(next,'⏭️ הבא','nxt');
-  if(!active&&!next)qg.innerHTML='<div style="grid-column:span 2;text-align:center;padding:24px;color:var(--c4);">😴 אין תורים פעילים</div>';
-  const list=document.getElementById('todayList'),none=document.getElementById('noToday');
-  if(!bks.length){list.innerHTML='';none.style.display='block';return;}
-  none.style.display='none';
-  list.innerHTML=bks.map(b=>`
-    <div class="bk-row" style="padding:11px 16px;">
-      <span style="font-weight:800;min-width:46px;">${b.time}</span>
-      <span style="flex:1;font-size:14px;font-weight:600;color:var(--c1);">${b.name}</span>
-      ${b.haircut?`<span style="font-size:12px;color:var(--c3);">✂️ ${b.haircut}</span>`:''}
-      <span class="sb ${SC[b.status||'pending']}">${SL[b.status||'pending']}</span>
-    </div>`).join('');
-  setTimeout(()=>{if(document.getElementById('sAdmin2').classList.contains('active'))renderQueue();},30000);
+  const nm=parseInt(now.time.split(':')[0])*60+parseInt(now.time.split(':')[1]);
+  qg.innerHTML=bks.map(b=>{
+    const[h,m]=b.time.split(':').map(Number);const bm=h*60+m;
+    const isNow=bm<=nm&&nm<bm+60;
+    const isNext=!isNow&&bm>nm&&bks.filter(x=>{const[xh,xm]=x.time.split(':').map(Number);return xh*60+xm>nm;}).indexOf(b)===0;
+    const cardCls=isNow?'now':isNext?'nxt':'';
+    const lbl=isNow?'🟢 עכשיו':isNext?'⏭️ הבא':'';
+    return `<div class="q-card glass ${cardCls}" style="flex-shrink:0;width:155px;min-width:155px;">
+      <div class="q-av">${b.name[0]||'?'}</div>
+      <div class="q-name">${b.name}</div>
+      <div class="q-time">${b.time}</div>
+      ${lbl?`<div class="sb ${isNow?'s-a':'s-p'}" style="margin-bottom:4px;">${lbl}</div>`:''}
+      ${b.haircut?`<div style="font-size:11px;color:var(--c3);">✂️ ${b.haircut}</div>`:''}
+    </div>`;
+  }).join('');
+  setTimeout(()=>{if(document.getElementById('sAdmin2')?.classList.contains('active'))renderQueue();},30000);
 }
+
 
 // ══ REVIEWS ══
 let rv1=0,rv2=0;
@@ -1862,5 +1897,6 @@ function tickAll(){
   }
 })();
 </script>
+
 </body>
 </html>
