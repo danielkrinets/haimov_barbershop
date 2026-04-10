@@ -862,16 +862,16 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
   &nbsp;·&nbsp;
   <span data-i18n="footer_site">רוצה אתר? פנה אלינו</span>
   &nbsp;·&nbsp;
-  <span style="opacity:.55;">v0.5.4</span>
+  <span style="opacity:.55;">v0.5.5</span>
 </div>
 <div class="watermark">HAIMOV BARBERSHOP · PROTECTED</div>
 
 <script>
 /* ================================================================
-   HAIMOV BARBERSHOP v0.5.4
+   HAIMOV BARBERSHOP v0.5.5
    Built with: HTML + CSS + JS  |  Cloud: JSONBin.io + localStorage
    Roles: Admin / Curator / Client
-   © 2026 Haimov Barbershop — Protected work by Daniel Krinets
+   © 2026 Haimov Barbershop — Protected work
    ================================================================ */
 'use strict';
 
@@ -1520,6 +1520,7 @@ async function doClientCancel(){
   if(!up){toast('אין תור פעיל','⚠️');return;}
   up.status='cancelled';
   up.cancelReason=reason;
+  up.cancelledAt=Date.now();
   // restore slot to available
   if(!state.dates[up.date])state.dates[up.date]=[];
   if(!state.dates[up.date].includes(up.time))state.dates[up.date].push(up.time);
@@ -1552,6 +1553,38 @@ function updateMyAppt(){
 async function bookSlot(time){
   if(!currentUser){toast('נא להתחבר','⚠️');return;}
   if(!selDate){toast('נא לבחור תאריך','⚠️');return;}
+
+  // Check: max 1 active booking per user (non-cancelled)
+  // If they have a cancelled booking, find when it was cancelled.
+  // Allow new booking only if: no active booking exists AND
+  // last cancellation was more than 24h ago (or never).
+  if(currentRole==='client'){
+    const myBookings=state.bookings.filter(b=>
+      b.userPhone===currentUser.phone||b.userUid===currentUser.uid
+    );
+    // Block if any non-cancelled upcoming booking exists
+    const now=ilNow();
+    const hasActive=myBookings.some(b=>
+      b.status!=='cancelled'&&
+      (b.date>now.date||(b.date===now.date&&b.time>=now.time))
+    );
+    if(hasActive){
+      toast('כבר יש לך תור פעיל','🚫');
+      document.querySelectorAll('.slot-btn').forEach(b=>b.disabled=false);
+      return;
+    }
+    // Find most recent cancellation timestamp
+    const lastCancel=myBookings
+      .filter(b=>b.status==='cancelled'&&b.cancelledAt)
+      .reduce((max,b)=>b.cancelledAt>max?b.cancelledAt:max,0);
+    if(lastCancel&&Date.now()-lastCancel<24*60*60*1000){
+      const hoursLeft=Math.ceil((24*60*60*1000-(Date.now()-lastCancel))/3600000);
+      toast(`ניתן להזמין תור חדש בעוד ${hoursLeft} שעות`,'⏳');
+      document.querySelectorAll('.slot-btn').forEach(b=>b.disabled=false);
+      return;
+    }
+  }
+
   document.querySelectorAll('.slot-btn').forEach(b=>b.disabled=true);
   toast('שומר...','⏳',8000);
   try{
@@ -1621,6 +1654,7 @@ async function setStatus(id,s){
   if(s==='arrived'&&b.userPhone){const ud=Object.values(state.users).find(x=>x.phone===b.userPhone);if(ud)ud.canReview=true;}
   // restore slot when admin cancels
   if(s==='cancelled'){
+    b.cancelledAt=Date.now();
     if(!state.dates[b.date])state.dates[b.date]=[];
     if(!state.dates[b.date].includes(b.time))state.dates[b.date].push(b.time);
   }
