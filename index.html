@@ -951,13 +951,13 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
   &nbsp;·&nbsp;
   <span data-i18n="footer_site">רוצה אתר? פנה אלינו</span>
   &nbsp;·&nbsp;
-  <span style="opacity:.55;">v0.6.2</span>
+  <span style="opacity:.55;">v0.6.4</span>
 </div>
 <div class="watermark">HAIMOV BARBERSHOP · PROTECTED</div>
 
 <script>
 /* ================================================================
-   HAIMOV BARBERSHOP v0.6.2
+   HAIMOV BARBERSHOP v0.6.4
    Built with: HTML + CSS + JS  |  Cloud: JSONBin.io + localStorage
    Roles: Admin / Curator / Client
    © 2026 Haimov Barbershop — Protected work
@@ -1166,12 +1166,23 @@ function wt(p,ms){return Promise.race([p,new Promise((_,r)=>setTimeout(()=>r(new
 function lsLoad(){try{const s=localStorage.getItem(LSK);return s?JSON.parse(s):null;}catch{return null;}}
 function lsSave(){try{localStorage.setItem(LSK,JSON.stringify(state));}catch{}}
 async function cloudLoad(){
-  const r=await wt(fetch(BIN_URL+'?t='+Date.now(),{
-    headers:{'X-Access-Key':API_KEY,'Cache-Control':'no-cache'},
-    cache:'no-store'
-  }),12000);
-  if(!r.ok)throw new Error('GET '+r.status);
-  const d=await r.json();if(!d.record)throw new Error('no record');return d.record;
+  let lastErr;
+  for(let i=0;i<3;i++){
+    try{
+      const r=await wt(fetch(BIN_URL+'?t='+Date.now(),{
+        headers:{'X-Access-Key':API_KEY,'Cache-Control':'no-cache'},
+        cache:'no-store'
+      }),15000);
+      if(!r.ok)throw new Error('GET '+r.status);
+      const d=await r.json();
+      if(!d.record)throw new Error('no record');
+      return d.record;
+    }catch(e){
+      lastErr=e;
+      if(i<2)await new Promise(r=>setTimeout(r,2000));
+    }
+  }
+  throw lastErr;
 }
 async function cloudSave(){
   // strip base64 from cloud
@@ -1182,10 +1193,18 @@ async function cloudSave(){
 }
 async function save(){
   lsSave(); // always save locally first
-  try{
-    await cloudSave(); // always try cloud — don't let useLocal block it
-  }catch(e){
-    // cloud save failed silently, localStorage has the data
+  for(let attempt=0;attempt<3;attempt++){
+    try{
+      await cloudSave();
+      return; // success
+    }catch(e){
+      if(attempt===2){
+        toast('⚠️ שמירה בענן נכשלה — שומר מקומי בלבד','⚠️',4000);
+        console.error('Cloud save failed after 3 attempts:',e.message);
+      }else{
+        await new Promise(r=>setTimeout(r,1000*(attempt+1))); // wait 1s, 2s
+      }
+    }
   }
 }
 async function load(){
@@ -1844,10 +1863,12 @@ async function setStatus(id,s){
 }
 async function cancelBook(id){
   const b=state.bookings.find(x=>x.id===id);if(!b)return;
-  if(state.dates[b.date])state.dates[b.date].push(b.time);else state.dates[b.date]=[b.time];
-  state.bookings=state.bookings.filter(x=>x.id!==id);
+  await safeSave(ms=>{
+    if(ms.dates[b.date])ms.dates[b.date].push(b.time);else ms.dates[b.date]=[b.time];
+    ms.bookings=ms.bookings.filter(x=>x.id!==id);
+  });
   const p=getPend();if(p?.bookingId===id)setPend(null);
-  await save();renderAdmin();renderCP();renderSlots();updateMyAppt();toast(`תור №${id} בוטל`,'ℹ️');
+  renderAdmin();renderCP();renderSlots();updateMyAppt();toast(`תור №${id} בוטל`,'ℹ️');
 }
 
 // ══ ADMIN CAL ══
@@ -1896,12 +1917,32 @@ function renderASlots(){
   if(n)n.style.display='none';
   w.innerHTML=slots.map(s=>`<div class="chip">${s}<button onclick="rmSlot('${d}','${s}')">×</button></div>`).join('');
 }
+
+// Reload cloud state, merge local changes, then save
+// Prevents overwriting data from other devices
+async function safeSave(mutator){
+  try{
+    const fresh=await cloudLoad();
+    const merged=norm(fresh);
+    // Preserve local-only media
+    merged.gallery=state.gallery;
+    merged.settings.logo=state.settings.logo;
+    // Apply the mutation to the merged state
+    mutator(merged);
+    // Update global state
+    state=merged;
+    await save();
+  }catch{
+    // Cloud unreachable — save local state as-is
+    await save();
+  }
+}
 async function addDate(){
   const d=document.getElementById('newDate').value;if(!d){toast(t('pick_date'),'⚠️');return;}
-  if(state.dates[d]!==undefined){toast('תאריך קיים','⚠️');return;}
-  state.dates[d]=[];await save();document.getElementById('newDate').value='';renderADates();renderCP();renderAC();toast(fmtDate(d),'✅');
+  await safeSave(s=>{if(!s.dates[d])s.dates[d]=[];});
+  document.getElementById('newDate').value='';renderADates();renderCP();renderAC();toast(fmtDate(d),'✅');
 }
-async function rmDate(d){delete state.dates[d];await save();renderADates();renderCP();renderAC();renderSlots();toast('הוסר','ℹ️');}
+async function rmDate(d){await safeSave(s=>{delete s.dates[d];});renderADates();renderCP();renderAC();renderSlots();toast('הוסר','ℹ️');}
 async function addSlot(){
   const d=document.getElementById('slotDateSel').value,s=document.getElementById('newSlotT').value;
   if(!d){toast(t('pick_date'),'⚠️');return;}if(!s){toast('בחר שעה','⚠️');return;}
@@ -1911,11 +1952,13 @@ async function addSlot(){
   if(s>cap){toast(`מקסימום ${cap}${dt.getDay()===5?' (שישי)':''}  ביום זה`,'⚠️');return;}
   if(!state.dates[d])state.dates[d]=[];
   if(state.dates[d].includes(s)){toast('שעה קיימת','⚠️');return;}
-  state.dates[d].push(s);await save();document.getElementById('newSlotT').value='';renderADates();renderASlots();renderCP();renderAC();renderSlots();toast(s,'✅');
+  const slotVal=s;
+  await safeSave(ms=>{if(!ms.dates[d])ms.dates[d]=[];if(!ms.dates[d].includes(slotVal))ms.dates[d].push(slotVal);});
+  document.getElementById('newSlotT').value='';renderADates();renderASlots();renderCP();renderAC();renderSlots();toast(slotVal,'✅');
 }
 async function rmSlot(d,s){
-  if(!state.dates[d])return;state.dates[d]=state.dates[d].filter(x=>x!==s);
-  await save();renderADates();renderASlots();renderCP();renderAC();renderSlots();toast(s+' הוסרה','ℹ️');
+  await safeSave(ms=>{if(ms.dates[d])ms.dates[d]=ms.dates[d].filter(x=>x!==s);});
+  renderADates();renderASlots();renderCP();renderAC();renderSlots();toast(s+' הוסרה','ℹ️');
 }
 function confirmDel(type){
   const lbl=type==='dates'?t('del_dates'):t('del_slots');
@@ -1938,19 +1981,20 @@ async function genBulk(){
   const days=new Set([...document.querySelectorAll('#dayPicker button.active')].map(b=>+b.dataset.d));
   if(!days.size){toast('בחר ימים','⚠️');return;}
   let total=0,dayCnt=0;
+  const newDates={};
   const cur=new Date(from+'T12:00:00'),ed=new Date(to+'T12:00:00');
   while(cur<=ed){
     const dow=cur.getDay();
     if(days.has(dow)){
       const ds=cur.toISOString().slice(0,10);
-      if(!state.dates[ds])state.dates[ds]=[];
+      if(!newDates[ds])newDates[ds]=[];
       const isFri=dow===5;const endCap=isFri?friCap:maxT;
       let[sh,sm]=start.split(':').map(Number);const[eh,em]=end.split(':').map(Number);
       const endM=Math.min(eh*60+em,parseInt(endCap.split(':')[0])*60+parseInt(endCap.split(':')[1]));
       while(true){
         const sm2=sh*60+sm;if(sm2+iv>endM)break;
         const ts=`${String(sh).padStart(2,'0')}:${String(sm).padStart(2,'0')}`;
-        if(!state.dates[ds].includes(ts)){state.dates[ds].push(ts);total++;}
+        if(!newDates[ds].includes(ts)){newDates[ds].push(ts);total++;}
         const nx=sm2+iv+buf;sh=Math.floor(nx/60);sm=nx%60;
       }
       dayCnt++;
@@ -1958,9 +2002,19 @@ async function genBulk(){
     cur.setDate(cur.getDate()+1);
   }
   // save friday cap + max time to state
-  state.fridayCap=friCap;state.maxTime=maxT;
-  try{await save();renderADates();renderCP();renderAC();renderSlots();document.getElementById('bulkPreview').textContent=`✅ ${total} סלוטים ב-${dayCnt} ימים`;toast(`✅ ${total} סלוטים`,'✅');}
-  catch{toast('שגיאת שמירה','⚠️');}
+  // Use safeSave to merge with any concurrent changes
+  try{
+    await safeSave(ms=>{
+      Object.keys(newDates).forEach(ds=>{
+        if(!ms.dates[ds])ms.dates[ds]=[];
+        newDates[ds].forEach(t=>{if(!ms.dates[ds].includes(t))ms.dates[ds].push(t);});
+      });
+      ms.fridayCap=friCap;ms.maxTime=maxT;
+    });
+    renderADates();renderCP();renderAC();renderSlots();
+    document.getElementById('bulkPreview').textContent=`✅ ${total} סלוטים ב-${dayCnt} ימים`;
+    toast(`✅ ${total} סלוטים`,'✅');
+  }catch{toast('שגיאת שמירה','⚠️');}
 }
 async function copyWeek(){
   const from=document.getElementById('cpFrom').value,to=document.getElementById('cpTo').value;
@@ -2174,32 +2228,21 @@ function generateOtp(){return String(Math.floor(100000+Math.random()*900000));}
 // Build WhatsApp URL for <a href> (Safari-safe — no window.open in async)
 function buildWaUrl(phone,code){
   const num=phone.replace(/[^0-9]/g,'');
-  const msg='\u{1F488} Haimov Barbershop\nKod imut: '+code+'\n(5 dakot)';
+  const msg='💈 Haimov Barbershop\nKod imut: '+code+'\n(5 dakot)';
   return 'https://wa.me/'+num+'?text='+encodeURIComponent(msg);
 }
 
-// Send OTP: try TextBelt SMS; on fail show WA <a> button (no window.open = Safari safe)
+// OTP delivery: set WA button URL + show code prominently (for device owner)
+// Security: code is hashed in memory — this display is intentional for UX
 async function sendOtpSms(phone,code,waButtonId){
-  const num=phone.replace(/[^0-9]/g,'');
-  const msg='Haimov Barbershop - kod ha-imut: '+code+' (5 dakot)';
-  try{
-    const r=await fetch('https://textbelt.com/text',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({phone:'+'+num,message:msg,key:'textbelt'})
-    });
-    const d=await r.json();
-    if(d.success){toast('SMS נשלח ✅','📱');return;}
-    throw new Error(d.error||'failed');
-  }catch{
-    // Show WA link button in UI — user clicks it themselves (Safari allows this)
-    if(waButtonId){
-      const btn=document.getElementById(waButtonId);
-      if(btn){btn.href=buildWaUrl(phone,code);btn.style.display='inline-flex';}
-    }
-    toast('SMS לא זמין — לחץ על כפתור וואטסאפ','📱');
+  // Show WA button for all cases (SMS removed — textbelt free key is global 1/day)
+  if(waButtonId){
+    const btn=document.getElementById(waButtonId);
+    if(btn){btn.href=buildWaUrl(phone,code);btn.style.display='inline-flex';}
   }
 }
 function sendOtpWhatsApp(phone,code){sendOtpSms(phone,code,null);}
+
 
 // REGISTER flow
 async function initiateRegister(){
@@ -2342,8 +2385,11 @@ function tickAll(){
 // ══ INIT ══
 (async()=>{
   checkBan();
+  // Show loading state
+  document.body.style.opacity='0.7';
   try{
     const d=await load();state=norm(d);
+    document.body.style.opacity='1';
     await cleanPast();applySettings();
     renderSvcPublic('servicesList');renderGalPublic('publicGallery');renderReviewsPublic('reviewsListSplash','reviewFormWrapSplash');renderSplashPhoto();
     try{const th=localStorage.getItem('bb_theme');if(th)setTheme(th);}catch{}
