@@ -347,6 +347,15 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
 /* ══ SPLASH TABS ══ */
 .splash-tab{padding:9px 20px;border-radius:99px;font-family:'Heebo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;border:1px solid var(--chip-border);background:var(--chip);color:var(--c3);transition:all .2s;}
 .splash-tab.active{background:var(--blue);color:#fff;border-color:transparent;}
+
+/* ══ CAPTCHA ══ */
+.captcha-box{background:var(--chip);border:1px solid var(--chip-border);border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.captcha-q{font-size:18px;font-weight:800;color:var(--c1);flex:1;font-variant-numeric:tabular-nums;letter-spacing:1px;}
+.captcha-inp{width:80px;background:var(--input-bg);border:1.5px solid var(--input-border);border-radius:10px;padding:9px 12px;font-family:'Heebo',sans-serif;font-size:17px;font-weight:800;color:var(--c1);outline:none;text-align:center;transition:border-color .18s;}
+.captcha-inp:focus{border-color:var(--blue);}
+.captcha-inp.err{border-color:var(--red);animation:shake .3s ease;}
+.captcha-refresh{background:none;border:none;font-size:18px;cursor:pointer;color:var(--c4);transition:transform .3s;}
+.captcha-refresh:hover{transform:rotate(180deg);color:var(--c1);}
 </style>
 </head>
 <body>
@@ -459,25 +468,9 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
     <div class="inpr"><div class="inpr-ic">📱</div><div class="phone-wrap"><span class="phone-prefix">+972-05</span><input id="liPhone" class="phone-suffix" type="tel" placeholder="4-XXXXXXX" autocomplete="tel" maxlength="9" oninput="this.value=this.value.replace(/[^0-9-]/g,'')"/></div></div>
     <div class="inpr"><div class="inpr-ic">🔒</div><input id="liPass" class="inpr-f" type="password" placeholder="סיסמה" dir="ltr" autocomplete="current-password"/></div>
   </div>
-  <div id="loginOtpStep" style="display:none;margin-bottom:10px;">
-    <div class="card glass" style="padding:14px;">
-      <div style="font-size:14px;font-weight:700;color:var(--c1);margin-bottom:6px;">📱 אמת את הטלפון</div>
-      <div style="font-size:12px;color:var(--c3);margin-bottom:8px;" id="loginOtpMsg"></div>
-      <a id="loginWaBtn" href="#" target="_blank" rel="noopener"
-        style="display:none;align-items:center;gap:8px;background:#25D366;color:#fff;border-radius:12px;padding:10px 14px;font-family:'Heebo',sans-serif;font-size:13px;font-weight:700;text-decoration:none;margin-bottom:8px;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.112 1.522 5.838L0 24l6.338-1.499A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.892 0-3.659-.526-5.167-1.437l-.371-.22-3.841.908.958-3.741-.241-.384A9.955 9.955 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-        פתח וואטסאפ לקבלת הקוד
-      </a>
-      <input type="text" id="loginOtpInput" class="inp" placeholder="קוד 6 ספרות" dir="ltr" maxlength="6" style="text-align:center;font-size:20px;font-weight:800;letter-spacing:5px;"/>
-      <div style="display:flex;gap:8px;margin-top:8px;">
-        <button class="btn btn-blue" style="flex:1;" onclick="verifyLoginOtp()">כנס ✓</button>
-        <button class="btn btn-outline btn-sm" onclick="resendLoginOtp()">שלח שוב</button>
-      </div>
-    </div>
-  </div>
-  <button class="btn btn-blue" style="margin-bottom:10px;" id="loginSubmitBtn" onclick="initiateLogin()" data-i18n="login_btn">כניסה</button>
+
+  <button class="btn btn-blue" style="margin-bottom:10px;" onclick="doLogin()" data-i18n="login_btn">כניסה</button>
   <button class="btn btn-outline" style="margin-bottom:12px;" onclick="goTo('sRegister')" data-i18n="register_link">אין חשבון? הירשם</button>
-  <div style="text-align:center;"><button style="background:none;border:none;font-family:'Heebo',sans-serif;font-size:13px;color:var(--blue);cursor:pointer;font-weight:600;transition:opacity .15s;" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'" onclick="goTo('sSettings')">⚙️ <span data-i18n="settings">הגדרות</span></button></div>
 </div>
 
 <!-- ════ REGISTER ════ -->
@@ -498,25 +491,16 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
       <span style="font-size:13px;color:var(--c3);margin-right:12px;flex:1;" data-i18n="terms_text">אני מאשר/ת — אגיע בזמן לתור</span>
     </div>
   </div>
-  <!-- OTP step (hidden until triggered) -->
-  <div id="otpStep" style="display:none;margin-bottom:14px;">
-    <div class="card glass" style="padding:16px;">
-      <div style="font-size:15px;font-weight:700;color:var(--c1);margin-bottom:6px;">✅ אמת את הטלפון שלך</div>
-      <div style="font-size:13px;color:var(--c3);margin-bottom:10px;" id="otpSentMsg"></div>
-      <!-- WhatsApp fallback button — href set dynamically, hidden until needed -->
-      <a id="otpWaBtn" href="#" target="_blank" rel="noopener"
-        style="display:none;align-items:center;gap:8px;background:#25D366;color:#fff;border-radius:13px;padding:11px 16px;font-family:'Heebo',sans-serif;font-size:14px;font-weight:700;text-decoration:none;margin-bottom:10px;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.112 1.522 5.838L0 24l6.338-1.499A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.892 0-3.659-.526-5.167-1.437l-.371-.22-3.841.908.958-3.741-.241-.384A9.955 9.955 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-        פתח וואטסאפ לקבלת הקוד
-      </a>
-      <input type="text" id="otpInput" class="inp" placeholder="קוד 6 ספרות" dir="ltr" maxlength="6" style="text-align:center;font-size:22px;font-weight:800;letter-spacing:6px;"/>
-      <div style="display:flex;gap:8px;margin-top:10px;">
-        <button class="btn btn-blue" style="flex:1;" onclick="verifyOtp()">אמת ✓</button>
-        <button class="btn btn-outline btn-sm" onclick="resendOtp()">שלח שוב</button>
-      </div>
+
+  <div class="captcha-box">
+    <div>
+      <div style="font-size:11px;color:var(--c4);font-weight:600;margin-bottom:4px;">הוכח שאתה לא רובוט</div>
+      <div class="captcha-q" id="captchaQ">— + — = ?</div>
     </div>
+    <input type="number" class="captcha-inp" id="captchaA" placeholder="?" min="0" max="99" inputmode="numeric"/>
+    <button class="captcha-refresh" onclick="newCaptcha()" title="קוד חדש">🔄</button>
   </div>
-  <button class="btn btn-blue" id="regSubmitBtn" onclick="initiateRegister()" data-i18n="create_account">צור חשבון ←</button>
+  <button class="btn btn-blue" id="regSubmitBtn" onclick="doRegister()" data-i18n="create_account">צור חשבון ←</button>
 </div>
 
 <!-- ════ BOOKING ════ -->
@@ -860,7 +844,8 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
             <input type="text" id="shopAddress" class="inp" placeholder="כתובת" data-i18n-placeholder="address"/>
             <input type="text" id="shopHours" class="inp" placeholder="שעות פעילות" data-i18n-placeholder="hours"/>
           </div>
-          <div style="margin:0 14px 10px;border:2px dashed var(--chip-border);border-radius:14px;padding:14px;text-align:center;cursor:pointer;transition:border-color .18s;" onmouseover="this.style.borderColor='var(--blue)'" onmouseout="this.style.borderColor=''" onclick="document.getElementById('logoFile').click()">
+          <div style="font-size:11px;color:var(--c4);padding:0 14px 6px;">שם, כתובת ושעות — מסתנכרנים לכל המכשירים ✅<br/>לוגו — נשמר מקומי בכל מכשיר בנפרד</div>
+        <div style="margin:0 14px 10px;border:2px dashed var(--chip-border);border-radius:14px;padding:14px;text-align:center;cursor:pointer;transition:border-color .18s;" onmouseover="this.style.borderColor='var(--blue)'" onmouseout="this.style.borderColor=''" onclick="document.getElementById('logoFile').click()">
             <div style="width:60px;height:60px;border-radius:16px;margin:0 auto 8px;overflow:hidden;background:linear-gradient(135deg,#1a6fff,#5856d6);display:flex;align-items:center;justify-content:center;font-size:26px;">
               <span id="logoDefSpan">💈</span><img id="logoImg" style="display:none;width:100%;height:100%;object-fit:cover;" alt="logo"/>
             </div>
@@ -973,13 +958,13 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
   &nbsp;·&nbsp;
   <span data-i18n="footer_site">רוצה אתר? פנה אלינו</span>
   &nbsp;·&nbsp;
-  <span style="opacity:.55;">v0.6.5</span>
+  <span style="opacity:.55;">v0.6.6</span>
 </div>
 <div class="watermark">HAIMOV BARBERSHOP · PROTECTED</div>
 
 <script>
 /* ================================================================
-   HAIMOV BARBERSHOP v0.6.5
+   HAIMOV BARBERSHOP v0.6.6
    Built with: HTML + CSS + JS  |  Cloud: JSONBin.io + localStorage
    Roles: Admin / Curator / Client
    © 2026 Haimov Barbershop — Protected work
@@ -1072,6 +1057,7 @@ function goTo(id){
     slideDockIndicator('adminDock',0);
   }
   if(id==='sAdmin2'){renderQueue();}
+  if(id==='sRegister'){setTimeout(newCaptcha,50);}
 }
 
 function dockNav(i){
@@ -1273,13 +1259,12 @@ function norm(r){
   if(loc){
     // gallery — local only (base64 too large for cloud)
     if(loc.gallery?.length)s.gallery=loc.gallery;
-    // logo and settings — prefer local if more complete
+    // logo — local only (base64 never goes to cloud)
     if(loc.settings?.logo)s.settings.logo=loc.settings.logo;
-    if(loc.settings?.name&&loc.settings.name!=='💈 Haimov Barbershop')s.settings.name=loc.settings.name;
-    if(loc.settings?.address)s.settings.address=loc.settings.address;
-    if(loc.settings?.hours)s.settings.hours=loc.settings.hours;
-    if(loc.fridayCap)s.fridayCap=loc.fridayCap;
-    if(loc.maxTime)s.maxTime=loc.maxTime;
+    // fridayCap/maxTime: prefer cloud (admin sets them, cloud is authoritative)
+    // Only fall back to local if cloud has defaults
+    if(s.fridayCap==='15:00'&&loc.fridayCap&&loc.fridayCap!=='15:00')s.fridayCap=loc.fridayCap;
+    if(s.maxTime==='20:00'&&loc.maxTime&&loc.maxTime!=='20:00')s.maxTime=loc.maxTime;
     // avatars — local only
     if(loc.users)Object.keys(loc.users).forEach(k=>{
       if(s.users[k]&&loc.users[k]?.avatar)s.users[k].avatar=loc.users[k].avatar;
@@ -1415,55 +1400,7 @@ function phoneDisplay(raw){
   return raw;
 }
 
-async function doLogin(){
-  let phone=getPhoneField('liPhone');
-  const pass=document.getElementById('liPass').value;
-  if(!phone||phone.replace(/\D/g,'').length<11){toast('נא להזין טלפון תקין','⚠️');return;}
-  if(!pass){toast('נא למלא סיסמה','⚠️');return;}
-  const h=await sha256(pass);
-  if(h===ADMIN_HASH){enterAdmin('admin');return;}
-  if(state.curatorPassHash&&h===state.curatorPassHash){
-    if(state.sessionToken&&getSess()!==state.sessionToken){toast('הסשן פג — אנא התחבר שוב','⚠️');return;}
-    // find user by phone
-    const u=Object.values(state.users).find(u=>u.phone===phone)||{name:'Curator',phone,role:'curator'};
-    enterCurator(u);return;
-  }
-  const u=Object.values(state.users).find(u=>u.phone===phone);
-  if(!u){toast('טלפון לא נמצא','⚠️');return;}
-  if(u.passHash!==h){toast('סיסמה שגויה','⚠️');return;}
-  currentUser={...u};currentRole='client';saveUL({...u,role:'client'});
-  toBooking();toast(`שלום ${u.name}! 👋`,'✅');
-}
-function enterAdmin(email){
-  currentUser={name:'Admin',phone:'',email:email||'',role:'admin'};currentRole='admin';
-  saveUL({...currentUser});goTo('sAdmin');renderAdmin();toast('ברוך הבא 👑','🔐');
-}
-function enterCurator(u){
-  currentUser={...u,role:'curator'};currentRole='curator';saveUL({...currentUser});
-  // curator: show bookings/cal/reviews, hide users/settings
-  ['adk3','adk4'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});
-  ['adk0','adk1','adk2'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='flex';});
-  document.getElementById('adminRolePill').textContent='CURATOR';
-  goTo('sAdmin');renderAdmin();toast(`ברוך הבא, קוּרָטוֹר 🛠️`,'🔑');
-}
-async function doRegister(){
-  const name=document.getElementById('rName').value.trim();
-  let phone=getPhoneField('rPhone');
-  const pass=document.getElementById('rPass').value;
-  const terms=document.getElementById('rTerms').checked;
-  if(!name){toast('נא להזין שם','⚠️');return;}
-  if(!phone||phone.replace(/\D/g,'').length<11){toast('נא להזין טלפון תקין','⚠️');return;}
-  if(pass.length<6){toast('סיסמה — לפחות 6 תווים','⚠️');return;}
-  if(!terms){toast('יש לאשר את תנאי השימוש','⚠️');return;}
-  const phoneExists=Object.values(state.users).some(u=>u.phone===phone);
-  if(phoneExists){toast('מספר טלפון זה כבר רשום','⚠️');return;}
-  const passHash=await sha256(pass);
-  const uid='u_'+Date.now();
-  state.users[uid]={uid,name,phone,passHash,role:'client',canReview:false,avatar:'',registeredAt:Date.now()};
-  await save();
-  currentUser={uid,name,phone,role:'client'};currentRole='client';saveUL({...currentUser});
-  toBooking();toast(`שלום ${name}! ברוך הבא 🎉`,'🎉');
-}
+
 function quickLogin(){
   const u=loadUL();if(!u){goTo('sLogin');return;}
   if(u.role==='admin'){enterAdmin(u.email);return;}
@@ -2266,101 +2203,89 @@ function sendBarberWhatsApp(booking){
   if(phones.length>1)toast(`הודעה נשלחה ל-${phones.length} ספרים`,'📱');
 }
 
-// ══ OTP (WhatsApp-based verification) ══
-let _otpCode='',_otpPhone='',_otpExpiry=0,_otpPendingReg=null;
 
-function generateOtp(){return String(Math.floor(100000+Math.random()*900000));}
-
-// Build WhatsApp URL for <a href> (Safari-safe — no window.open in async)
-function buildWaUrl(phone,code){
-  const num=phone.replace(/[^0-9]/g,'');
-  const msg='💈 Haimov Barbershop\nKod imut: '+code+'\n(5 dakot)';
-  return 'https://wa.me/'+num+'?text='+encodeURIComponent(msg);
+function enterAdmin(email){
+  currentUser={name:'Admin',phone:'',email:email||'',role:'admin'};currentRole='admin';
+  saveUL({...currentUser});goTo('sAdmin');renderAdmin();toast('ברוך הבא 👑','🔐');
+}
+function enterCurator(u){
+  currentUser={...u,role:'curator'};currentRole='curator';saveUL({...currentUser});
+  ['adk3','adk4'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});
+  ['adk0','adk1','adk2'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='flex';});
+  document.getElementById('adminRolePill').textContent='CURATOR';
+  goTo('sAdmin');renderAdmin();toast('ברוך הבא, קוּרָטוֹר 🛠️','🔑');
 }
 
-// OTP delivery: set WA button URL + show code prominently (for device owner)
-// Security: code is hashed in memory — this display is intentional for UX
-async function sendOtpSms(phone,code,waButtonId){
-  // Show WA button for all cases (SMS removed — textbelt free key is global 1/day)
-  if(waButtonId){
-    const btn=document.getElementById(waButtonId);
-    if(btn){btn.href=buildWaUrl(phone,code);btn.style.display='inline-flex';}
-  }
-}
-function sendOtpWhatsApp(phone,code){sendOtpSms(phone,code,null);}
-
-
-// ══ TELEGRAM OTP ══
-function renderBotToken(){
-  const inp=document.getElementById('botTokenInp');
-  const st=document.getElementById('botTokenStatus');
-  if(inp)inp.value=state.botToken||'';
-  const linked=Object.keys(state.botChatIds||{}).length;
-  if(st)st.textContent=state.botToken?`✅ בוט פעיל | ${linked} משתמשים מקושרים`:'לא מוגדר';
-}
-async function saveBotToken(){
-  const tok=document.getElementById('botTokenInp').value.trim();
-  if(!tok){toast('הזן טוקן','⚠️');return;}
-  state.botToken=tok;
-  await save();
-  const el=document.getElementById('botTokenStatus');
-  if(el)el.textContent='✅ טוקן נשמר';
-  toast('טוקן נשמר ✅','✅');
-}
-
-async function sendTelegramOtp(phone,code){
-  const tok=state.botToken;
-  if(!tok){
-    // No bot token — fallback to WhatsApp
-    return false;
-  }
-  const chatId=state.botChatIds?.[phone];
-  if(!chatId){
-    // User hasn't started bot yet
-    return false;
-  }
+async function doLogin(){
+  if(doLogin._busy){return;}doLogin._busy=true;
+  const btn=document.querySelector('#sLogin .btn-blue');
+  if(btn){btn.disabled=true;}
   try{
-    const msg=`💈 Haimov Barbershop
-קוד האימות שלך: *${code}*
-(תקף ל-5 דקות)`;
-    const r=await wt(fetch(
-      `https://api.telegram.org/bot${tok}/sendMessage`,
-      {method:'POST',headers:{'Content-Type':'application/json'},
-       body:JSON.stringify({chat_id:chatId,text:msg,parse_mode:'Markdown'})}
-    ),8000);
-    const d=await r.json();
-    return d.ok===true;
-  }catch{return false;}
-}
-
-// Called by Telegram bot webhook when user sends /start
-// Bot should call this URL: https://ftgy.neocities.org/yonagan#tgstart={chat_id}&phone={phone}
-// OR: admin manually links phone→chatId in admin panel
-async function linkTelegramChat(phone,chatId){
-  if(!state.botChatIds)state.botChatIds={};
-  state.botChatIds[phone]=chatId;
-  await save();
-}
-
-// Override sendOtpSms to try Telegram first, then WA fallback
-async function sendOtpSms(phone,code,waButtonId){
-  const tgSent=await sendTelegramOtp(phone,code);
-  if(tgSent){
-    toast('קוד נשלח לטלגרם שלך ✅','✈️');
-    return;
-  }
-  // Show WA button (no SMS - textbelt free key exhausted)
-  if(waButtonId){
-    const btn=document.getElementById(waButtonId);
-    if(btn){btn.href=buildWaUrl(phone,code);btn.style.display='inline-flex';}
-  }
-  if(!tgSent){
-    toast('שלח /start לבוט טלגרם, ואז קבל קוד בוואטסאפ','📱',5000);
+    const phone=getPhoneField('liPhone');
+    const pass=document.getElementById('liPass').value;
+    if(!phone||phone.replace(/\D/g,'').length<11){toast('נא להזין טלפון תקין','⚠️');return;}
+    if(!pass){toast('נא למלא סיסמה','⚠️');return;}
+    const h=await sha256(pass);
+    if(h===ADMIN_HASH){enterAdmin('admin');return;}
+    if(state.curatorPassHash&&h===state.curatorPassHash){
+      if(state.sessionToken&&getSess()!==state.sessionToken){toast('הסשן פג','⚠️');return;}
+      const cu=Object.values(state.users).find(u=>u.phone===phone)||{name:'קוּרָטוֹר',phone,role:'curator'};
+      enterCurator(cu);return;
+    }
+    // Try local users first
+    let u=Object.values(state.users).find(u=>u.phone===phone);
+    if(!u){
+      // Not found locally — reload from cloud (user may have registered on another device)
+      try{
+        const fresh=await cloudLoad();
+        const s=norm(fresh);
+        if(s.users)Object.assign(state.users,s.users);
+        u=Object.values(state.users).find(u=>u.phone===phone);
+      }catch{}
+    }
+    if(!u){toast('טלפון לא נמצא — אולי לא נרשמת?','⚠️');return;}
+    if(u.passHash!==h){toast('סיסמה שגויה','⚠️');return;}
+    currentUser={...u};currentRole='client';saveUL({...u,role:'client'});
+    toBooking();toast(`שלום ${u.name}! 👋`,'✅');
+  }finally{
+    doLogin._busy=false;
+    if(btn)btn.disabled=false;
   }
 }
 
-// REGISTER flow
-async function initiateRegister(){
+
+// ══ MATH CAPTCHA ══
+let _captchaAns = 0;
+function newCaptcha(){
+  const ops = ['+','-','×'];
+  const op = ops[Math.floor(Math.random()*3)];
+  let a,b,ans;
+  if(op==='+'){a=Math.floor(Math.random()*20)+1;b=Math.floor(Math.random()*20)+1;ans=a+b;}
+  else if(op==='-'){a=Math.floor(Math.random()*20)+10;b=Math.floor(Math.random()*10)+1;ans=a-b;}
+  else{a=Math.floor(Math.random()*9)+2;b=Math.floor(Math.random()*9)+2;ans=a*b;}
+  _captchaAns=ans;
+  const q=document.getElementById('captchaQ');
+  const inp=document.getElementById('captchaA');
+  if(q)q.textContent=`${a} ${op} ${b} = ?`;
+  if(inp){inp.value='';inp.classList.remove('err');}
+}
+function checkCaptcha(){
+  const inp=document.getElementById('captchaA');
+  if(!inp)return true; // captcha not on this screen
+  const val=parseInt(inp.value);
+  if(isNaN(val)||val!==_captchaAns){
+    inp.classList.add('err');
+    setTimeout(()=>{inp.classList.remove('err');inp.value='';},600);
+    newCaptcha();
+    toast('תשובה שגויה — נסה שוב','⚠️');
+    return false;
+  }
+  return true;
+}
+async function doRegister(){
+  if(doRegister._busy){toast('בתהליך...','⏳');return;}
+  const btn=document.getElementById('regSubmitBtn');
+  // Validate first (before locking)
   const name=document.getElementById('rName').value.trim();
   const phone=getPhoneField('rPhone');
   const pass=document.getElementById('rPass').value;
@@ -2369,100 +2294,89 @@ async function initiateRegister(){
   if(!phone||phone.replace(/\D/g,'').length<11){toast('נא להזין טלפון תקין','⚠️');return;}
   if(pass.length<6){toast('סיסמה — לפחות 6 תווים','⚠️');return;}
   if(!terms){toast('יש לאשר את תנאי השימוש','⚠️');return;}
-  const phoneExists=Object.values(state.users).some(u=>u.phone===phone);
-  if(phoneExists){toast('מספר זה כבר רשום','⚠️');return;}
-  const _rawCode=generateOtp();
-  _otpCode=await sha256(_rawCode); // store hash only — code not visible in DevTools
-  _otpPhone=phone;
-  _otpExpiry=Date.now()+5*60*1000;
-  _otpPendingReg={name,phone,pass,terms};
-  sendOtpSms(phone,_rawCode,'otpWaBtn'); // send plain code via SMS/WA
-  document.getElementById('otpStep').style.display='block';
-  document.getElementById('regSubmitBtn').style.display='none';
-  document.getElementById('otpSentMsg').textContent=`שלחנו SMS עם קוד אימות למספר ${phoneDisplay(phone)}. לא קיבלת? בדוק וואטסאפ.`;
-  document.getElementById('otpInput').focus();
-}
-async function verifyOtp(){
-  const code=document.getElementById('otpInput').value.trim();
-  if(Date.now()>_otpExpiry){toast('הקוד פג תוקף — שלח שוב','⚠️');return;}
-  const codeHash=await sha256(code);
-  if(codeHash!==_otpCode){toast('קוד שגוי','⚠️');document.getElementById('otpInput').value='';return;}
-  // create account
-  const{name,phone,pass}=_otpPendingReg;
-  const passHash=await sha256(pass);
-  const uid='u_'+Date.now();
-  state.users[uid]={uid,name,phone,passHash,role:'client',canReview:false,avatar:'',registeredAt:Date.now()};
-  await save();
-  currentUser={uid,name,phone,role:'client'};currentRole='client';saveUL({...currentUser});
-  _otpCode='';_otpPendingReg=null;
-  toBooking();toast(`שלום ${name}! ברוך הבא 🎉`,'🎉');
-}
-function resendOtp(){
-  if(!_otpPhone)return;
-  _otpCode=generateOtp();_otpExpiry=Date.now()+5*60*1000;
-  const rBtn=document.getElementById('otpWaBtn');if(rBtn)rBtn.style.display='none';
-  const _rawResend=generateOtp();
-  sha256(_rawResend).then(h=>{_otpCode=h;});
-  _otpExpiry=Date.now()+5*60*1000;
-  sendOtpSms(_otpPhone,_rawResend,'otpWaBtn');
-  toast('קוד חדש נשלח','📱');
-}
-
-function resendLoginOtp(){
-  if(!_loginOtpPhone)return;
-  const btn=document.getElementById('loginWaBtn');if(btn)btn.style.display='none';
-  _loginOtpCode=generateOtp();_loginOtpExpiry=Date.now()+5*60*1000;
-  sendOtpSms(_loginOtpPhone,_loginOtpCode,'loginWaBtn');
-  toast('קוד חדש נשלח','📱');
-}
-
-// LOGIN flow
-let _loginOtpCode='',_loginOtpPhone='',_loginOtpExpiry=0,_pendingLoginUser=null;
-
-async function initiateLogin(){
-  const phone=getPhoneField('liPhone');
-  const pass=document.getElementById('liPass').value;
-  if(!phone||phone.replace(/\D/g,'').length<11){toast('נא להזין טלפון תקין','⚠️');return;}
-  if(!pass){toast('נא למלא סיסמה','⚠️');return;}
-  const h=await sha256(pass);
-  // check admin
-  if(h===ADMIN_HASH){enterAdmin('admin');return;}
-  // check curator
-  if(state.curatorPassHash&&h===state.curatorPassHash){
-    if(state.sessionToken&&getSess()!==state.sessionToken){toast('הסשן פג','⚠️');return;}
-    const u=Object.values(state.users).find(u=>u.phone===phone)||{name:'קוּרָטוֹר',phone,role:'curator'};
-    enterCurator(u);return;
+  if(!checkCaptcha())return;
+  // Lock after validation passes — stays locked until account created or real error
+  doRegister._busy=true;
+  if(btn){btn.disabled=true;btn.textContent='שומר...';}
+  try{
+    // Load fresh cloud state to prevent duplicate phone registrations
+    try{
+      const fresh=await cloudLoad();
+      const s=norm(fresh);
+      if(s.users)Object.assign(state.users,s.users); // merge, don't replace
+    }catch{}
+    if(Object.values(state.users).some(u=>u.phone===phone)){
+      toast('מספר זה כבר רשום','⚠️');
+      doRegister._busy=false;
+      if(btn){btn.disabled=false;btn.textContent=t('create_account');}
+      return;
+    }
+    const passHash=await sha256(pass);
+    const uid='u_'+Date.now();
+    state.users[uid]={uid,name,phone,passHash,role:'client',canReview:false,avatar:'',registeredAt:Date.now()};
+    await save();
+    currentUser={uid,name,phone,role:'client'};currentRole='client';saveUL({...currentUser});
+    doRegister._busy=false;
+    if(btn){btn.disabled=false;btn.textContent=t('create_account');}
+    toBooking();toast(`שלום ${name}! ברוך הבא 🎉`,'🎉');
+  }catch(e){
+    toast('שגיאה — נסה שוב','⚠️');
+    doRegister._busy=false;
+    if(btn){btn.disabled=false;btn.textContent=t('create_account');}
   }
-  // check user
-  const u=Object.values(state.users).find(u=>u.phone===phone);
-  if(!u){toast('טלפון לא נמצא','⚠️');return;}
-  if(u.passHash!==h){toast('סיסמה שגויה','⚠️');return;}
-  // send OTP for login verification
-  const _rawLoginCode=generateOtp();
-  _loginOtpCode=await sha256(_rawLoginCode); // hash only
-  _loginOtpPhone=phone;
-  _loginOtpExpiry=Date.now()+5*60*1000;
-  _pendingLoginUser=u;
-  sendOtpSms(phone,_rawLoginCode,'loginWaBtn');
-  document.getElementById('loginOtpStep').style.display='block';
-  document.getElementById('loginSubmitBtn').style.display='none';
-  document.getElementById('loginOtpMsg').textContent=`שלחנו SMS עם קוד למספר ${phoneDisplay(phone)}`;
-  document.getElementById('loginOtpInput').focus();
 }
-async function verifyLoginOtp(){
-  const code=document.getElementById('loginOtpInput').value.trim();
-  if(Date.now()>_loginOtpExpiry){toast('הקוד פג','⚠️');return;}
-  const loginCodeHash=await sha256(code);
-  if(loginCodeHash!==_loginOtpCode){toast('קוד שגוי','⚠️');document.getElementById('loginOtpInput').value='';return;}
-  const u=_pendingLoginUser;
-  currentUser={...u};currentRole='client';saveUL({...u,role:'client'});
-  _loginOtpCode='';_pendingLoginUser=null;
-  // reset UI
-  document.getElementById('loginOtpStep').style.display='none';
-  document.getElementById('loginSubmitBtn').style.display='block';
-  document.getElementById('loginOtpInput').value='';
-  toBooking();toast(`שלום ${u.name}! 👋`,'✅');
+
+// ══ BARBER PHONES + WHATSAPP ══
+function renderBarberPhones(){
+  const el=document.getElementById('barberPhonesList');if(!el)return;
+  const phones=state.barberPhones||[];
+  if(!phones.length){el.innerHTML='<div style="color:var(--c4);font-size:13px;padding:4px 0;">אין ספרים רשומים</div>';return;}
+  el.innerHTML=phones.map((p,i)=>`
+    <div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--chip-border);">
+      <span style="flex:1;font-size:14px;font-weight:600;color:var(--c1);" dir="ltr">${p}</span>
+      <button class="btn-ghost" onclick="removeBarberPhone(${i})">🗑️</button>
+    </div>`).join('');
 }
+async function addBarberPhone(){
+  const inp=document.getElementById('newBarberPhone');
+  const digits=(inp.value||'').replace(/[^0-9]/g,'');
+  if(digits.length<8){toast('מספר לא תקין','⚠️');return;}
+  const full='+9720'+digits;
+  if(!state.barberPhones)state.barberPhones=[];
+  if(state.barberPhones.includes(full)){toast('מספר כבר קיים','⚠️');return;}
+  state.barberPhones.push(full);
+  inp.value='';
+  await save();renderBarberPhones();toast('ספר נוסף ✅','✅');
+}
+async function removeBarberPhone(i){
+  state.barberPhones.splice(i,1);
+  await save();renderBarberPhones();toast('הוסר','ℹ️');
+}
+function sendBarberWhatsApp(booking){
+  const phones=state.barberPhones||[];
+  if(!phones.length)return;
+  const shop=state.settings?.name||'ברברשופ';
+  const svcName=booking.haircut||'תספורת';
+  const msg=`💈 ${shop}
+✅ תור חדש!
+👤 ${booking.name}
+📞 ${booking.phone||'—'}
+📅 ${booking.dateHe||booking.date}
+🕐 ${booking.time}
+✂️ ${svcName}`;
+  const encoded=encodeURIComponent(msg);
+  // open WhatsApp for first barber, others get link opened
+  phones.forEach((ph,i)=>{
+    const num=ph.replace(/[^0-9]/g,'');
+    const url=`https://wa.me/${num}?text=${encoded}`;
+    if(i===0)window.open(url,'_blank');
+    // For additional barbers - can't auto-open multiple; note it in toast
+  });
+  if(phones.length>1)toast(`הודעה נשלחה ל-${phones.length} ספרים`,'📱');
+}
+
+
+
 
 // ══ TICK ══
 let _tk=null;
@@ -2525,8 +2439,10 @@ function tickAll(){
     chkNS();startTick();
     document.getElementById('slotDateSel').addEventListener('change',renderASlots);
   }catch(e){
-    state={...state,dates:{},bookings:[],counter:0,reviews:[],gallery:[],users:{}};
-    useLocal=true;console.error('Init:',e);
+    // Don't wipe state on init error — keep defaults, log error
+    document.body.style.opacity='1';
+    console.error('Init error:',e);
+    toast('שגיאה בטעינה — נסה לרענן','⚠️',5000);
   }
 })();
 </script>
