@@ -691,7 +691,7 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
 <!-- ════ ADMIN ════ -->
 <div id="sAdmin" class="screen" style="padding-bottom:90px;">
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
-    <button class="back-btn" style="margin-bottom:0;" onclick="logoutAdmin()">← <span data-i18n="exit">יציאה</span></button>
+    <button class="back-btn" style="margin-bottom:0;" onclick="goBack()">← <span data-i18n="back">חזרה</span></button>
     <button class="btn btn-sm btn-green" onclick="goTo('sAdmin2')">📺 <span data-i18n="queue_view">תצוגת תור</span></button>
   </div>
   <div class="hdr-card hdr-orange glass" style="margin-bottom:12px;">
@@ -958,13 +958,13 @@ select.inp,select.inp:focus{appearance:none;-webkit-appearance:none;}
   &nbsp;·&nbsp;
   <span data-i18n="footer_site">רוצה אתר? פנה אלינו</span>
   &nbsp;·&nbsp;
-  <span style="opacity:.55;">v0.6.6</span>
+  <span style="opacity:.55;">v0.7.0</span>
 </div>
 <div class="watermark">HAIMOV BARBERSHOP · PROTECTED</div>
 
 <script>
 /* ================================================================
-   HAIMOV BARBERSHOP v0.6.6
+   HAIMOV BARBERSHOP v0.7.0
    Built with: HTML + CSS + JS  |  Cloud: JSONBin.io + localStorage
    Roles: Admin / Curator / Client
    © 2026 Haimov Barbershop — Protected work
@@ -1173,8 +1173,26 @@ let state={
   botChatIds:{}, // phone→telegramChatId
 };
 function wt(p,ms){return Promise.race([p,new Promise((_,r)=>setTimeout(()=>r(new Error('timeout')),ms))]);}
-function lsLoad(){try{const s=localStorage.getItem(LSK);return s?JSON.parse(s):null;}catch{return null;}}
-function lsSave(){try{localStorage.setItem(LSK,JSON.stringify(state));}catch{}}
+function lsLoad(){
+  try{
+    const s=localStorage.getItem(LSK);
+    if(!s)return null;
+    const parsed=JSON.parse(s);
+    // Restore gallery and logo from their separate keys
+    const gal=galLoad();if(gal)parsed.gallery=gal;
+    const logo=logoLoad();if(logo&&parsed.settings)parsed.settings.logo=logo;
+    return parsed;
+  }catch{return null;}
+}
+function lsSave(){
+  // Save main state WITHOUT gallery/logo (they have separate keys to avoid quota)
+  try{
+    const s={...state,gallery:[],settings:{...state.settings,logo:''}};
+    localStorage.setItem(LSK,JSON.stringify(s));
+  }catch{}
+  galSave();
+  if(state.settings?.logo)logoSave();
+}
 async function cloudLoad(){
   let lastErr;
   for(let i=0;i<3;i++){
@@ -1224,11 +1242,12 @@ async function load(){
     try{
       const ls=lsLoad()||{};
       const toCache={...d,
-        gallery:ls.gallery||[],
-        settings:{...d.settings,logo:ls.settings?.logo||''},
+        gallery:[],// gallery stored separately
+        settings:{...d.settings,logo:''},// logo stored separately
         users:Object.fromEntries(Object.entries(d.users||{}).map(([k,v])=>[k,{...v,avatar:ls.users?.[k]?.avatar||''}]))
       };
       localStorage.setItem(LSK,JSON.stringify(toCache));
+      // gallery and logo stay in their own keys — don't overwrite them
     }catch{}
     return d;
   }catch(e){
@@ -1257,10 +1276,10 @@ function norm(r){
   // merge local-only data (base64 never goes to cloud)
   const loc=lsLoad();
   if(loc){
-    // gallery — local only (base64 too large for cloud)
-    if(loc.gallery?.length)s.gallery=loc.gallery;
-    // logo — local only (base64 never goes to cloud)
-    if(loc.settings?.logo)s.settings.logo=loc.settings.logo;
+    // gallery — local only, stored in separate key
+    const locGal=galLoad();if(locGal?.length)s.gallery=locGal;
+    // logo — local only, stored in separate key
+    const locLogo=logoLoad();if(locLogo)s.settings.logo=locLogo;
     // fridayCap/maxTime: prefer cloud (admin sets them, cloud is authoritative)
     // Only fall back to local if cloud has defaults
     if(s.fridayCap==='15:00'&&loc.fridayCap&&loc.fridayCap!=='15:00')s.fridayCap=loc.fridayCap;
@@ -1439,6 +1458,16 @@ function logoutUser(){
   try{localStorage.removeItem('bb_u');}catch{}
   goTo('sLogin');toast('התנתקת','ℹ️');
 }
+
+function goBack(){
+  // Go back to booking screen without losing admin/curator session
+  if(currentUser&&currentRole==='client'){goTo('sBooking');return;}
+  if(currentUser&&(currentRole==='admin'||currentRole==='curator')){
+    // Stay logged in as admin/curator, go to booking view
+    goTo('sBooking');return;
+  }
+  goTo('sSplash');
+}
 function logoutAdmin(){
   currentUser=null;currentRole='client';
   try{localStorage.removeItem('bb_u');}catch{}
@@ -1524,7 +1553,7 @@ function applySettings(){
 function uploadLogo(e){
   const f=e.target.files[0];if(!f)return;
   if(f.size>2*1024*1024){toast('עד 2MB','⚠️');return;}
-  const r=new FileReader();r.onload=ev=>{state.settings.logo=ev.target.result;applySettings();toast('לוגו עודכן — לחץ שמור','ℹ️');};
+  const r=new FileReader();r.onload=ev=>{state.settings.logo=ev.target.result;logoSave();applySettings();toast('לוגו עודכן — לחץ שמור','ℹ️');};
   r.readAsDataURL(f);e.target.value='';
 }
 async function saveSettings(){
@@ -1563,10 +1592,10 @@ function renderAGal(){
 }
 function addGalImg(e){
   const f=e.target.files[0];if(!f)return;if(f.size>2*1024*1024){toast('עד 2MB','⚠️');return;}
-  const r=new FileReader();r.onload=async ev=>{if(!state.gallery)state.gallery=[];state.gallery.push({src:ev.target.result,caption:''});lsSave();renderAGal();renderSplashPhoto();renderGalPublic('publicGallery');toast(t('add_photo'),'🖼️');};
+  const r=new FileReader();r.onload=async ev=>{if(!state.gallery)state.gallery=[];state.gallery.push({src:ev.target.result,caption:''});galSave();lsSave();renderAGal();renderSplashPhoto();renderGalPublic('publicGallery');toast(t('add_photo'),'🖼️');};
   r.readAsDataURL(f);e.target.value='';
 }
-function delGalImg(i){showModal('🗑️','מחק?','','מחק',()=>{state.gallery.splice(i,1);lsSave();renderAGal();renderSplashPhoto();renderGalPublic('publicGallery');toast('נמחק','ℹ️');});}
+function delGalImg(i){showModal('🗑️','מחק?','','מחק',()=>{state.gallery.splice(i,1);galSave();lsSave();renderAGal();renderSplashPhoto();renderGalPublic('publicGallery');toast('נמחק','ℹ️');});}
 
 // ══ SERVICES ══
 function renderSvcPublic(id){
@@ -2377,6 +2406,27 @@ function sendBarberWhatsApp(booking){
 
 
 
+
+
+// ══ GALLERY + LOGO LOCAL STORAGE (separate keys — avoid quota issues) ══
+const GAL_KEY='bb_gallery';
+const LOGO_KEY='bb_logo';
+
+function galSave(){
+  try{localStorage.setItem(GAL_KEY,JSON.stringify(state.gallery||[]));}
+  catch(e){
+    if(e.name==='QuotaExceededError'){
+      toast('נגמר מקום בדיסק — מחק תמונות ישנות','⚠️',5000);
+    }
+  }
+}
+function galLoad(){
+  try{const v=localStorage.getItem(GAL_KEY);return v?JSON.parse(v):null;}catch{return null;}
+}
+function logoSave(){
+  try{localStorage.setItem(LOGO_KEY,state.settings.logo||'');}
+  catch(e){if(e.name==='QuotaExceededError')toast('לא ניתן לשמור לוגו — קובץ גדול מדי','⚠️');}}
+function logoLoad(){try{return localStorage.getItem(LOGO_KEY)||'';}catch{return '';}}
 
 // ══ TICK ══
 let _tk=null;
