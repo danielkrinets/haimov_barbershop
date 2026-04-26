@@ -2,6 +2,7 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
 <title>💈 Haimov Barbershop</title>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
@@ -203,7 +204,7 @@ body{font-family:'Heebo',-apple-system,'SF Pro Text',sans-serif;min-height:100vh
 .role-client{background:rgba(37,99,235,.08);color:var(--blue);border:1px solid rgba(37,99,235,.18);font-size:10px;font-weight:800;padding:2px 8px;border-radius:99px;}
 
 /* Footer */
-.footer{position:fixed;bottom:0;left:0;right:0;text-align:center;padding:4px 0 6px;font-size:11px;color:var(--c4);background:var(--bg);z-index:500;transition:background .4s;}
+.footer{position:fixed;bottom:0;left:0;right:0;text-align:center;padding:8px 0 10px;font-size:11px;color:var(--c4);background:var(--bg);z-index:2000;transition:background .4s;border-top:1px solid var(--chip-b);}
 .footer a{color:var(--blue);text-decoration:none;font-weight:600;}
 .svc-row:hover{background:rgba(37,99,235,.06);}
 
@@ -227,7 +228,7 @@ input,select,textarea{-webkit-appearance:none;appearance:none;}
 <div class="wrap">
 
 <!-- TOAST -->
-<div id="toast"><div class="toast-in"><span id="tIcon">✅</span><span id="tMsg"></span></div></div>
+<div id="toast"><div class="toast-in"><span id="tMsg"></span></div></div>
 
 <!-- MODAL -->
 <div id="modal"><div class="modal-box glass">
@@ -290,7 +291,7 @@ input,select,textarea{-webkit-appearance:none;appearance:none;}
   </div>
   <div class="card glass" style="margin-bottom:14px;">
     <div class="inpr"><div class="inpr-ic">📱</div>
-      <div class="phone-wrap"><span class="phone-pfx">+972-0</span><input id="liPhone" class="phone-sfx" type="tel" placeholder="54-XXX-XXXX" maxlength="12" oninput="this.value=this.value.replace(/[^0-9-]/g,'')"/></div>
+      <div class="phone-wrap"><span class="phone-pfx">+972-05</span><input id="liPhone" class="phone-sfx" type="tel" placeholder="4-XXX-XXXX" maxlength="8" oninput="this.value=this.value.replace(/[^0-9-]/g,'')"/></div>
     </div>
     <div class="inpr"><div class="inpr-ic">🔒</div><input id="liPass" class="inpr-f" type="password" placeholder="סיסמה" dir="ltr" autocomplete="current-password"/></div>
   </div>
@@ -308,7 +309,7 @@ input,select,textarea{-webkit-appearance:none;appearance:none;}
   <div class="card glass" style="margin-bottom:14px;">
     <div class="inpr"><div class="inpr-ic">👤</div><input id="rName" class="inpr-f" type="text" placeholder="שם מלא *" autocomplete="name"/></div>
     <div class="inpr"><div class="inpr-ic">📱</div>
-      <div class="phone-wrap"><span class="phone-pfx">+972-0</span><input id="rPhone" class="phone-sfx" type="tel" placeholder="54-XXX-XXXX" maxlength="12" oninput="this.value=this.value.replace(/[^0-9-]/g,'')"/></div>
+      <div class="phone-wrap"><span class="phone-pfx">+972-05</span><input id="rPhone" class="phone-sfx" type="tel" placeholder="4-XXX-XXXX" maxlength="8" oninput="this.value=this.value.replace(/[^0-9-]/g,'')"/></div>
     </div>
     <div class="inpr"><div class="inpr-ic">🔒</div><input id="rPass" class="inpr-f" type="password" placeholder="סיסמה (לפחות 6 תווים)" dir="ltr"/></div>
   </div>
@@ -593,8 +594,8 @@ input,select,textarea{-webkit-appearance:none;appearance:none;}
       <div id="barberPhonesList" style="padding:0 14px 6px;display:flex;flex-direction:column;gap:6px;"></div>
       <div style="padding:0 14px 14px;display:flex;gap:7px;">
         <div class="phone-wrap" style="flex:1;background:var(--inp-bg);border:1px solid var(--inp-b);border-radius:13px;padding:10px 12px;">
-          <span class="phone-pfx">+972-0</span>
-          <input id="newBarberPhone" class="phone-sfx" type="tel" placeholder="54-XXX-XXXX" maxlength="11" oninput="this.value=this.value.replace(/[^0-9-]/g,'')"/>
+          <span class="phone-pfx">+972-05</span>
+          <input id="newBarberPhone" class="phone-sfx" type="tel" placeholder="4-XXX-XXXX" maxlength="11" oninput="this.value=this.value.replace(/[^0-9-]/g,'')"/>
         </div>
         <button class="btn btn-green btn-sm" onclick="addBarberPhone()">+</button>
       </div>
@@ -655,13 +656,13 @@ input,select,textarea{-webkit-appearance:none;appearance:none;}
 <div class="footer">
   <span dir="ltr">📞 <a href="tel:+972054457098">+972 054-457-0982</a></span>
   &nbsp;·&nbsp;<span>רוצה אתר? פנה אלינו</span>
-  &nbsp;·&nbsp;<span style="opacity:.5;">v0.7.4</span>
+  &nbsp;·&nbsp;<span style="opacity:.5;">v0.7.7</span>
 </div>
 
-<script>
+<script charset="utf-8">
 'use strict';
 // ══════════════════════════════════════════════════════════════
-// HAIMOV BARBERSHOP v0.7.4 — Clean rewrite
+// HAIMOV BARBERSHOP v0.7.7 — Clean rewrite
 // Cloud: JSONBin.io | Images: ImgBB | Local: localStorage
 // © 2025 Haimov Barbershop
 // ══════════════════════════════════════════════════════════════
@@ -713,13 +714,12 @@ function capFri(dateStr,slots){
   const cap=dt.getDay()===5?(state.fridayCap||'15:00'):(state.maxTime||'20:00');
   return slots.filter(s=>s<=cap);
 }
-function fmtPrice(inp){const v=inp.value.replace(/[^0-9]/g,'');inp.value=v?'₪'+v:'';}
+function fmtPrice(inp){const v=inp.value.replace(/[^0-9]/g);inp.value=v?'₪'+v:'';}
 
 // ── TOAST ──
 let _tt=null;
-function toast(msg,icon='✅',ms=3000){
+function toast(msg, ms=3000){
   document.getElementById('tMsg').textContent=msg;
-  document.getElementById('tIcon').textContent=icon;
   document.getElementById('toast').classList.add('show');
   if(_tt)clearTimeout(_tt);
   _tt=setTimeout(()=>document.getElementById('toast').classList.remove('show'),ms);
@@ -759,7 +759,7 @@ function setLang(l,btn){
 }
 
 // ── LOCAL STORAGE ──
-function galSave(){try{localStorage.setItem(GAL_KEY,JSON.stringify(state.gallery||[]));}catch(e){if(e.name==='QuotaExceededError')toast('נגמר מקום — מחק תמונות','⚠️',5000);}}
+function galSave(){try{localStorage.setItem(GAL_KEY,JSON.stringify(state.gallery||[]));}catch(e){if(e.name==='QuotaExceededError')toast('נגמר מקום — מחק תמונות', 5000);}}
 function galLoad(){try{const v=localStorage.getItem(GAL_KEY);return v?JSON.parse(v):null;}catch{return null;}}
 function logoSave(){try{localStorage.setItem(LOGO_KEY,state.settings.logo||'');}catch{}}
 function logoLoad(){try{return localStorage.getItem(LOGO_KEY)||'';}catch{return'';}}
@@ -902,27 +902,30 @@ async function uploadToImgBB(file){
   }catch(e){console.warn('ImgBB:',e.message);return null;}
 }
 async function uploadImage(file,maxMB){
-  if(file.size>maxMB*1024*1024){toast('עד '+maxMB+'MB','⚠️');return null;}
+  if(file.size>maxMB*1024*1024){toast('קובץ גדול מדי — מקסימום '+maxMB+'MB');return null;}
   const url=await uploadToImgBB(file);
   if(url)return url;
-  if(!state.imgbbKey)toast('⚠️ אין ImgBB — תמונה נשמרת רק במכשיר זה','⚠️',5000);
+  if(!state.imgbbKey)toast('אין ImgBB — תמונה נשמרת רק במכשיר זה', 5000);
   return await new Promise((res,rej)=>{const r=new FileReader();r.onload=e=>res(e.target.result);r.onerror=rej;r.readAsDataURL(file);});
 }
 
 // ── PHONE UTILS ──
 function getPhone(sfxId){
   const el=document.getElementById(sfxId);if(!el)return'';
-  const digits=el.value.replace(/[^0-9]/g,'');
+  const digits=el.value.replace(/[^0-9]/g);
   if(!digits)return'';
-  return '+9720'+digits;
+  return '+97205'+digits;
 }
 function phoneDisplay(raw){
   if(!raw)return'—';
-  const p=raw.replace(/\s+/g,'').replace(/-/g,'');
-  const m=p.match(/^\+9720?(5\d)(\d{3})(\d{4})$/);
-  if(m)return'+972-0'+m[1]+'-'+m[2]+'-'+m[3];
+  const d=raw.replace(/[^0-9]/g,'');
+  if(d.length>=9){
+    const local=d.slice(-9); // last 9 digits = 05XXXXXXX
+    return '+972-0'+local[1]+local[2]+'-'+local[3]+local[4]+local[5]+'-'+local[6]+local[7]+local[8];
+  }
   return raw;
 }
+
 
 // ── NAV ──
 const DOCK_PANELS=['bp-main','bp-book','bp-gal','bp-rv'];
@@ -991,7 +994,7 @@ function slideDock(dockId,idx){
 function newCaptcha(){} // no-op — using checkbox instead
 function checkCaptcha(){
   const cb=document.getElementById('notRobot');
-  if(!cb||!cb.checked){toast('סמן שאתה לא רובוט','⚠️');return false;}
+  if(!cb||!cb.checked){toast('סמן שאתה לא רובוט');return false;}
   return true;
 }
 
@@ -1000,15 +1003,15 @@ async function doLogin(){
   if(doLogin._busy)return;
   const phone=getPhone('liPhone');
   const pass=document.getElementById('liPass').value;
-  if(!phone||phone.replace(/\D/g,'').length<11){toast('טלפון לא תקין','⚠️');return;}
-  if(!pass){toast('הזן סיסמה','⚠️');return;}
+  if(!phone||phone.replace(/\D/g).length<11){toast('מספר טלפון לא תקין');return;}
+  if(!pass){toast('הזן סיסמה');return;}
   doLogin._busy=true;
   const btn=document.querySelector('#sLogin .btn-blue');if(btn){btn.disabled=true;}
   try{
     const h=await sha256(pass);
     if(h===ADMIN_HASH){enterAdmin('admin');return;}
     if(state.curatorPassHash&&h===state.curatorPassHash){
-      if(state.sessionToken&&getSess()!==state.sessionToken){toast('הסשן פג','⚠️');return;}
+      if(state.sessionToken&&getSess()!==state.sessionToken){toast('הסשן פג');return;}
       const cu=Object.values(state.users).find(u=>u.phone===phone)||{name:'קוּרָטוֹר',phone,role:'curator'};
       enterCurator(cu);return;
     }
@@ -1016,36 +1019,36 @@ async function doLogin(){
     if(!u){
       try{const fresh=await cloudLoad();const s=norm(fresh);Object.assign(state.users,s.users);u=Object.values(state.users).find(u=>u.phone===phone);}catch{}
     }
-    if(!u){toast('טלפון לא נמצא','⚠️');return;}
-    if(u.passHash!==h){toast('סיסמה שגויה','⚠️');return;}
+    if(!u){toast('מספר לא נמצא');return;}
+    if(u.passHash!==h){toast('סיסמה שגויה');return;}
     currentUser={...u};currentRole='client';saveUL({...u,role:'client'});
-    toBooking();toast('שלום '+u.name+'! 👋','✅');
+    toBooking();toast('שלום '+u.name+'!');
   }finally{doLogin._busy=false;if(btn)btn.disabled=false;}
 }
 async function doRegister(){
-  if(doRegister._busy){toast('בתהליך...','⏳');return;}
+  if(doRegister._busy){toast('שומר...');return;}
   const name=document.getElementById('rName').value.trim();
   const phone=getPhone('rPhone');
   const pass=document.getElementById('rPass').value;
   const terms=document.getElementById('rTerms').checked;
-  if(!name){toast('הזן שם','⚠️');return;}
-  if(!phone||phone.replace(/\D/g,'').length<11){toast('טלפון לא תקין','⚠️');return;}
-  if(pass.length<6){toast('סיסמה — לפחות 6 תווים','⚠️');return;}
-  if(!terms){toast('יש לאשר את תנאי השימוש','⚠️');return;}
+  if(!name){toast('הזן שם');return;}
+  if(!phone||phone.replace(/\D/g).length<11){toast('מספר טלפון לא תקין');return;}
+  if(pass.length<6){toast('סיסמה — לפחות 6 תווים');return;}
+  if(!terms){toast('יש לאשר את תנאי השימוש');return;}
   if(!checkCaptcha())return;
   doRegister._busy=true;
   const btn=document.getElementById('regBtn');if(btn){btn.disabled=true;btn.textContent='שומר...';}
   try{
     try{const fresh=await cloudLoad();const s=norm(fresh);Object.assign(state.users,s.users);}catch{}
     if(Object.values(state.users).some(u=>u.phone===phone)){
-      toast('מספר זה כבר רשום','⚠️');return;
+      toast('מספר זה כבר רשום');return;
     }
     const passHash=await sha256(pass);
     const uid='u_'+Date.now();
     state.users[uid]={uid,name,phone,passHash,role:'client',canReview:false,avatar:'',registeredAt:Date.now()};
     await save();
     currentUser={uid,name,phone,role:'client'};currentRole='client';saveUL({...currentUser});
-    toBooking();toast('שלום '+name+'! ברוך הבא 🎉','🎉');
+    toBooking();toast('שלום '+name+'! ברוך הבא');
   }finally{
     doRegister._busy=false;
     if(btn){btn.disabled=false;btn.textContent='צור חשבון ←';}
@@ -1055,24 +1058,24 @@ function quickLogin(){
   const u=loadUL();if(!u){goTo('sLogin');return;}
   if(u.role==='admin'){enterAdmin(u.email);return;}
   if(u.role==='curator'){
-    if(state.sessionToken&&getSess()!==state.sessionToken){toast('הסשן פג','⚠️');goTo('sLogin');return;}
+    if(state.sessionToken&&getSess()!==state.sessionToken){toast('הסשן פג');goTo('sLogin');return;}
     enterCurator(u);return;
   }
   const ud=Object.values(state.users).find(x=>x.phone===u.phone||x.uid===u.uid);
-  if(!ud){toast('חשבון לא נמצא','⚠️');goTo('sLogin');return;}
-  currentUser={...ud};currentRole='client';toBooking();toast('שלום '+ud.name+'!','✅');
+  if(!ud){toast('חשבון לא נמצא');goTo('sLogin');return;}
+  currentUser={...ud};currentRole='client';toBooking();toast('שלום '+ud.name+'!');
 }
 function enterAdmin(email){
   currentUser={name:'Admin',phone:'',email:email||'',role:'admin'};currentRole='admin';
   saveUL({...currentUser});
   sessionStorage.setItem('bb_admin_ul','1');
-  goTo('sAdmin');renderAdmin();toast('ברוך הבא 👑','🔐');
+  goTo('sAdmin');renderAdmin();toast('ברוך הבא');
 }
 function enterCurator(u){
   currentUser={...u,role:'curator'};currentRole='curator';saveUL({...currentUser});
   ['adk3','adk4'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});
   document.getElementById('adminRolePill').textContent='CURATOR';
-  goTo('sAdmin');renderAdmin();toast('ברוך הבא, קוּרָטוֹר 🛠️','🔑');
+  goTo('sAdmin');renderAdmin();toast('ברוך הבא, קוּרָטוֹר ️');
 }
 function toBooking(){renderUserInfo();goTo('sBooking');}
 function renderUserInfo(){
@@ -1101,27 +1104,27 @@ function renderUserInfo(){
 function logoutUser(){
   currentUser=null;currentRole='client';
   try{localStorage.removeItem('bb_u');}catch{}
-  goTo('sSplash');toast('התנתקת','ℹ️');
+  goTo('sSplash');toast('התנתקת');
 }
 function logoutAdmin(){
   currentUser=null;currentRole='client';
   try{localStorage.removeItem('bb_u');}catch{}
-  goTo('sSplash');toast('יצאת','ℹ️');
+  goTo('sSplash');toast('יצאת');
 }
 async function changePassword(){
   const p=document.getElementById('pwNew').value;
-  if(p.length<6){toast('לפחות 6 תווים','⚠️');return;}
+  if(p.length<6){toast('לפחות 6 תווים');return;}
   if(!currentUser)return;
   const h=await sha256(p);
   const ud=Object.values(state.users).find(x=>x.phone===currentUser.phone||x.uid===currentUser.uid);
-  if(ud){ud.passHash=h;await save();document.getElementById('pwNew').value='';toast('סיסמה עודכנה ✅','✅');}
+  if(ud){ud.passHash=h;await save();document.getElementById('pwNew').value='';toast('סיסמה עודכנה');}
 }
 function promptDeleteAccount(){
   showModal('⚠️','מחק חשבון?','הפעולה אינה הפיכה.','מחק',async()=>{
     if(!currentUser)return;
     const k=Object.keys(state.users).find(k=>state.users[k].phone===currentUser.phone||state.users[k].uid===currentUser.uid);
     if(k)delete state.users[k];
-    await save();logoutUser();toast('חשבון נמחק','ℹ️');
+    await save();logoutUser();toast('חשבון נמחק');
   });
 }
 async function submitSecret(){
@@ -1131,28 +1134,28 @@ async function submitSecret(){
     sessionStorage.setItem('bb_admin_ul','1');
     document.getElementById('adminSecDiv').style.display='none';
     document.getElementById('adminTogRow').style.display='block';
-    toast('גישת מנהל נפתחה 🔐','🔐');
-  }else toast('קוד שגוי','⚠️');
+    toast('גישת מנהל נפתחה');
+  }else toast('קוד שגוי');
   document.getElementById('secretInp').value='';
 }
 function toggleAdmin(on){if(on)enterAdmin(currentUser?.email||'');else{document.getElementById('adminTog').checked=false;logoutAdmin();}}
 function toggleCurator(on){if(on)enterCurator(currentUser||{name:'Curator',phone:''});else{document.getElementById('curTog').checked=false;logoutAdmin();}}
 async function changeCuratorPw(){
   const p=document.getElementById('newCurPw').value;
-  if(p.length<6){toast('לפחות 6 תווים','⚠️');return;}
+  if(p.length<6){toast('לפחות 6 תווים');return;}
   state.curatorPassHash=await sha256(p);
   state.sessionToken=mkTok();setSess(state.sessionToken);
-  await save();document.getElementById('newCurPw').value='';toast('סיסמה עודכנה ✅','✅');
+  await save();document.getElementById('newCurPw').value='';toast('סיסמה עודכנה');
 }
 
 // ── AVATAR ──
 async function uploadAvatar(e){
   const f=e.target.files[0];if(!f)return;if(!currentUser)return;
-  toast('מעלה...','⏳',10000);
+  toast('מעלה...', 10000);
   const src=await uploadImage(f,1.5);
   if(src){
     const ud=Object.values(state.users).find(x=>x.phone===currentUser.phone||x.uid===currentUser.uid);
-    if(ud){ud.avatar=src;if(src.startsWith('http'))await save();else lsSave();renderUserInfo();toast('אווטר עודכן ✅','👤');}
+    if(ud){ud.avatar=src;if(src.startsWith('http'))await save();else lsSave();renderUserInfo();toast('אווטר עודכן');}
   }
   e.target.value='';
 }
@@ -1183,9 +1186,9 @@ function applySettings(){
 }
 async function uploadLogo(e){
   const f=e.target.files[0];if(!f)return;
-  toast('מעלה לוגו...','⏳',15000);
+  toast('מעלה לוגו...', 15000);
   const src=await uploadImage(f,2);
-  if(src){state.settings.logo=src;if(src.startsWith('http'))await save();else logoSave();applySettings();toast('לוגו עודכן ✅','✅');}
+  if(src){state.settings.logo=src;if(src.startsWith('http'))await save();else logoSave();applySettings();toast('לוגו עודכן');}
   e.target.value='';
 }
 async function saveSettings(){
@@ -1198,8 +1201,8 @@ async function saveSettings(){
   // Force cloud save with retries
   let saved=false;
   for(let i=0;i<3;i++){try{await cloudSave();saved=true;break;}catch{await new Promise(r=>setTimeout(r,1000*(i+1)));}}
-  if(!saved)toast('⚠️ לא נשמר בענן — נסה שוב','⚠️',5000);
-  else{applySettings();toast('הגדרות נשמרו ✅','✅');}
+  if(!saved)toast('לא נשמר בענן — נסה שוב', 5000);
+  else{applySettings();toast('הגדרות נשמרו');}
   applySettings();
 }
 function renderImgBBKey(){
@@ -1209,8 +1212,8 @@ function renderImgBBKey(){
 }
 async function saveImgBBKey(){
   const key=document.getElementById('imgbbKeyInp')?.value.trim();
-  if(!key){toast('הזן מפתח','⚠️');return;}
-  state.imgbbKey=key;await save();renderImgBBKey();toast('מפתח נשמר ✅','🖼️');
+  if(!key){toast('הזן מפתח');return;}
+  state.imgbbKey=key;await save();renderImgBBKey();toast('מפתח נשמר');
 }
 
 // ── GALLERY ──
@@ -1255,7 +1258,7 @@ function renderAGal(){
 async function addGalImg(e){
   const f=e.target.files[0];if(!f)return;
   const btn=document.querySelector('#galFile~button')||document.querySelector('[onclick*="galFile"]');
-  toast('מעלה תמונה...','⏳',20000);
+  toast('מעלה תמונה...', 20000);
   const src=await uploadImage(f,2);
   if(src){
     if(!state.gallery)state.gallery=[];
@@ -1263,14 +1266,14 @@ async function addGalImg(e){
     if(src.startsWith('http'))await save();else{galSave();lsSave();}
     renderAGal();renderGalSlideshow();
     const gp=document.getElementById('galPublic2');if(gp)renderGalGrid(gp);
-    toast('תמונה נוספה ✅','🖼️');
+    toast('תמונה נוספה');
   }
   e.target.value='';
 }
 function delGalImg(i){
   showModal('🗑️','מחק תמונה?','','מחק',()=>{
     state.gallery.splice(i,1);galSave();lsSave();
-    renderAGal();renderGalSlideshow();toast('נמחקה','ℹ️');
+    renderAGal();renderGalSlideshow();toast('נמחקה');
   });
 }
 
@@ -1315,12 +1318,12 @@ function renderASvc(){
 }
 async function addSvc(){
   const n=document.getElementById('newSvcN').value.trim();const p=document.getElementById('newSvcP').value.trim();
-  if(!n||!p){toast('מלא שם ומחיר','⚠️');return;}
+  if(!n||!p){toast('מלא שם ומחיר');return;}
   state.services.push({id:Date.now(),name:n,price:p,desc:'',icon:'✂️'});
   document.getElementById('newSvcN').value='';document.getElementById('newSvcP').value='';
-  await save();renderASvc();toast('נוסף','✅');
+  await save();renderASvc();toast('נוסף');
 }
-async function delSvc(id){state.services=state.services.filter(s=>s.id!==id);await save();renderASvc();toast('נמחק','ℹ️');}
+async function delSvc(id){state.services=state.services.filter(s=>s.id!==id);await save();renderASvc();toast('נמחק');}
 
 // ── CALENDAR ──
 let cpOffset=0,selDate=null;
@@ -1363,27 +1366,27 @@ function renderSlots(){
 // ── BOOK ──
 let selSvcBackup=null;
 async function bookSlot(time){
-  if(!currentUser){toast('נא להתחבר','⚠️');return;}
-  if(!selDate){toast('נא לבחור תאריך','⚠️');return;}
-  if(!selSvc){toast('נא לבחור שירות','⚠️');return;}
+  if(!currentUser){toast('נא להתחבר');return;}
+  if(!selDate){toast('נא לבחור תאריך');return;}
+  if(!selSvc){toast('נא לבחור שירות');return;}
   if(currentRole==='client'){
     const now=ilNow();
     const hasActive=state.bookings.some(b=>(b.userPhone===currentUser.phone||b.userUid===currentUser.uid)&&b.status!=='cancelled'&&(b.date>now.date||(b.date===now.date&&b.time>=now.time)));
-    if(hasActive){toast('כבר יש לך תור פעיל','🚫');return;}
+    if(hasActive){toast('כבר יש לך תור פעיל');return;}
     const lastCancel=state.bookings.filter(b=>(b.userPhone===currentUser.phone||b.userUid===currentUser.uid)&&b.status==='cancelled'&&b.cancelledAt).reduce((mx,b)=>b.cancelledAt>mx?b.cancelledAt:mx,0);
     if(lastCancel&&Date.now()-lastCancel<30*60*1000){
       const left=Math.ceil((30*60*1000-(Date.now()-lastCancel))/60000);
-      toast('ניתן להזמין שוב בעוד '+left+' דקות','⏳');return;
+      toast('ניתן להזמין שוב בעוד '+left+' דקות');return;
     }
   }
   document.querySelectorAll('.slot-btn').forEach(b=>b.disabled=true);
-  toast('שומר...','⏳',8000);
+  toast('שומר...', 8000);
   try{
     const fresh=await cloudLoad();
     const prev={services:state.services,gallery:state.gallery,settings:state.settings,imgbbKey:state.imgbbKey};
     state=norm(fresh);
     Object.assign(state,prev);
-    if(!state.dates[selDate]?.includes(time)){toast('שעה נלקחה 😔','⚠️');renderSlots();return;}
+    if(!state.dates[selDate]?.includes(time)){toast('שעה נלקחה');renderSlots();return;}
     state.dates[selDate]=state.dates[selDate].filter(s=>s!==time);
     if(!state.dates[selDate].length)delete state.dates[selDate];
     state.counter++;
@@ -1393,10 +1396,10 @@ async function bookSlot(time){
     await save();
     sendBarberWA(b);
     renderCP();renderSlots();updateMyAppt();
-    toast('התור נקבע! ✅','✅');
+    toast('התור נקבע!');
     // go to home tab to show appointment
     dockNav(0);
-  }catch(e){toast('שגיאת חיבור','⚠️');console.error(e);}
+  }catch(e){toast('שגיאת חיבור');console.error(e);}
   finally{document.querySelectorAll('.slot-btn').forEach(b=>b.disabled=false);}
 }
 
@@ -1435,12 +1438,12 @@ async function doClientCancel(){
   const now=ilNow();
   const mine=state.bookings.filter(b=>(b.userPhone===currentUser.phone||b.userUid===currentUser.uid)&&b.status!=='cancelled').sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));
   const up=mine.find(b=>b.date>now.date||(b.date===now.date&&b.time>=now.time));
-  if(!up){toast('אין תור פעיל','⚠️');return;}
+  if(!up){toast('אין תור פעיל');return;}
   up.status='cancelled';up.cancelReason=reason;up.cancelledAt=Date.now();
   if(!state.dates[up.date])state.dates[up.date]=[];
   if(!state.dates[up.date].includes(up.time))state.dates[up.date].push(up.time);
   await save();updateMyAppt();renderCP();renderSlots();clearSvc();
-  toast('התור בוטל','ℹ️');
+  toast('התור בוטל');
 }
 
 // ── ADMIN ──
@@ -1482,7 +1485,7 @@ async function setStatus(id,s){
     if(!state.dates[b.date])state.dates[b.date]=[];
     if(!state.dates[b.date].includes(b.time))state.dates[b.date].push(b.time);
   }
-  await save();renderBookings();renderCP();renderSlots();updateMyAppt();toast(SL[s],'✅');
+  await save();renderBookings();renderCP();renderSlots();updateMyAppt();toast(SL[s]);
 }
 async function cancelBook(id){
   const b=state.bookings.find(x=>x.id===id);if(!b)return;
@@ -1490,7 +1493,7 @@ async function cancelBook(id){
     if(ms.dates[b.date])ms.dates[b.date].push(b.time);else ms.dates[b.date]=[b.time];
     ms.bookings=ms.bookings.filter(x=>x.id!==id);
   });
-  renderAdmin();renderCP();renderSlots();updateMyAppt();toast('תור №'+id+' בוטל','ℹ️');
+  renderAdmin();renderCP();renderSlots();updateMyAppt();toast('תור №'+id+' בוטל');
 }
 // Admin calendar
 let acOffset=0;
@@ -1514,7 +1517,7 @@ function renderAC(){
 }
 
 function acNav(d){acOffset+=d;renderAC();}
-function jumpSlot(ds){const sel=document.getElementById('slotDateSel');if(sel){sel.value=ds;renderASlots();}toast(fmtDate(ds),'📅');}
+function jumpSlot(ds){const sel=document.getElementById('slotDateSel');if(sel){sel.value=ds;renderASlots();}toast(fmtDate(ds));}
 // Dates/Slots
 function renderADates(){
   const w=document.getElementById('aDatesWrap');if(!w)return;
@@ -1537,23 +1540,23 @@ function renderASlots(){
   w.querySelectorAll('.rm-slot-btn').forEach(btn=>btn.addEventListener('click',()=>rmSlot(d,btn.parentElement.dataset.s)));
 }
 async function addDate(){
-  const d=document.getElementById('newDate').value;if(!d){toast('בחר תאריך','⚠️');return;}
+  const d=document.getElementById('newDate').value;if(!d){toast('בחר תאריך');return;}
   await safeSave(s=>{if(!s.dates[d])s.dates[d]=[];});
-  document.getElementById('newDate').value='';renderADates();renderCP();renderAC();toast(fmtDate(d),'✅');
+  document.getElementById('newDate').value='';renderADates();renderCP();renderAC();toast(fmtDate(d));
 }
 async function rmDate(d){
   await safeSave(s=>{delete s.dates[d];});
-  renderADates();renderCP();renderAC();renderSlots();toast('הוסר','ℹ️');
+  renderADates();renderCP();renderAC();renderSlots();toast('הוסר');
 }
 async function addSlot(){
   const selEl=document.getElementById('slotDateSel');const d=selEl?.value;const s=document.getElementById('newSlotT').value;
-  if(!d){toast('בחר תאריך','⚠️');return;}if(!s){toast('בחר שעה','⚠️');return;}
+  if(!d){toast('בחר תאריך');return;}if(!s){toast('בחר שעה');return;}
   const dt=new Date(d+'T12:00:00');
   const cap=dt.getDay()===5?(state.fridayCap||'15:00'):(state.maxTime||'20:00');
-  if(s>cap){toast('מקסימום '+cap+' ביום זה','⚠️');return;}
+  if(s>cap){toast('מקסימום '+cap+' ביום זה');return;}
   const slotVal=s;
   await safeSave(ms=>{if(!ms.dates[d])ms.dates[d]=[];if(!ms.dates[d].includes(slotVal))ms.dates[d].push(slotVal);});
-  document.getElementById('newSlotT').value='';renderADates();renderASlots();renderCP();renderAC();renderSlots();toast(slotVal,'✅');
+  document.getElementById('newSlotT').value='';renderADates();renderASlots();renderCP();renderAC();renderSlots();toast(slotVal);
 }
 async function rmSlot(d,s){
   await safeSave(ms=>{if(ms.dates[d])ms.dates[d]=ms.dates[d].filter(x=>x!==s);});
@@ -1562,7 +1565,7 @@ async function rmSlot(d,s){
 function confirmDel(type){
   showModal('🗑️',type==='dates'?'מחק כל התאריכים?':'מחק כל השעות?','לא ניתן לשחזר.',type==='dates'?'מחק':'מחק',async()=>{
     if(type==='dates')state.dates={};else Object.keys(state.dates).forEach(d=>{state.dates[d]=[];});
-    await save();renderADates();renderASlots();renderCP();renderAC();renderSlots();toast('נמחק','ℹ️');
+    await save();renderADates();renderASlots();renderCP();renderAC();renderSlots();toast('נמחק');
   });
 }
 // Bulk
@@ -1572,9 +1575,9 @@ async function genBulk(){
   const iv=parseInt(document.getElementById('bInterval').value),buf=parseInt(document.getElementById('bBuffer').value);
   const friCap=document.getElementById('bFriCap').value||'15:00';
   const maxT=document.getElementById('bMaxTime').value||'20:00';
-  if(!from||!to||from>to){toast('בחר תקופה תקינה','⚠️');return;}
+  if(!from||!to||from>to){toast('בחר תקופה תקינה');return;}
   const days=new Set([...document.querySelectorAll('#dayPicker button.active')].map(b=>+b.dataset.d));
-  if(!days.size){toast('בחר ימים','⚠️');return;}
+  if(!days.size){toast('בחר ימים');return;}
   const newDates={};let total=0,dayCnt=0;
   const cur=new Date(from+'T12:00:00'),ed=new Date(to+'T12:00:00');
   while(cur<=ed){
@@ -1607,8 +1610,8 @@ async function genBulk(){
     });
     renderADates();renderCP();renderAC();renderSlots();
     document.getElementById('bulkPrev').textContent='✅ '+total+' סלוטים ב-'+dayCnt+' ימים';
-    toast('✅ '+total+' סלוטים','✅');
-  }catch{toast('שגיאת שמירה','⚠️');}
+    toast(''+total+' סלוטים');
+  }catch{toast('שגיאת שמירה');}
 }
 // Users
 function renderUsers(){
@@ -1620,7 +1623,7 @@ function renderUsers(){
   window._users=us;
   el.innerHTML=us.map((u,i)=>
     '<div class="user-item">'
-    +'<div class="av" style="width:40px;height:40px;background:linear-gradient(135deg,#2563EB,#4F46E5);font-size:16px;font-weight:800;">'+(u.avatar?'<img src="'+u.avatar+'" style="width:100%;height:100%;object-fit:cover;"/>':(u.name?.[0]||'?'))+'</div>'
+    +'<div class="av" style="width:40px;height:40px;background:linear-gradient(135deg,#2563EB,#4F46E5);font-size:16px;font-weight:800;">'+(u.avatar?'<img src="'+u.avatar+'" style="width:100%;height:100%;object-fit:cover;"/>':((u.name||'?')[0]||'?'))+'</div>'
     +'<div style="flex:1;"><div style="font-size:14px;font-weight:700;color:var(--c1);">'+u.name+'</div><div style="font-size:11px;color:var(--c3);">'+phoneDisplay(u.phone||'')+'</div>'
     +'<div style="margin-top:3px;"><span class="'+({admin:'role-admin',curator:'role-curator',client:'role-client'}[u.role]||'role-client')+'">'+({admin:'👑 מנהל',curator:'🛠️ קוּרָטוֹר',client:'👤 לקוח'}[u.role]||'👤 לקוח')+'</span></div>'
     +'</div>'
@@ -1631,11 +1634,11 @@ function renderUsers(){
 async function adminDeleteUser(idx){
   const us=window._users||Object.values(state.users);
   const u=typeof idx==='number'?us[idx]:state.users[idx]||Object.values(state.users).find(x=>x.phone===idx||x.uid===idx);
-  if(!u){toast('לא נמצא','⚠️');return;}
+  if(!u){toast('לא נמצא');return;}
   showModal('🗑️','מחק '+u.name+'?','','מחק',async()=>{
     const k=u.uid||Object.keys(state.users).find(k=>state.users[k].phone===u.phone);
     if(k)delete state.users[k];
-    await save();renderUsers();toast(u.name+' נמחק','🗑️');
+    await save();renderUsers();toast(u.name+' נמחק');
   });
 }
 
@@ -1698,9 +1701,24 @@ function renderARv(){
     +'</div>'
   ).join('');
 }
-async function approveRv(id){const r=(state.reviews||[]).find(x=>x.id===id);if(r){r.approved=true;await save();renderARv();toast('אושרה ✅','⭐');}}
-async function delRv(id){state.reviews=(state.reviews||[]).filter(x=>x.id!==id);await save();renderARv();toast('נמחקה','ℹ️');}
+async function approveRv(id){const r=(state.reviews||[]).find(x=>x.id===id);if(r){r.approved=true;await save();renderARv();toast('אושרה');}}
+async function delRv(id){state.reviews=(state.reviews||[]).filter(x=>x.id!==id);await save();renderARv();toast('נמחקה');}
 
+
+function renderReviews(listId){renderRvPublic(listId);}
+
+async function submitReview(stars,text){
+  if(!currentUser){toast('נא להתחבר');return;}
+  const ud=Object.values(state.users).find(x=>x.phone===currentUser.phone||x.uid===currentUser.uid);
+  if(!ud?.canReview){toast('ניתן לכתוב ביקורת רק לאחר ביקור');return;}
+  if(!text.trim()){toast('כתוב ביקורת');return;}
+  const now=ilNow();
+  state.reviews.push({id:Date.now(),name:currentUser.name,text:text.trim(),stars,date:now.date,approved:false});
+  ud.canReview=false;
+  await save();
+  toast('תודה! הביקורת תפורסם לאחר אישור');
+  return true;
+}
 // ── BARBER WA ──
 function sendBarberWA(booking){
   const phones=state.barberPhones||[];if(!phones.length)return;
@@ -1709,11 +1727,11 @@ function sendBarberWA(booking){
   const msg='💈 '+shop+'\n✅ תור חדש!\n👤 '+booking.name+'\n📞 '+phoneDisplay(booking.phone||'')+'\n📅 '+(booking.dateHe||booking.date)+'\n🕐 '+booking.time+'\n✂️ '+svcName;
   const encoded=encodeURIComponent(msg);
   phones.forEach((ph,i)=>{
-    const num=ph.replace(/[^0-9]/g,'');
+    const num=ph.replace(/[^0-9]/g);
     const url='https://wa.me/'+num+'?text='+encoded;
     if(i===0)window.open(url,'_blank');
   });
-  if(phones.length>1)toast('הודעה ל-'+phones.length+' ספרים','📱');
+  if(phones.length>1)toast('הודעה ל-'+phones.length+' ספרים');
 }
 function renderBarberPhones(){
   const el=document.getElementById('barberPhonesList');if(!el)return;
@@ -1726,15 +1744,15 @@ function renderBarberPhones(){
 }
 async function addBarberPhone(){
   const inp=document.getElementById('newBarberPhone');
-  const digits=(inp.value||'').replace(/[^0-9]/g,'');
-  if(digits.length<8){toast('מספר לא תקין','⚠️');return;}
+  const digits=(inp.value||'').replace(/[^0-9]/g);
+  if(digits.length<8){toast('מספר לא תקין');return;}
   const full='+9720'+digits;
   if(!state.barberPhones)state.barberPhones=[];
-  if(state.barberPhones.includes(full)){toast('מספר קיים','⚠️');return;}
+  if(state.barberPhones.includes(full)){toast('מספר קיים');return;}
   state.barberPhones.push(full);inp.value='';
-  await save();renderBarberPhones();toast('ספר נוסף ✅','✅');
+  await save();renderBarberPhones();toast('ספר נוסף');
 }
-async function removeBarberPhone(i){state.barberPhones.splice(i,1);await save();renderBarberPhones();toast('הוסר','ℹ️');}
+async function removeBarberPhone(i){state.barberPhones.splice(i,1);await save();renderBarberPhones();toast('הוסר');}
 
 // ── TICK ──
 let _tk=null;
@@ -1777,7 +1795,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   }catch(e){
     document.body.style.opacity='1';
     console.error('Init:',e);
-    toast('שגיאה בטעינה — נסה לרענן','⚠️',6000);
+    toast('שגיאה בטעינה — נסה לרענן', 6000);
   }
 })();
 </script>
