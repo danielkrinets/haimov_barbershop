@@ -826,8 +826,14 @@ async function load(){
     // cache cloud data locally (preserve local-only media)
     try{
       const ls=lsLoad()||{};
-      const cache={...d,gallery:[],settings:{...d.settings,logo:''},
-        users:Object.fromEntries(Object.entries(d.users||{}).map(([k,v])=>[k,{...v,avatar:ls.users?.[k]?.avatar||''}]))};
+      // Cache cloud data but preserve local base64 media
+      const cache={...d,
+        gallery:[],  // gallery always from galKey
+        settings:{...d.settings,logo:d.settings?.logo?.startsWith('http')?d.settings.logo:(ls.settings?.logo||'')},
+        users:Object.fromEntries(Object.entries(d.users||{}).map(([k,v])=>[k,{...v,
+          avatar:v.avatar?.startsWith('http')?v.avatar:(ls.users?.[k]?.avatar||'')
+        }]))
+      };
       localStorage.setItem(LSK,JSON.stringify(cache));
     }catch{}
     return d;
@@ -849,12 +855,22 @@ function norm(r){
     barberPhones:Array.isArray(r.barberPhones)?r.barberPhones:[],
     botToken:r.botToken||'',botChatIds:r.botChatIds||{},imgbbKey:r.imgbbKey||'',
   };
-  // restore local-only media
+  // restore local-only media (base64)
+  // Cloud URLs always win - only use local if cloud has no URL
   const loc=lsLoad();
   if(loc){
-    const locGal=galLoad();if(locGal?.length)s.gallery=locGal;
-    const locLogo=logoLoad();if(locLogo)s.settings.logo=locLogo;
-    if(loc.users)Object.keys(loc.users).forEach(k=>{if(s.users[k]&&loc.users[k]?.avatar)s.users[k].avatar=loc.users[k].avatar;});
+    // Gallery: use local only if cloud has no URL images
+    const cloudHasGal=s.gallery.some(g=>g.src?.startsWith('http'));
+    if(!cloudHasGal){const locGal=galLoad();if(locGal?.length)s.gallery=locGal;}
+    // Logo: use local only if cloud has no URL
+    if(!s.settings.logo?.startsWith('http')){
+      const locLogo=logoLoad();if(locLogo)s.settings.logo=locLogo;
+    }
+    // Avatars: use local only if cloud has no URL for that user
+    if(loc.users)Object.keys(loc.users).forEach(k=>{
+      if(s.users[k]&&!s.users[k].avatar?.startsWith('http')&&loc.users[k]?.avatar)
+        s.users[k].avatar=loc.users[k].avatar;
+    });
   }
   return s;
 }
@@ -912,7 +928,7 @@ async function uploadImage(file,maxMB){
 // ── PHONE UTILS ──
 function getPhone(sfxId){
   const el=document.getElementById(sfxId);if(!el)return'';
-  const digits=el.value.replace(/[^0-9]/g);
+  const digits=el.value.replace(/[^0-9]/g,'');
   if(!digits)return'';
   return '+97205'+digits;
 }
@@ -1003,7 +1019,7 @@ async function doLogin(){
   if(doLogin._busy)return;
   const phone=getPhone('liPhone');
   const pass=document.getElementById('liPass').value;
-  if(!phone||phone.replace(/\D/g).length<11){toast('מספר טלפון לא תקין');return;}
+  if(!phone||phone.replace(/\D/g,'').length<11){toast('מספר טלפון לא תקין');return;}
   if(!pass){toast('הזן סיסמה');return;}
   doLogin._busy=true;
   const btn=document.querySelector('#sLogin .btn-blue');if(btn){btn.disabled=true;}
@@ -1032,7 +1048,7 @@ async function doRegister(){
   const pass=document.getElementById('rPass').value;
   const terms=document.getElementById('rTerms').checked;
   if(!name){toast('הזן שם');return;}
-  if(!phone||phone.replace(/\D/g).length<11){toast('מספר טלפון לא תקין');return;}
+  if(!phone||phone.replace(/\D/g,'').length<11){toast('מספר טלפון לא תקין');return;}
   if(pass.length<6){toast('סיסמה — לפחות 6 תווים');return;}
   if(!terms){toast('יש לאשר את תנאי השימוש');return;}
   if(!checkCaptcha())return;
@@ -1150,46 +1166,68 @@ async function changeCuratorPw(){
 
 // ── AVATAR ──
 async function uploadAvatar(e){
-  const f=e.target.files[0];if(!f)return;if(!currentUser)return;
-  toast('מעלה...', 10000);
+  const f=e.target.files[0];if(!f)return;
+  if(!currentUser)return;
+  if(!state.imgbbKey){
+    showModal('⚠️','נדרש ImgBB','הגדר מפתח ImgBB בהגדרות כדי לסנכרן תמונות לכל המכשירים.','הבנתי',()=>{});
+    return;
+  }
+  toast('מעלה...');
   const src=await uploadImage(f,1.5);
   if(src){
     const ud=Object.values(state.users).find(x=>x.phone===currentUser.phone||x.uid===currentUser.uid);
-    if(ud){ud.avatar=src;if(src.startsWith('http'))await save();else lsSave();renderUserInfo();toast('אווטר עודכן');}
+    if(ud){
+      ud.avatar=src;
+      await save();
+      renderUserInfo();
+      toast('אווטר עודכן');
+    }
   }
   e.target.value='';
 }
 
-// ── SETTINGS ──
+async function uploadLogo(e){
+  const f=e.target.files[0];if(!f)return;
+  if(!state.imgbbKey){showModal('⚠️','נדרש ImgBB','הגדר מפתח ImgBB בהגדרות לסנכרון תמונות.','הבנתי',()=>{});return;}
+  toast('מעלה לוגו...');
+  const src=await uploadImage(f,2);
+  if(src){
+    state.settings.logo=src;
+    logoSave();
+    await save();
+    applySettings();
+    toast('לוגו עודכן');
+  }
+  e.target.value='';
+}
+
 function applySettings(){
   const s=state.settings||{};
-  const ht=document.getElementById('heroTitle');if(ht)ht.textContent=s.name||'💈 Haimov Barbershop';
+  const logo=s.logo||'';
+  // hero card
+  const ht=document.getElementById('heroTitle');if(ht)ht.textContent=s.name||'Haimov Barbershop';
   const ha=document.getElementById('heroAddr');if(ha)ha.textContent=s.address||'';
   const hh=document.getElementById('heroHours');if(hh)hh.textContent=s.hours||'';
-  // logo
-  const logo=s.logo||'';
+  // logo everywhere: hero + admin preview
   [['heroLogoImg','heroLogoEmoji'],['logoImg','logoEm']].forEach(([imgId,emId])=>{
-    const img=document.getElementById(imgId);const em=document.getElementById(emId);
+    const img=document.getElementById(imgId);
+    const em=document.getElementById(emId);
     if(!img||!em)return;
     if(logo){img.src=logo;img.style.display='block';em.style.display='none';}
     else{img.style.display='none';em.style.display='';}
   });
   // dock logo
   const dl=document.getElementById('dockLogoIc');
-  if(dl){if(logo)dl.innerHTML='<img src="'+logo+'" style="width:22px;height:22px;border-radius:4px;object-fit:cover;"/>';else dl.textContent='💈';}
-  // admin settings fields
+  if(dl){
+    if(logo)dl.innerHTML='<img src="'+logo+'" style="width:22px;height:22px;border-radius:4px;object-fit:cover;"/>';
+    else dl.textContent='💈';
+  }
+  // admin fields
   const sn=document.getElementById('shopName');if(sn)sn.value=s.name||'';
   const sa=document.getElementById('shopAddr');if(sa)sa.value=s.address||'';
   const sh=document.getElementById('shopHours');if(sh)sh.value=s.hours||'';
   const fi=document.getElementById('bFriCap');if(fi)fi.value=state.fridayCap||'15:00';
   const mi=document.getElementById('bMaxTime');if(mi)mi.value=state.maxTime||'20:00';
-}
-async function uploadLogo(e){
-  const f=e.target.files[0];if(!f)return;
-  toast('מעלה לוגו...', 15000);
-  const src=await uploadImage(f,2);
-  if(src){state.settings.logo=src;if(src.startsWith('http'))await save();else logoSave();applySettings();toast('לוגו עודכן');}
-  e.target.value='';
 }
 async function saveSettings(){
   state.settings.name=document.getElementById('shopName').value.trim()||'💈 Haimov Barbershop';
@@ -1257,13 +1295,18 @@ function renderAGal(){
 }
 async function addGalImg(e){
   const f=e.target.files[0];if(!f)return;
-  const btn=document.querySelector('#galFile~button')||document.querySelector('[onclick*="galFile"]');
-  toast('מעלה תמונה...', 20000);
+  if(!state.imgbbKey){
+    showModal('⚠️','נדרש ImgBB','הגדר מפתח ImgBB בהגדרות לסנכרון תמונות.','הבנתי',()=>{});
+
+    return;
+  }
+  toast('מעלה תמונה...');
   const src=await uploadImage(f,2);
   if(src){
     if(!state.gallery)state.gallery=[];
     state.gallery.push({src,caption:''});
-    if(src.startsWith('http'))await save();else{galSave();lsSave();}
+    await save();
+    galSave();
     renderAGal();renderGalSlideshow();
     const gp=document.getElementById('galPublic2');if(gp)renderGalGrid(gp);
     toast('תמונה נוספה');
